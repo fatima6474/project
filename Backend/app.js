@@ -4,7 +4,7 @@ const app = express();
 
 
 
-// const io = require('socket.io')(http);
+// const io = require('socke.io')(http);
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const registerRoutes = require("./routes/register");// this is the shhign up
@@ -27,17 +27,13 @@ require('dotenv').config();
 //   port: 5432,
 // });
 const pool = new Pool({
-
   PGHOST: 'ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech',
   PGDATABASE: 'skill_community',
   PGUSER: 'fatima6474',
-  PGPASSWORD: 'OHjLTRYkG36P'
-  // user: "postgres",
-  // host: "localhost",
-  // database: "postgres",
-  // password: "6474",
-  // port: 5432,
+  PGPASSWORD: 'OHjLTRYkG36P',
+  sslmode: 'require', // Add this line
 });
+
 
 const corsOptions = {
   origin: "http://127.0.0.1:5501",

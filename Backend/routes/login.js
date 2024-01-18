@@ -56,22 +56,7 @@ router.post("/", async (req, res, next) => {
       id,
     };
 
-    const { Pool } = require('pg');
-
-const pool = new Pool({
-  connectionString: 'postgresql://fatima6474:OHjLTRYkG36P@ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech:5432/skill_community?sslmode=require',
-});
-
-pool.query('SELECT NOW()', (err, res) => {
-  if (err) {
-    console.error('Error executing query', err);
-  } else {
-    console.log('Query result:', res.rows[0]);
-  }
-  pool.end();
-});
-  
-    // Respond with the user 
+    // Respond with the user information
     res.json({ token, message: "logged", ...user });
       } catch (err) {
         return next(err)
