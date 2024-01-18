@@ -1,0 +1,687 @@
+<html lang="en">
+<head>
+    <title>Freelancing Website</title>
+   
+    <link rel="stylesheet" href="main.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+                
+             /* padding: 20px;  */
+             background: linear-gradient(to bottom, #3498db, #333333);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+        nav {
+        display: flex;
+        justify-content: space-between;
+        /* width: 70%; */
+        background-color: white;
+        align-items: center;
+        /* max-width: 1200px; */
+        /* margin: 0 auto; */
+        margin-bottom: 60px;
+        padding: 0 20px;
+    }
+
+    .btnn{
+    text-decoration: none;
+    color:  #3498db;
+    /* color: linear-gradient(to bottom, #F5F5F5, #3498db, #333333); */
+
+    text-decoration: none;
+    justify-content: space-between;
+
+    color:#0156d7;;
+    font-weight: bold;
+    
+    transition: color 0.1s;
+}
+
+.log {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color:  #3498db;
+    text-decoration: none;
+    
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        .job-list {
+            list-style: none;
+            padding: 0;
+            color: white;
+        }
+
+        .job-item {
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            padding: 10px;
+            height: 1000px;
+            
+            margin-bottom: 30px;
+            background-color: #0156d7;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .job-title {
+            color: rgb(83, 8, 8);
+            
+            font-size: 40px;
+            margin-bottom: 5px;
+        }
+
+        .talent-list {
+            list-style: none;
+            padding: 0;
+            /* margin-left: 90px; */
+            justify-content: space-between;
+            /* margin-left: 50px; */
+            display: flex;
+            flex-wrap: wrap; /* Prevent wrapping */
+            overflow-x: auto; /* Enable horizontal scrolling */
+        }
+
+        .talent-item {
+            min-width: 300px; /* Adjust the minimum width as needed */
+            border: 1px solid #cccccc;
+            border-radius: 10px;
+            padding: 20px;
+            color: rgb(0, 0, 0);
+            margin: 30px;
+            margin-top:30px;
+            height: 310px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex; /* Make talent-item flex */
+            flex-direction: column; /* Align items vertically */
+            overflow: hidden;
+        }
+
+        .talent-name {
+            color: #333333;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .talent-info {
+            color: black;
+            margin-bottom: 5px;
+        }
+        .cli{
+            color: #f2f2f2;
+            text-decoration: none;
+        }
+        h1{
+            color: white;
+        }
+        .talent-card {
+    position: relative;
+    cursor: pointer;
+
+    transition: transform 0.7s;
+}
+ /* Add styling for the popup */
+
+ .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropbtn {
+            font-size: 16px;  
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content option {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content option:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #0156d7;
+        }
+
+.talent-image {
+    height: 200px; /* Set the desired height */
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px 5px 0 0;
+}
+
+
+.talent-details-popup {
+    display: none;
+    /* Add styling for the popup */
+}
+.talent-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px 5px 0 0;
+}
+
+.talent-card:hover {
+            transform: scale(1.05);
+        }
+
+        .talent-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .talent-info {
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 0 0 5px 5px;
+        }
+        
+
+        /* Add styling for the state dropdown */
+#locationDropdown {
+    font-size: 16px;
+    padding: 14px 16px;
+    border: none;
+    outline: none;
+    /* background-color:  #0156d7; */
+    color:  #0156d7;
+    cursor: pointer;
+}
+
+/* Style the dropdown options */
+#locationDropdown option {
+    color: black;
+    background-color: #f9f9f9;
+    padding: 12px 16px;
+    text-decoration: none;
+
+    display: block;
+}
+
+#locationDropdown option:hover {
+    background-color: #0156d7;
+    color:white;
+}
+
+
+       /* Add styling for the popup */
+.talent-details-popup-container {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1;
+    
+    border-radius: 10px;
+    width: 300px; /* Set the desired width */
+}
+
+.talent-details-popup-container p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.talent-card:hover .talent-details-popup-container {
+    display: block;
+}
+
+/* Style for the modal content */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.view-details-button{
+    background-color: #0156d7;
+    padding:8px;
+    margin-top:20px;
+    border-radius: 10px;
+    color:white;
+    border-style: none;
+    /* width: 30px; */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    margin-bottom: 40px;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.background-image{
+    background-color: blueviolet;
+    width: 900px;
+}
+.send-message-button{
+    background-color: #0156d7;
+    padding:7px;
+    color: white;
+    border-style: none;
+    border-radius: 10px;
+}@media only screen and (max-width: 600px) {
+            .talent-item {
+                width: 100%;
+                display: block;
+            }
+
+            .talent-item {
+            display: block;
+            width: 100%;
+            margin-bottom: 20px; /* Adjust margin for better spacing */
+        }
+        }
+ 
+    </style>
+     <div id="navbar">
+        <nav>
+            
+            <!-- <img src="community-people-friends-group-svgrepo-com.svg" alt=""> -->
+            <div><h1><a href="main.html" class="log">SKILL WORK COMMUNITY</a></h1></div>
+            
+<!--             
+            <div class="dropdown">
+            <button class="dropbtn">categories</button>
+            <div class="dropdown-content" id="dropdown-content">
+                <a href="security.html">House Repairs</a>
+                <a href="makeup.html">Make up</a>
+                <a href="catering.html">Catering Services</a>
+                <a href="security.html">Security Guard</a>
+                <a href="painters.html">painters</a>
+                <a href="helpls.html">House Helps</a>
+                <a href="driver.html"> Drivers</a>
+                <a href="delivery.html">Delivery</a>
+                <a href="laundry.html">Laundry Services</a>
+                <a href="hair.html">Hair Dressers</a>
+                <a href="furniture.html">Furnitures</a>
+                <a href="bakers.html">Bakers</a>
+                <a href="assist.html">Assistant</a>
+                <a href="security.html">Security Guards</a>
+                
+
+
+            </div></div> -->
+            
+                <ul class="nav-links">
+             
+            </ul>
+            <a href="about.html" class="btnn">About</a>
+           
+            <!-- <div class="dropdown"> -->
+<!-- Add a new option for states in the dropdown -->
+<select id="locationDropdown" class="dropbtn">
+    <option value="" selected disabled>Filter Location</option>
+    <option value="abia">Abia</option>
+    <option value="adamawa">Adamawa</option>
+    <option value="akwaibom">Akwa Ibom</option>
+    <option value="anambra">Anambra</option>
+    <option value="bauchi">Bauchi</option>
+    <option value="bayelsa">Bayelsa</option>
+    <option value="benue">Benue</option>
+    <option value="borno">Borno</option>
+    <option value="crossriver">Cross River</option>
+    <option value="delta">Delta</option>
+    <option value="ebonyi">Ebonyi</option>
+    <option value="edo">Edo</option>
+    <option value="ekiti">Ekiti</option>
+    <option value="enugu">Enugu</option>
+    <option value="gombe">Gombe</option>
+    <option value="imo">Imo</option>
+    <option value="jigawa">Jigawa</option>
+    <option value="kaduna">Kaduna</option>
+    <option value="kano">Kano</option>
+    <option value="katsina">Katsina</option>
+    <option value="kebbi">Kebbi</option>
+    <option value="kogi">Kogi</option>
+    <option value="kwara">Kwara</option>
+    <option value="lagos">Lagos</option>
+    <option value="nassarawa">Nassarawa</option>
+    <option value="niger">Niger</option>
+    <option value="ogun">Ogun</option>
+    <option value="ondo">Ondo</option>
+    <option value="osun">Osun</option>
+    <option value="oyo">Oyo</option>
+    <option value="plateau">Plateau</option>
+    <option value="rivers">Rivers</option>
+    <option value="sokoto">Sokoto</option>
+    <option value="taraba">Taraba</option>
+    <option value="yobe">Yobe</option>
+    <option value="zamfara">Zamfara</option>
+    <option value="fct">Federal Capital Territory (FCT)</option>
+</select>
+
+<li><a href="job.html" class="btnn">post a job</a></li>
+            <a href="faq.html" class="btnn">FAQ</a></li>
+        </nav>
+ 
+                </div> 
+            </div></div>
+        </div>
+    </header>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Skill Work Community</h1>
+        <h2 class="job-title" id="security"><a class="cli" href="security.html">security</a></h2>
+        <ul class="talent-list" id="securityTalentList"></ul>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-content-details">
+                <p>Name: <span class="modal-name"></span></p><br>
+                <p>Email: <span class="modal-email"></span></p><br>
+                <p>Location: <span class="modal-location"></span></p><br>
+                <p>Job Title: <span class="modal-jobTitle"></span></p><br>
+                <p>About: <span class="modal-about"></span></p><br>
+                <p>Languages: <span class="modal-languages"></span></p><br>
+                <p>Hourly Rate: <span class="modal-hourlyRate"></span></p><br>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        // Fetch data for each category
+        fetchData("security");
+       
+
+        // Add an event listener to close the popup when clicking outside of it
+        document.addEventListener('click', (event) => {
+            const talentPopups = document.querySelectorAll('.talent-details-popup-container');
+            talentPopups.forEach(popup => {
+                if (!popup.contains(event.target)) {
+                    popup.classList.remove('show');
+                }
+            });
+        });
+    });
+
+
+    function navigateToTalentDetails(talent) {
+        // Store the selected talent details in localStorage
+        localStorage.setItem('selectedTalent', JSON.stringify(talent));
+
+        // Navigate to the talent-details.html page
+        window.location.href = 'freelancer-dashboard.html';
+    }
+   
+    async function fetchData(category) {
+    try {
+        const response = await fetch(`http://localhost:305/category/${category}`);
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (!user) {
+            console.error("User information not found in local storage");
+            return;
+        }
+
+        if (!response.ok) {
+            throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
+        }
+
+        const responseData = await response.json();
+        const talentsArray = responseData.talents;
+
+        if (!Array.isArray(talentsArray)) {
+            console.error("Data received from the server does not contain an array of talents");
+            return;
+        }
+
+        // Limit to 4 talents per category
+        const limitedTalentsArray = talentsArray.slice(0, 13600);
+
+        limitedTalentsArray.forEach(talent => {
+            createTalentListItem(talent, user);
+        });
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
+async function fetchsecurityData(state = "") {
+    const category = "security";
+
+    try {
+        const url = state
+            ? `http://localhost:305/category/${category}?state=${state}`
+            : `http://localhost:305/category/${category}`;
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        console.log("Received data from the server:", data); // Log the received data
+
+        const talentList = document.getElementById(`${category.toLowerCase()}TalentList`);
+        talentList.innerHTML = "";
+
+        const filteredTalents = state
+            ? data.talents.filter(talent => talent.location.toLowerCase() === state.toLowerCase())
+            : data.talents;
+
+        filteredTalents.forEach(talent => {
+            const listItem = createTalentListItem(talent, category);
+            talentList.appendChild(listItem);
+        });
+    } catch (error) {
+        console.error("Error fetching security data:", error);
+    }
+}
+
+// Example usage
+document.addEventListener('DOMContentLoaded', () => {
+    fetchsecurityData(); // Fetch all security data initially
+
+    const locationDropdown = document.getElementById('locationDropdown');
+    locationDropdown.addEventListener('change', () => {
+        const selectedLocation = locationDropdown.value;
+        fetchsecurityData(selectedLocation); // Fetch and display all security cards based on location
+    });
+});
+
+
+
+function createTalentListItem(talent, user) {
+    // console.log('Creating talent list item:', talent);
+    const listItem = document.createElement("li");
+    listItem.classList.add("talent-item");
+   
+    listItem.innerHTML = `
+    <div class="talent-card">
+        <div class="talent-image" style="background-image: url('${talent.image_path}');"></div>
+
+
+        <div class="talent-info">
+            <h3 class="username">${talent.name}</h3>  
+            <p>Job Title: <span class="jobTitle">${talent.job_title}</span></p>
+            <p>Location: <span class="location">${talent.location}</span></p>
+            <button class="view-details-button"></button>
+            <button class="send-message-button" onclick="navigateToMessage('${user.email}', '${talent.email}')"></button>
+
+        </div><br><br>
+        <div class="talent-details-popup-container">
+            <p>Name: <span class="modal-name">${talent.name}</span></p>
+                       <!-- Add more details here as needed -->
+            <p>Email: <span class="modal-email">${talent.email}</span></p>
+            <p>Location: <span class="modal-location">${talent.location}</span></p>
+            <p>Job Title: <span class="modal-jobTitle">${talent.job_title}</span></p>
+            <p>About: <span class="modal-about">${talent.about}</span></p>
+            <p>Languages: <span class="modal-languages">${talent.languages}</span></p>
+            <p>Hourly Rate: <span class="modal-hourlyRate">${talent.hourly_rate}</span></p>
+            <!-- Add more details here as needed -->
+        
+    </div>`;
+
+    listItem.addEventListener('click', () => {
+        navigateToTalentDetails(talent);
+    });
+
+    return listItem;  
+    const talentCard = listItem.querySelector('.talent-card');
+            const talentPopupContainer = listItem.querySelector('.talent-details-popup-container');
+            const viewDetailsButton = listItem.querySelector('.view-details-button');
+            const sendMessageButton = listItem.querySelector('.send-message-button');
+
+            talentCard.addEventListener('click', () => {
+                talentPopupContainer.classList.toggle('show');
+            });
+
+            viewDetailsButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                togglePopup(talent);
+            });
+
+          
+
+            // const talentCard = listItem.querySelector('.talent-card');
+
+talentCard.addEventListener('click', () => {
+    navigateToTalentDetails(talent);
+});
+            // const sendMessageButton = listItem.querySelector('.send-message-button');
+
+
+            // Append the created talent card to the talent list
+            const talentList = document.getElementById(`${talent.job_title.toLowerCase()}TalentList`);
+            talentList.appendChild(listItem);
+        }
+
+
+    // return listItem;
+
+
+
+function togglePopup(talent) {
+    const modal = document.getElementById('myModal');
+    const modalName = modal.querySelector('.modal-name');
+    // const modalPhoneNumber = modal.querySelector('.modal-phoneNumber');
+    const modalEmail = modal.querySelector('.modal-email');
+    const modalLocation = modal.querySelector('.modal-location');
+    const modalJobTitle = modal.querySelector('.modal-jobTitle');
+    const modalAbout = modal.querySelector('.modal-about');
+    const modalLanguages = modal.querySelector('.modal-languages');
+    const modalHourlyRate = modal.querySelector('.modal-hourlyRate');
+    // Add more variables for other details
+
+    modalName.textContent = talent.name;
+    // modalPhoneNumber.textContent = talent.phoneNumber;
+    modalEmail.textContent = talent.email;
+    modalLocation.textContent = talent.location;
+    modalJobTitle.textContent = talent.job_title;
+    modalAbout.textContent = talent.about;
+    modalLanguages.textContent = talent.languages;
+    modalHourlyRate.textContent = talent.hourly_rate;
+    // Populate other details here
+
+    // Display the modal
+    modal.style.display = 'block';
+}
+
+function navigateToMessage(senderEmail, receiverEmail) {
+    console.log('Sender Email:', senderEmail);
+    console.log('Receiver Email:', receiverEmail);
+    window.location.href = `message.html?senderEmail=${senderEmail}&receiverEmail=${receiverEmail}`;
+}
+
+
+    var modal = document.getElementById('myModal');
+
+    // Get the <span> element that closes the modal
+    var closeBtn = document.querySelector('.close');
+
+    // When the user clicks on <span> (x), close the modal
+    closeBtn.onclick = function () {
+        modal.style.display = 'none';
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    </script>
+
+<script>
+  
+
+
+</script>
+
+</body>
+</html>

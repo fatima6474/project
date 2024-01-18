@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register your talent</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <h1>REGISTER YOUR TALENT WITH US</h1>
+    <br>
+    <form action="">
+        <label for="name">name</label>
+<input type="text" name="">
+<br><br>
+<label for="email">email</label>
+<input type="email" name="email" id="">
+<br><br>
+<label for="number">phone number</label>
+<input type="number" value="number">
+
+
+<h1>choose your category</h1>
+
+<input type="radio" value="houserepair" name="Hairdresser">
+<label for="Hairdresser">Hair</label><br><br>
+
+<input type="radio" value="makeup">
+<label for="makeup">makeup</label>
+<br><br>
+<input type="radio" value="catering">
+<label for="catering">catering</label>
+<br><br>
+<input type="radio" value="house helps">
+<label for="house helps">House helps</label>
+<br><br>
+<input type="radio" value="delivery">
+<label for="delivery"> delivery</label>
+<br><br>
+<input type="radio" value="drivers">
+<label for="drivers">driver</label>
+<br><br>
+<input type="radio" value="furniture">
+<label for="furniture">furniture</label>
+<br><br>
+<input type="radio" value="Hairdresser">
+<label for="Hairdresser">Hairdresser</label>
+<br><br>
+<input type="radio" value="baker">
+<label for="baker">baker</label>
+<br><br>
+<input type="radio" value="Assistant">
+<label for="Assistant">Assistant</label>
+<br><br>
+<input type="radio" value="Painters">
+<label for="painters">painters</label>
+<br><br>
+<input type="radio" value="Laundry services">
+<label for="Laundry services">Laundry services</label>
+<br><br>
+<input type="radio" value="security">
+<label for="security">security</label>
+<br><br>
+<input type="radio" value="sales person">
+<label for="sales person">sales person</label>
+    </form><br><br>
+    <button>submit</button>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector('form');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Get form data
+                const name = document.querySelector('input[name="name"]').value;
+                const email = document.querySelector('input[name="email"]').value;
+                const phoneNumber = document.querySelector('input[name="phoneNumber"]').value;
+                const category = document.querySelector('input[name="category"]:checked').value;
+
+                // Save data to the server (send an AJAX request or use a form action)
+                // Redirect to profile.html or display a success message
+            });
+        });
+    </script>
+</body>
+</html>

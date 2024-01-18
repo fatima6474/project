@@ -19,12 +19,24 @@ require('dotenv').config();
 
 
 // PostgreSQLzz connection pool
+// const pool = new Pool({
+//   user: "postgres",
+//   host: "localhost",
+//   database: "postgres",
+//   password: "6474",
+//   port: 5432,
+// });
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "postgres",
-  password: "6474",
-  port: 5432,
+
+  PGHOST: 'ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech',
+  PGDATABASE: 'skill_community',
+  PGUSER: 'fatima6474',
+  PGPASSWORD: 'OHjLTRYkG36P'
+  // user: "postgres",
+  // host: "localhost",
+  // database: "postgres",
+  // password: "6474",
+  // port: 5432,
 });
 
 const corsOptions = {
