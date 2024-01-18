@@ -33,6 +33,7 @@ const pool = new Pool({
   PGPASSWORD: 'OHjLTRYkG36P',
   sslmode: 'require', // Add this line
 });
+console.log('PostgreSQL Connection String:', pool.options.connectionString);
 
 
 const corsOptions = {
