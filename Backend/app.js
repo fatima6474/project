@@ -26,17 +26,23 @@ require('dotenv').config();
 //   password: "6474",
 //   port: 5432,
 // });
-const pool = new Pool({
+// const pool = new Pool({
 
-  PGHOST: 'ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech',
-  PGDATABASE: 'skill_community',
-  PGUSER: 'fatima6474',
-  PGPASSWORD: 'OHjLTRYkG36P'
-  // user: "postgres",
-  // host: "localhost",
-  // database: "postgres",
-  // password: "6474",
-  // port: 5432,
+//   PGHOST: 'ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech',
+//   PGDATABASE: 'skill_community',
+//   PGUSER: 'fatima6474',
+//   PGPASSWORD: 'OHjLTRYkG36P'
+//   // user: "postgres",
+//   // host: "localhost",
+//   // database: "postgres",
+//   // password: "6474",
+//   // port: 5432,
+// });
+const pool = new Pool({
+  connectionString: 'postgresql://fatima6474:OHjLTRYkG36P@ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech:5432/skill_community',
+  ssl: {
+    rejectUnauthorized: false, // You can set this to true in production with a valid certificate
+  },
 });
 
 const corsOptions = {
@@ -61,6 +67,7 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
   secure: true,
+  
 });
 
 
