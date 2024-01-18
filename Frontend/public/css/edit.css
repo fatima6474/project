@@ -702,232 +702,417 @@ h2{
 
 /* Responsive styles for screens up to 600px */
 @media only screen and (max-width: 600px) {
-    .navbar {
-        padding: 2% 4%;
-        width: 100%;
-        font-size: 12px;
-        position: static;
+    * {
         margin: 0;
-        padding-left: 2%;
-        padding-right: 2%;
+        padding: 0;
+        box-sizing: border-box;
     }
-
-    .navbar p {
-        font-size: 10px;
-        margin-top: 10px;
-    }
-
-    .leftside ul {
-        margin-top: 10px;
-        text-align: center;
-    }
-
-    .search {
-        margin-top: 20px;
-    }
-
-    .search input {
-        width: 100%;
-    }
-
-    .buttons {
-        margin-left: 0;
-        margin-top: 20px;
+    
+    body {
         display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    nav button {
-        width: 100%;
-        padding: 10px;
-        font-size: 12px;
-    }
-
-    .hero {
-        margin-top: 150px;
-        padding: 10px;
         flex-direction: column;
+        margin: 70px auto 0 auto;
+        background-color: rgb(225, 222, 222);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-
+    
+    .navbar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-color: #0156d7;
+        position: fixed;
+        z-index: 100;
+        padding-left: 4%;
+        padding-right: 4%;
+        top: 0;
+    }
+    
+    .navbar p {
+        color: white;
+        margin-left: 2vh;
+        font-size: 18px;
+        margin-top: 15px; /* Adjusted margin for mobile */
+    }
+    
+    .menuList {
+        font-size: 24px; /* Adjusted font-size for mobile */
+        margin-right: 10vw; /* Adjusted margin for mobile */
+    }
+    
+    .menu_icon {
+        width: 25px;
+        cursor: pointer;
+        display: none;
+    }
+    
+    .leftside ul {
+        list-style: none;
+        display: inline-block;
+        margin-top: 15px; /* Adjusted margin for mobile */
+        margin-left: 10px; /* Adjusted margin for mobile */
+        transition: font-size 0.5s;
+    }
+    
+    .leftside ul li {
+        list-style: none;
+        display: inline-block;
+        margin-right: 10px; /* Adjusted margin for mobile */
+        transition: font-size 0.5s;
+    }
+    
+    .leftside ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 14px; /* Adjusted font-size for mobile */
+    }
+    
+    .textArea input {
+        width: 90%;
+        padding: 8px;
+        border-radius: 20px;
+        font-size: 16px; /* Adjusted font-size for mobile */
+        border: none;
+        outline: none;
+    }
+    
+    .search {
+        margin-top: 15px; /* Adjusted margin for mobile */
+        width: 90%;
+        padding: 10px;
+        margin-left: 5px; /* Adjusted margin for mobile */
+    }
+    
+    .search #searchBtn {
+        border: none;
+        background-color: #0156d7;
+        margin-left: 10px;
+        border-radius: 20px;
+        padding: 10px;
+        font-size: 16px; /* Adjusted font-size for mobile */
+        color: white;
+    }
+    
+    .buttons {
+        margin-left: 10px; /* Adjusted margin for mobile */
+        margin-top: 10px; /* Adjusted margin for mobile */
+        gap: 5px; /* Adjusted gap for mobile */
+        display: flex;
+    }
+    
+    nav button {
+        width: 8vw; /* Adjusted width for mobile */
+        padding: 8px;
+        border-radius: 20px;
+        border: none;
+        font-size: 16px; /* Adjusted font-size for mobile */
+    }
+    
+    #searchError {
+        margin-left: 10px; /* Adjusted margin for mobile */
+        font-size: 16px; /* Adjusted font-size for mobile */
+        margin-top: 10px; /* Adjusted margin for mobile */
+    }
+    
+    .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        gap: 20px;
+        padding: 10vh;
+    }
+    
     .hero h1 {
-        font-size: 20px;
+        font-size: 30px; /* Adjusted font-size for mobile */
     }
-
+    
     .hero h6 {
-        font-size: 16px;
+        font-size: 18px; /* Adjusted font-size for mobile */
     }
-
+    
     .Image img {
         width: 100%;
         height: auto;
-        border-radius: 10px;
+        border-radius: 20px;
     }
-
-    .wrapper {
-        flex-direction: column;
-        gap: 10px;
+    
+    .section p {
+        font-size: 18px; /* Adjusted font-size for mobile */
+        margin: 10px; /* Adjusted margin for mobile */
+        margin-left: 5px; /* Adjusted margin for mobile */
     }
-
-    .card {
-        width: 100%;
-        height: auto;
-        margin-bottom: 30px;
-    }
-
-    .details {
-        position: static;
-        width: 100%;
+    
+    .sliderx {
+        display: flex;
+        flex-direction: column; /* Adjusted flex-direction for mobile */
+        margin: auto;
+        align-items: center;
+        width: 90%; /* Adjusted width for mobile */
         padding: 10px;
+        overflow: auto;
     }
-
-    .details h1 {
-        font-size: 18px;
-        margin-bottom: 5px;
+    
+    .photo {
+        width: 90%; /* Adjusted width for mobile */
+        border-radius: 20px;
+        transition: 3s;
     }
-
-    .details .desc {
-        font-size: 14px;
+    
+    .sliderx img {
+        width: 90%; /* Adjusted width for mobile */
+        border-radius: 20px;
+        transition: 3s;
     }
-
-    .section2 div {
-        width: 100%;
-        padding: 10px;
-        background-color: white;
-        text-align: center;
-        border-radius: 10px;
+    
+    .sliderx img:hover {
+        transform: scale(1.1);
+        cursor: pointer;
     }
-
+    
     .section2 {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 150px;
+        height: auto; /* Adjusted height for mobile */
+        width: 90%;
+        display: flex;
+        flex-direction: column; /* Adjusted flex-direction for mobile */
+        margin: auto;
+        align-items: center;
+        padding: 10px;
+        justify-content: space-around;
     }
-
-    .section3 {
-        width: 100%;
-        margin-top: 150px;
-        margin-bottom: 100px;
-    }
-
-    .section3 .Image2 img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
-
-    .section3 .textSide button {
-        width: 100%;
-        margin-left: 0;
-    }
-
-    #Reviews_Intro {
-        font-size: 20px;
-        margin-top: 10px;
-        margin-bottom: 0;
-        text-align: center;
-    }
-
-    .reviews {
-        flex-direction: column;
-        gap: 10px;
-        margin: 10%;
-    }
-
-    .reviews .side {
-        width: 100%;
-        justify-content: left;
+    
+    .section2 div {
+        width: 90%; /* Adjusted width for mobile */
+        padding: 10px;
         background-color: white;
+        text-align: center;
+        border-radius: 20px;
+        margin-bottom: 20px; /* Adjusted margin for mobile */
+    }
+    
+    #section_Intro {
+        font-size: 24px; /* Adjusted font-size for mobile */
+        margin-top: 10px; /* Adjusted margin for mobile */
+        margin-bottom: -4px; /* Adjusted margin for mobile */
+    }
+    
+    .section2 div img {
+        width: 70%; /* Adjusted width for mobile */
+        height: auto;
+        margin-bottom: 10px; /* Adjusted margin for mobile */
+    }
+    
+    .section2 div h6 {
+        font-size: 18px; /* Adjusted font-size for mobile */
+    }
+    
+    .section2 div p {
+        font-size: 16px; /* Adjusted font-size for mobile */
+    }
+    
+    .section3 {
+        width: 90%; /* Adjusted width for mobile */
+        display: flex;
+        flex-direction: column; /* Adjusted flex-direction for mobile */
+        height: auto; /* Adjusted height for mobile */
+        gap: 20px;
+        padding: 10vh 0;
+        margin-bottom: 20px; /* Adjusted margin for mobile */
+    }
+    
+    .section3 .textSide h4 {
+        font-size: 24px; /* Adjusted font-size for mobile */
+    }
+    
+    .section3 .textSide ul {
+        font-size: 16px; /* Adjusted font-size for mobile */
+        margin-top: 10px; /* Adjusted margin for mobile */
+        margin-bottom: 10px; /* Adjusted margin for mobile */
+        margin-left: 10px; /* Adjusted margin for mobile */
+    }
+    
+    .section3 .Image2 img {
+        width: 90%; /* Adjusted width for mobile */
+        border-radius: 20px;
+    }
+    
+    .section3 .textSide button {
+        font-size: 16px; /* Adjusted font-size for mobile */
+        width: 20%; /* Adjusted width for mobile */
         border-radius: 10px;
-        margin-top: 10px;
+        border: none;
+        background-color: #0156d7;
+        color: white;
+        padding: 10px;
+        margin-left: 10px; /* Adjusted margin for mobile */
+    }
+    
+    .reviews {
+        width: 90%; /* Adjusted width for mobile */
+        display: flex;
+        flex-direction: column; /* Adjusted flex-direction for mobile */
+        height: auto; /* Adjusted height for mobile */
+        gap: 10px;
+        padding: 10vh 0;
+        margin-left: 5px; /* Adjusted margin for mobile */
+        margin-bottom: 20px; /* Adjusted margin for mobile */
+    }
+    
+    .reviews .side {
+        width: 90%; /* Adjusted width for mobile */
+        background-color: white;
+        border-radius: 20px;
         padding: 10px;
     }
-
+    
     .reviews .side h5 {
-        margin-top: 10px;
-        font-size: 12px;
+        font-size: 18px; /* Adjusted font-size for mobile */
     }
-
+    
     .reviews .side .text {
-        margin-bottom: 10px;
+        margin-bottom: 10px; /* Adjusted margin for mobile */
     }
-
+    
     .reviews .side .profile {
         display: flex;
     }
-
+    
     .reviews .side img {
-        width: 50px;
-        height: 50px;
+        width: 30px; /* Adjusted width for mobile */
+        height: 30px; /* Adjusted height for mobile */
         border-radius: 50%;
     }
-
+    
     .reviews .side .profileName {
-        margin-left: 10px;
-        margin-top: 5px;
-        font-size: 18px;
+        margin-left: 10px; /* Adjusted margin for mobile */
+        margin-top: 5px; /* Adjusted margin for mobile */
+        font-size: 18px; /* Adjusted font-size for mobile */
     }
-
+    
     .reviews .side .profileName h6 {
-        font-size: 16px;
+        font-size: 16px; /* Adjusted font-size for mobile */
     }
-
+    
     .reviews .side .profileName p {
-        font-size: 14px;
+        font-size: 14px; /* Adjusted font-size for mobile */
     }
-
+    
     #Reviews_Intro {
-        font-size: 20px;
-        margin-top: 10px;
-        margin-bottom: 0;
+        font-size: 24px; /* Adjusted font-size for mobile */
+        margin-top: 10px; /* Adjusted margin for mobile */
+        margin-bottom: -5px; /* Adjusted margin for mobile */
         text-align: center;
+        margin-left: 5px; /* Adjusted margin for mobile */
     }
-
-    .section4 {
-        flex-direction: column;
-        margin-top: 20px;
-        font-size: 8px;
+    
+    .supporters {
+        width: 90%; /* Adjusted width for mobile */
+        height: auto; /* Adjusted height for mobile */
+        margin-top: -10px; /* Adjusted margin for mobile */
     }
-
-    .footer {
-        flex-direction: column;
-        padding-left: 10px;
-        margin-top: 20px;
-        height: auto;
-    }
-
-    .footer ul {
-        margin-top: 10px;
-    }
-
-    .footer li {
-        margin-top: 5px;
-    }
-
-    .herox {
+    
+    .support_logos {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        margin: auto;
         align-items: center;
+        width: 100%;
+        padding: 10px;
+        overflow: auto;
+        justify-content: center;
     }
-
+    
+    .support_logos img {
+        width: 70px; /* Adjusted width for mobile */
+    }
+    
+    .section4 {
+        height: auto; /* Adjusted height for mobile */
+        width: 90%;
+        margin-left: 5px; /* Adjusted margin for mobile */
+        margin-top: 10px; /* Adjusted margin for mobile */
+    }
+    
+    .herox {
+        display: flex;
+        width: 90%;
+        height: auto; /* Adjusted height for mobile */
+        margin-left: 5px; /* Adjusted margin for mobile */
+        gap: 10px;
+        margin-top: 20px; /* Adjusted margin for mobile */
+        background-color: #0156d7;
+        border-radius: 25px;
+    }
+    
+    .imagex {
+        width: 90%; /* Adjusted width for mobile */
+        background-image: url("../images/p2.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 0px 25px 25px 0px;
+    }
+    
     .form-box {
         margin: 10px;
-        text-align: center;
+        margin-right: 9vw; /* Adjusted margin for mobile */
+        color: white;
+        width: 70%; /* Adjusted width for mobile */
     }
-
+    
     .form-box h2 {
-        font-size: 12px;
-        margin-bottom: 10px;
+        font-size: 18px; /* Adjusted font-size for mobile */
+        margin-bottom: 10px; /* Adjusted margin for mobile */
     }
-
+    
     .form-box p {
-        font-size: 12px;
+        font-size: 16px; /* Adjusted font-size for mobile */
+        margin-bottom: 10px; /* Adjusted margin for mobile */
     }
-
+    
     .section4 .form-box button {
-        width: 80%;
-        margin-left: 0;
-        font-size: 12px;
+        font-size: 16px; /* Adjusted font-size for mobile */
+        width: 20%; /* Adjusted width for mobile */
+        border-radius: 10px;
+        border: none;
+        background-color: white;
+        color: #0156d7;
+        padding: 10px;
+        margin-left: 10px; /* Adjusted margin for mobile */
     }
-
+    
+    h2 {
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .footer {
+        padding: 0vh 3vh;
+        margin-top: 20px; /* Adjusted margin for mobile */
+        display: flex;
+        flex-direction: column; /* Adjusted flex-direction for mobile */
+        align-items: center;
+        gap: 20px;
+        padding-left: 20px;
+        width: 100%;
+        height: auto; /* Adjusted height for mobile */
+        background-color: white;
+    }
+    
+    .footer h5 {
+        font-size: 18px; /* Adjusted font-size for mobile */
+    }
+    
+    .footer ul {
+        margin-top: 10px; /* Adjusted margin for mobile */
+    }
+    
+    .footer li {
+        font-size: 16px; /* Adjusted font-size for mobile */
+        list-style: none;
+        margin-top: 5px
+    }
     /* Add more responsive styles as needed */
 }
  
