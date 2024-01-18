@@ -41,7 +41,9 @@ require('dotenv').config();
 const pool = new Pool({
   connectionString: 'postgresql://fatima6474:OHjLTRYkG36P@ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech:5432/skill_community',
   ssl: {
-    rejectUnauthorized: false, // You can set this to true in production with a valid certificate
+    rejectUnauthorized: false, 
+    sslmode: 'require',
+    // You can set this to true in production with a valid certificate
   },
 });
 
