@@ -56,7 +56,22 @@ router.post("/", async (req, res, next) => {
       id,
     };
 
-    // Respond with the user information
+    const { Pool } = require('pg');
+
+const pool = new Pool({
+  connectionString: 'postgresql://username:password@localhost:5432/database?sslmode=require',
+});
+
+pool.query('SELECT NOW()', (err, res) => {
+  if (err) {
+    console.error('Error executing query', err);
+  } else {
+    console.log('Query result:', res.rows[0]);
+  }
+  pool.end();
+});
+  
+    // Respond with the user 
     res.json({ token, message: "logged", ...user });
       } catch (err) {
         return next(err)
