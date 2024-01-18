@@ -1,6 +1,3 @@
-
-
-
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200&display=swap'); */
 
 *{
@@ -13,8 +10,7 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin: 70px auto 0 auto ;
-    /* background: url(n5.jpg); */
+    margin: 70px auto 0 auto;
     background-color: rgb(225, 222, 222);
     background-size: cover;
     background-repeat: no-repeat;
@@ -30,11 +26,8 @@ body {
 .navbar{
     width: 100%;
     display: flex;
-    /* height: 10%; */
     align-items: center;
     background-color: #0156d7;
-    /* background-color: rgb(47, 44, 44); */
-    /* background-color: transparent; */
     position: fixed;
     z-index: 100;
     margin: 0px 2px;
@@ -45,53 +38,40 @@ body {
 .navbar p{
     color: white;
     margin-left: 2vh;
-    font-size: 18px;
+    font-size: 12px;
     margin-top: 45px;
 }
 .logo{
-    width: 50px;
+    width: 40px;
     cursor: pointer;
     margin: 30px 0;
 }
 .menuList {
-    font-size: 30px;
-    margin-right: 20vh;
+    font-size: 10px;
+    margin-right: 5vh;
     display: flex;
-
-}
-.menu_icon{
-    width: 25px;
-    cursor: pointer;
-    display: none;
 }
 nav{
     flex: 1;
     text-align: right;
-    /* margin-right: 20vh; */
-    
 }
 .leftside ul {
     list-style: none;
-    display: inline-block;
+    display: flex;
     margin-top: 45px;
-    margin-left: 70px;
+    margin-left: 30px;
     transition: font-size 0.5s;
 
 }
-
-#Popular{
-    font-size: 30px;
-}
 .leftside ul li{
     list-style: none;
-    display: inline-block;
     margin-right: 26px;
     transition: font-size 0.5s;
 }
 .leftside ul li a{
     text-decoration: none;
     color: white;
-    font-size: 19px;
+    font-size: 12px;
 }
 nav ul li a:hover{
     font-weight: bold;
@@ -100,26 +80,25 @@ nav ul li a:hover{
 nav{
     display: flex;
     justify-content: center;
-    margin-left: 23%;
+    margin-left: 3%;
 }
 
 .textArea input{
-    width: 54.4vh;
+    width: 24.4vh;
     padding: 0.5vh;
     padding-left: 1.5vh;
     border-radius: 20px;
     font-size: 20px;
-    border: none;
     outline: none;
 }
 .search{
     margin-top: 7vh;
-    width: 67vh;
+    width: 37vh;
     padding: 1vh;
     margin-left: 0vh;
-    border-radius: 20px ;
-    background-color: rgb(1, 86, 215);
-    justify-content: space-between ;
+    border-radius: 20px;
+    background-color: white;
+    justify-content: space-between;
 }
 .search #searchBtn{
     border: none;
@@ -132,56 +111,51 @@ nav{
 
 }
 .buttons{
-    margin-left: 7vh;
+    margin-left: 2vh;
     margin-top: 1vh;
-    gap: 3vh;
+    gap: 1vh;
     display: flex;
 }
 nav button{
-    width: 10vh;
-    padding: 1.3vh;
+    width: 5vh;
+    padding: 1vh;
     border-radius: 20px;
     border: none;
-    font-size: 18px;
-}
-
-#searchError{
-    margin-left: 2vh;
-    font-size: 20px;
-    margin-top: 2vh;
+    font-size: 12px;
 }
 
 .hero{
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100vh;
     gap: 20vh;
     padding: 10vh;
+    display: none;
 }
 .hero .textArea{
     margin-top: -10vh;
 }
 .hero h1{
-    font-size: 60px;
+    font-size: 25px;
 }
 .hero h6{
-    font-size: 35px;
+    font-size: 20px;
 }
 .Image img{
-   
+    width: 20vh;
+    height:20vh;
     border-radius: 20px;
 }
-.Image img{
-  display: flex;
-    border-radius: 20px;
-}
+
 
 /* <--------------    slider       ------------------> */
 .section{
     height: 50vh;
     width: 90%;
     margin-bottom: 5vh;
+    display: none;
 }
 .section p{
 font-size: 29px;
@@ -224,11 +198,6 @@ margin-left: 8vh;
      cursor: pointer;
 }
 
-.section2{
-    height: 60vh;
-    width: 90%;
-}
-
 ::-webkit-scrollbar {
     display: none;
 }
@@ -242,10 +211,11 @@ margin-left: 8vh;
     align-items: center;
     padding: 10px;
     justify-content: space-around;
+    display: none;
 }
 
 .section2 div{
-    width: 40vh;
+    width: 30vh;
     height: 40vh;
     padding: 3vh;
     background-color: white;
@@ -276,6 +246,7 @@ margin-left: 8vh;
     gap: 20vh;
     padding: 10vh 0vh;
     margin-bottom: -10vh;
+    display: none;
 }
 .section3 .textSide h4{
     font-size: 50px;
@@ -287,7 +258,7 @@ margin-left: 8vh;
     margin-left: 2vh;
 }
 .section3 .Image2 img{
-    width: 70vh;
+    width: 40vh;
     border-radius: 20px;
 }
 
@@ -310,10 +281,11 @@ margin-left: 8vh;
     padding: 10vh 0vh;
     margin-left: 25vh;
     margin-bottom: -10vh;
+    display: none;
 }
 
 .reviews .side{
-    width: 40%;
+    width: 30%;
     background-color: white;
     border-radius: 30px;
     height: 30vh;
@@ -330,10 +302,9 @@ margin-left: 8vh;
     display: flex;
 }
 .reviews .side img{
-    width: 10vh;
-    height: 10vh;
+    width: 6vh;
+    height: 6vh;
     border-radius: 50%;
-
 }
 .reviews .side .profileName{
     margin-left: 3vh;
@@ -368,7 +339,6 @@ margin-left: 8vh;
     padding: 10px;
     overflow: auto;
     justify-content: center;
-
 }
 .support_logos img{
     width: 20vh;
@@ -378,20 +348,20 @@ margin-left: 8vh;
     width: 80%;
     margin-left: 6vh;
     margin-top: -1vh;
-
 }
 .herox{
     display: flex;
-    width: 90%;
+    width: 70%;
     height: 50vh;
     margin-left: 6vh;
     gap: 2vh;
     margin-top: 12vh;
     background-color: #0156d7;
     border-radius: 25px;
+    display: none;
 }
 .imagex{
-    width: 60vh;
+    width: 30vh;
     background-image: url("../images/p2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -432,7 +402,7 @@ h2{
 
 
 
-/* Slider */
+/* Slider -------------------/////\\\\\------------------------- */
 
 .slick-slide {
     margin: 0px 20px;
@@ -456,6 +426,7 @@ h2{
     -ms-touch-action: pan-y;
         touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
+    display: none;
 }
 
 .slick-list
@@ -563,9 +534,10 @@ h2{
     align-items: center;
     gap: 30vh;
     padding-left: 20vh;
-    width: 100%;
+    /* width: 80%; */
     height: 40vh;
     background-color: white;
+    display: none;
 }
 
 .footer h5{
@@ -594,18 +566,19 @@ h2{
 /*  */
 
 
-/*----------------------------------------------------- */
+/*---------------------------------------------------- */
 
 .wrapper {
     width: 100%;
-    height: 30%;
+    height: 100%;
     padding: 20px;
     display: flex;
     align-content: center;
     justify-content: center;
     gap: 24px;
     flex-direction: row;
-    overflow: auto
+    overflow: auto;
+    display: none;
 }
 
 .card {
@@ -696,238 +669,18 @@ h2{
 
 
 /*----------------------------------------------------- */
-/* Default styles for larger screens */
 
-/* ... (previous CSS remains unchanged) */
+/* @media (max-width: 768px) {
 
-/* Responsive styles for screens up to 600px */
-@media only screen and (max-width: 600px) {
-    .navbar {
-        padding: 2% 4%;
-        width: 100%;
-        font-size: 12px;
-        position: static;
-        margin: 0;
-        padding-left: 2%;
-        padding-right: 2%;
+    body{
+        overflow-x: hidden;
     }
 
-    .navbar p {
-        font-size: 10px;
-        margin-top: 10px;
-    }
-
-    .leftside ul {
-        margin-top: 10px;
-        text-align: center;
-    }
-
-    .search {
-        margin-top: 20px;
-    }
-
-    .search input {
-        width: 100%;
-    }
-
-    .buttons {
-        margin-left: 0;
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    nav button {
-        width: 100%;
-        padding: 10px;
-        font-size: 12px;
-    }
-
-    .hero {
-        margin-top: 150px;
-        padding: 10px;
-        flex-direction: column;
-    }
-
-    .hero h1 {
-        font-size: 20px;
-    }
-
-    .hero h6 {
-        font-size: 16px;
-    }
-
-    .Image img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
-
-    .wrapper {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .card {
-        width: 100%;
-        height: auto;
-        margin-bottom: 30px;
-    }
-
-    .details {
-        position: static;
-        width: 100%;
-        padding: 10px;
-    }
-
-    .details h1 {
-        font-size: 18px;
-        margin-bottom: 5px;
-    }
-
-    .details .desc {
-        font-size: 14px;
-    }
-
-    .section2 div {
-        width: 100%;
-        padding: 10px;
-        background-color: white;
-        text-align: center;
-        border-radius: 10px;
-    }
-
-    .section2 {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 150px;
-    }
-
-    .section3 {
-        width: 100%;
-        margin-top: 150px;
-        margin-bottom: 100px;
-    }
-
-    .section3 .Image2 img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
-
-    .section3 .textSide button {
-        width: 100%;
-        margin-left: 0;
-    }
-
-    #Reviews_Intro {
-        font-size: 20px;
-        margin-top: 10px;
-        margin-bottom: 0;
-        text-align: center;
-    }
-
-    .reviews {
-        flex-direction: column;
-        gap: 10px;
-        margin: 10%;
-    }
-
-    .reviews .side {
-        width: 100%;
-        justify-content: left;
-        background-color: white;
-        border-radius: 10px;
-        margin-top: 10px;
-        padding: 10px;
-    }
-
-    .reviews .side h5 {
-        margin-top: 10px;
-        font-size: 12px;
-    }
-
-    .reviews .side .text {
-        margin-bottom: 10px;
-    }
-
-    .reviews .side .profile {
-        display: flex;
-    }
-
-    .reviews .side img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-    }
-
-    .reviews .side .profileName {
-        margin-left: 10px;
-        margin-top: 5px;
-        font-size: 18px;
-    }
-
-    .reviews .side .profileName h6 {
-        font-size: 16px;
-    }
-
-    .reviews .side .profileName p {
-        font-size: 14px;
-    }
-
-    #Reviews_Intro {
-        font-size: 20px;
-        margin-top: 10px;
-        margin-bottom: 0;
-        text-align: center;
-    }
-
-    .section4 {
-        flex-direction: column;
-        margin-top: 20px;
-        font-size: 8px;
-    }
-
-    .footer {
-        flex-direction: column;
-        padding-left: 10px;
-        margin-top: 20px;
-        height: auto;
-    }
-
-    .footer ul {
-        margin-top: 10px;
-    }
-
-    .footer li {
-        margin-top: 5px;
-    }
-
-    .herox {
-        align-items: center;
-    }
-
-    .form-box {
-        margin: 10px;
-        text-align: center;
-    }
-
-    .form-box h2 {
-        font-size: 12px;
-        margin-bottom: 10px;
-    }
-
-    .form-box p {
-        font-size: 12px;
-    }
-
-    .section4 .form-box button {
-        width: 80%;
-        margin-left: 0;
-        font-size: 12px;
-    }
-
-    /* Add more responsive styles as needed */
+.container{
+    display: none;
 }
- 
+
+.footer{
+    display: none;
+}
+} */

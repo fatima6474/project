@@ -1,6 +1,3 @@
-
-
-
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200&display=swap'); */
 
 *{
@@ -30,7 +27,6 @@ body {
 .navbar{
     width: 100%;
     display: flex;
-    /* height: 10%; */
     align-items: center;
     background-color: #0156d7;
     /* background-color: rgb(47, 44, 44); */
@@ -78,10 +74,6 @@ nav{
     transition: font-size 0.5s;
 
 }
-
-#Popular{
-    font-size: 30px;
-}
 .leftside ul li{
     list-style: none;
     display: inline-block;
@@ -118,11 +110,13 @@ nav{
     padding: 1vh;
     margin-left: 0vh;
     border-radius: 20px ;
-    background-color: rgb(1, 86, 215);
+    background-color: white;
     justify-content: space-between ;
 }
 .search #searchBtn{
+    /* margin-left: -10.4vh; */
     border: none;
+    /* background-color: rgb(47, 44, 44); */
     background-color: rgb(1, 86, 215);
     margin-left: 10px;
     border-radius: 20px;
@@ -145,12 +139,6 @@ nav button{
     font-size: 18px;
 }
 
-#searchError{
-    margin-left: 2vh;
-    font-size: 20px;
-    margin-top: 2vh;
-}
-
 .hero{
     display: flex;
     justify-content: space-between;
@@ -169,11 +157,13 @@ nav button{
     font-size: 35px;
 }
 .Image img{
-   
+    width: 60vh;
+    height:60vh;
     border-radius: 20px;
 }
 .Image img{
-  display: flex;
+    width: 60vh;
+    height:60vh;
     border-radius: 20px;
 }
 
@@ -199,14 +189,6 @@ margin-left: 8vh;
     padding: 10px;
     overflow: auto
 }
-
-.photo{
-    width: 43vh;
-    border-radius: 20px;
-    transition: 3s;
-    height: 43vh;
-}
-
 
 .sliderx img{
     width: 43vh;
@@ -238,8 +220,10 @@ margin-left: 8vh;
     width: 80%;
     display: flex;
     flex-direction: row;
+    /* gap: 4vh; */
     margin: auto;
     align-items: center;
+    /* width: 90%; */
     padding: 10px;
     justify-content: space-around;
 }
@@ -269,10 +253,22 @@ margin-left: 8vh;
 .section2 div p {
     font-size: 20px;
 }
+/* .for .scroll{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: auto;
+    align-items: center;
+    width: 90%;
+    padding: 10px;
+    overflow: auto
+} */
+
 .section3{
     width: 80%;
     display: flex;
     height: 70vh;
+    /* justify-content: space-between; */
     gap: 20vh;
     padding: 10vh 0vh;
     margin-bottom: -10vh;
@@ -306,6 +302,7 @@ margin-left: 8vh;
     width: 80%;
     display: flex;
     height: 60vh;
+    /* justify-content: space-between; */
     gap: 10vh;
     padding: 10vh 0vh;
     margin-left: 25vh;
@@ -367,6 +364,7 @@ margin-left: 8vh;
     width: 100%;
     padding: 10px;
     overflow: auto;
+    /* margin-left: 7vh; */
     justify-content: center;
 
 }
@@ -376,16 +374,19 @@ margin-left: 8vh;
 .section4{
     height: 60vh;
     width: 80%;
+    /* justify-content: space-between; */
     margin-left: 6vh;
     margin-top: -1vh;
 
 }
 .herox{
     display: flex;
+    /* width: 110vh; */
     width: 90%;
     height: 50vh;
     margin-left: 6vh;
     gap: 2vh;
+    /* justify-content: space-between; */
     margin-top: 12vh;
     background-color: #0156d7;
     border-radius: 25px;
@@ -395,6 +396,8 @@ margin-left: 8vh;
     background-image: url("../images/p2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    /* border-radius: 25px; */
     border-radius: 0px 25px 25px 0px;
 }
 .form-box{
@@ -560,6 +563,7 @@ h2{
     margin-top: 8vh;
     display: flex;
     flex-direction: row;
+    /* justify-content: space-between; */
     align-items: center;
     gap: 30vh;
     padding-left: 20vh;
@@ -581,11 +585,6 @@ h2{
     margin-top: 1vh;
 }
 
-.footer li:hover {
-    font-weight: bold;
-    color: #0156d7;
-}
-
 /* End of footer */
 
 
@@ -596,338 +595,3 @@ h2{
 
 /*----------------------------------------------------- */
 
-.wrapper {
-    width: 100%;
-    height: 30%;
-    padding: 20px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    gap: 24px;
-    flex-direction: row;
-    overflow: auto
-}
-
-.card {
-    position: relative;
-    width: 325px;
-    height: 450px;
-    background: #000;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-}
-
-.poster {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* overflow: hidden; */
-}
-
-.poster::before {
-    content: '';
-    position: absolute;
-    bottom: -45%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    transition: .3s;
-}
-
-.card:hover .poster::before {
-    bottom: 0;
-}
-
-.poster img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 1s;
-}
-
-.card:hover .poster img {
-    transform: scale(1.1);
-}
-
-.details {
-    position: absolute;
-    bottom: -130%;
-    left: 0;
-    width: 100%;
-    height: auto;
-    padding: 1.5em 1.5em 2em;
-    background: #000a;
-    backdrop-filter: blur(16px) saturate(120%);
-    transition: 1s;
-    color: #fff;
-    z-index: 2;
-}
-
-.card:hover .details {
-    bottom: -10%;
-}
-
-.details h1 {
-    font-weight: 700;
-}
-
-.details h1 {
-    text-align: center;
-    font-size: 2.1em;
-    margin-bottom: 10px;
-}
-
-
-
-.details .desc {
-    color: #fff;
-    opacity: .8;
-    line-height: 1.5;
-    margin-bottom: 2em;
-    font-size: 20px;
-}
-
-
-/*----------------------------------------------------- */
-/* Default styles for larger screens */
-
-/* ... (previous CSS remains unchanged) */
-
-/* Responsive styles for screens up to 600px */
-@media only screen and (max-width: 600px) {
-    .navbar {
-        padding: 2% 4%;
-        width: 100%;
-        font-size: 12px;
-        position: static;
-        margin: 0;
-        padding-left: 2%;
-        padding-right: 2%;
-    }
-
-    .navbar p {
-        font-size: 10px;
-        margin-top: 10px;
-    }
-
-    .leftside ul {
-        margin-top: 10px;
-        text-align: center;
-    }
-
-    .search {
-        margin-top: 20px;
-    }
-
-    .search input {
-        width: 100%;
-    }
-
-    .buttons {
-        margin-left: 0;
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    nav button {
-        width: 100%;
-        padding: 10px;
-        font-size: 12px;
-    }
-
-    .hero {
-        margin-top: 150px;
-        padding: 10px;
-        flex-direction: column;
-    }
-
-    .hero h1 {
-        font-size: 20px;
-    }
-
-    .hero h6 {
-        font-size: 16px;
-    }
-
-    .Image img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
-
-    .wrapper {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .card {
-        width: 100%;
-        height: auto;
-        margin-bottom: 30px;
-    }
-
-    .details {
-        position: static;
-        width: 100%;
-        padding: 10px;
-    }
-
-    .details h1 {
-        font-size: 18px;
-        margin-bottom: 5px;
-    }
-
-    .details .desc {
-        font-size: 14px;
-    }
-
-    .section2 div {
-        width: 100%;
-        padding: 10px;
-        background-color: white;
-        text-align: center;
-        border-radius: 10px;
-    }
-
-    .section2 {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 150px;
-    }
-
-    .section3 {
-        width: 100%;
-        margin-top: 150px;
-        margin-bottom: 100px;
-    }
-
-    .section3 .Image2 img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
-
-    .section3 .textSide button {
-        width: 100%;
-        margin-left: 0;
-    }
-
-    #Reviews_Intro {
-        font-size: 20px;
-        margin-top: 10px;
-        margin-bottom: 0;
-        text-align: center;
-    }
-
-    .reviews {
-        flex-direction: column;
-        gap: 10px;
-        margin: 10%;
-    }
-
-    .reviews .side {
-        width: 100%;
-        justify-content: left;
-        background-color: white;
-        border-radius: 10px;
-        margin-top: 10px;
-        padding: 10px;
-    }
-
-    .reviews .side h5 {
-        margin-top: 10px;
-        font-size: 12px;
-    }
-
-    .reviews .side .text {
-        margin-bottom: 10px;
-    }
-
-    .reviews .side .profile {
-        display: flex;
-    }
-
-    .reviews .side img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-    }
-
-    .reviews .side .profileName {
-        margin-left: 10px;
-        margin-top: 5px;
-        font-size: 18px;
-    }
-
-    .reviews .side .profileName h6 {
-        font-size: 16px;
-    }
-
-    .reviews .side .profileName p {
-        font-size: 14px;
-    }
-
-    #Reviews_Intro {
-        font-size: 20px;
-        margin-top: 10px;
-        margin-bottom: 0;
-        text-align: center;
-    }
-
-    .section4 {
-        flex-direction: column;
-        margin-top: 20px;
-        font-size: 8px;
-    }
-
-    .footer {
-        flex-direction: column;
-        padding-left: 10px;
-        margin-top: 20px;
-        height: auto;
-    }
-
-    .footer ul {
-        margin-top: 10px;
-    }
-
-    .footer li {
-        margin-top: 5px;
-    }
-
-    .herox {
-        align-items: center;
-    }
-
-    .form-box {
-        margin: 10px;
-        text-align: center;
-    }
-
-    .form-box h2 {
-        font-size: 12px;
-        margin-bottom: 10px;
-    }
-
-    .form-box p {
-        font-size: 12px;
-    }
-
-    .section4 .form-box button {
-        width: 80%;
-        margin-left: 0;
-        font-size: 12px;
-    }
-
-    /* Add more responsive styles as needed */
-}
- 
