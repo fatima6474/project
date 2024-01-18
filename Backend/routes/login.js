@@ -6,6 +6,7 @@ const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 const { log } = require("node-wit");
 const secret = "jkjkjkkjkskjksjks"
+const nodeWit = require('node-wit');
 
 router.get("/", async function (req, res, next) {
     try {
