@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content here -->
+    <style>
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            height: 100vh;
+            background: linear-gradient(to bottom, #3498db, #333333);
+            color: #fff;
+        }
+
+        header {
+            background-color: #2980b9;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+            align-items: stretch;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .left-panel, .right-panel {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .left-panel {
+            background-color: #3498db;
+        }
+
+        .right-panel {
+            background-color: #ffffff;
+            border-left: 2px solid #3498db;
+            padding: 20px;
+        }
+
+        .dropdown {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .dropbtn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #2980b9;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .dropdown-content label {
+            display: block;
+            padding: 10px;
+            border-bottom: 1px solid #2c3e50;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content label:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content input {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-content label:hover {
+            background-color: #2c3e50;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .job-list {
+            overflow-y: auto;
+            max-height: calc(100vh - 160px);
+        }
+
+        .job {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 15px;
+            color: #010904;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-submitted {
+            background-color: #2ecc71; /* Green color for submitted jobs */
+            color: black;
+        }
+
+        .job-details {
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .plus-icon {
+            font-size: 24px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+   
+        #selectedcategory{
+            background-color: red;
+        }
+        .header{
+            color: white;
+            text-decoration: none;
+            font-size:30px;
+            
+        }
+    </style>
+</head>
+<body>
+<a href="main.html" class="header">Skill work community</a>
+    <header>POST A JOB</header>
+<nav> </nav>
+    <div class="container">
+        <div class="left-panel">
+            <div class="job-list" id="jobList">
+                <!-- Existing jobs will be displayed here -->
+                
+            </div>
+        </div>
+        <div class="right-panel">
+            <div class="dropdown">
+                <!-- <button class="dropbtn" id="selectedCategory">Categories</button> -->
+                <div class="dropdown-content" id="dropdown-content">
+                    <!-- Dropdown content here -->
+                    <div class="job-list" id="jobList">
+                        <!-- Existing jobs will be displayed here -->
+                    </div>
+                </div>
+                <div class="right-panel">
+                    <div class="dropdown">
+                        <button class="dropbtn" id="selectedCategory">Categories</button>
+                        <div class="dropdown-content" id="dropdown-content">
+                            <label><input type="radio" name="category" value="houserepair" onclick="updateCategory(this.value)">House Repairs</label>
+                            <label><input type="radio" name="category" value="makeup" onclick="updateCategory(this.value)">Makeup</label>
+                            <label><input type="radio" name="category" value="cateringservices" onclick="updateCategory(this.value)">Catering Services</label>
+                            <label><input type="radio" name="category" value="securityguard" onclick="updateCategory(this.value)">Security Guard</label>
+                            <label><input type="radio" name="category" value="painters" onclick="updateCategory(this.value)">Painters</label>
+                            <!-- <label><input type="radio" name="category" value="househelps" onclick="updateCategory(this.value)">House Helps</label> -->
+                            <label><input type="radio" name="category" value="drivers" onclick="updateCategory(this.value)">Drivers</label>
+                            <label><input type="radio" name="category" value="delivery" onclick="updateCategory(this.value)">Delivery</label>
+                            <label><input type="radio" name="category" value="laundryservices" onclick="updateCategory(this.value)">Laundry Services</label>
+                            <label><input type="radio" name="category" value="hairdressers" onclick="updateCategory(this.value)">Hair Dressers</label>
+                            <!-- <label><input type="radio" name="category" value="furnitures" onclick="updateCategory(this.value)">Furnitures</label> -->
+                            <label><input type="radio" name="category" value="bakers" onclick="updateCategory(this.value)">Bakers</label>
+                            <label><input type="radio" name="category" value="assistant" onclick="updateCategory(this.value)">Assistant</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <input type="text" id="emailInput" placeholder="Enter your email"> -->
+        
+            <input type="text" id="jobDetailsInput" placeholder="Enter job details">
+            <button onclick="addJob()">Submit</button>
+        </div>
+    </div>
+
+    <div class="plus-icon" onclick="addJob()">+</div>
+
+    
+<!-- Existing HTML code ... -->
+
+<script>
+    let jobCount = 0;
+
+    function updateCategory(category) {
+        document.getElementById('selectedCategory').innerText = category;
+    }
+    async function addJob() {
+    const selectedCategory = document.getElementById('selectedCategory').innerText;
+    const jobDetailsInput = document.getElementById('jobDetailsInput');
+
+    if (selectedCategory === 'Categories' || jobDetailsInput.value.trim() === '') {
+        alert('Please select a category and enter job details before adding a job.');
+        return;
+    }
+
+    const userEmail = getUserEmail(); // Add this line to get the user's email
+
+    jobCount++;
+
+    const jobList = document.getElementById('jobList');
+
+    const jobContainer = document.createElement('div');
+    jobContainer.classList.add('job');
+    jobContainer.id = `job_${jobCount}`;
+
+    const jobText = document.createTextNode(`${selectedCategory}`);
+    const jobDetails = document.createElement('div');
+    jobDetails.classList.add('job-details');
+    jobDetails.textContent = jobDetailsInput.value.trim();
+
+    const emailText = document.createTextNode(`Email: ${userEmail}`); // Display user's email
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.onclick = () => deleteJob(`job_${jobCount}`);
+
+    jobContainer.appendChild(jobText);
+    jobContainer.appendChild(jobDetails);
+    jobContainer.appendChild(emailText);
+    jobContainer.appendChild(deleteButton);
+
+    jobList.appendChild(jobContainer);
+
+    saveJobToLocalstorage({
+        jobTitle: selectedCategory,
+        jobDescription: jobDetails.textContent,
+        email: userEmail,
+    });
+
+    try {
+        const response = await fetch('http://127.0.0.1:305/submitJob', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                jobTitle: selectedCategory,
+                jobDescription: jobDetails.textContent,
+                email: userEmail,
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error submitting job: ${response.statusText}`);
+        }
+
+        // Update the server-side job ID when the job is successfully added
+        const { jobPost } = await response.json();
+        jobContainer.dataset.serverId = jobPost.id; // Set the dataset.serverId property
+
+        console.log('Job submitted successfully to the database.');
+    } catch (error) {
+        console.error('Error submitting job:', error);
+    }
+
+    document.getElementById('selectedCategory').innerText = 'Categories';
+    jobDetailsInput.value = '';
+}
+
+function getUserEmail() {
+    // Assuming the user's email is stored in local storage
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user ? user.email : '';
+}
+
+
+
+    function deleteJob(jobId) {
+    const jobContainer = document.getElementById(jobId);
+
+    // Remove the job from the UI
+    jobContainer.remove();
+
+    // Remove the job from local storage
+    const jobs = JSON.parse(localStorage.getItem('jobs')) || [];
+    const indexToRemove = parseInt(jobId.split('_')[1]) - 1;
+    jobs.splice(indexToRemove, 1);
+    localStorage.setItem('jobs', JSON.stringify(jobs));
+
+    console.log('Job deleted successfully from local storage.');
+}
+
+    function saveJobToLocalstorage(jobData) {
+        const jobs = JSON.parse(localStorage.getItem('jobs')) || [];
+        jobs.push(jobData);
+        localStorage.setItem('jobs', JSON.stringify(jobs));
+    }
+
+    function displayJobsFromLocalStorage() {
+        const jobs = JSON.parse(localStorage.getItem('jobs')) || [];
+
+        const jobList = document.getElementById('jobList');
+        jobList.innerHTML = '';
+
+        jobs.forEach((job, index) => {
+            const jobContainer = document.createElement('div');
+            jobContainer.classList.add('job');
+            jobContainer.id = `job_${index + 1}`;
+
+            // Store the server-side job ID as a data attribute
+            jobContainer.dataset.serverId = job.id;
+
+            const jobText = document.createTextNode(job.jobTitle);
+            const jobDetails = document.createElement('div');
+            jobDetails.classList.add('job-details');
+            jobDetails.textContent = job.jobDescription;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = () => deleteJob(`job_${index + 1}`);
+
+            jobContainer.appendChild(jobText);
+            jobContainer.appendChild(jobDetails);
+            jobContainer.appendChild(deleteButton);
+
+            jobList.appendChild(jobContainer);
+        });
+    }
+    
+    displayJobsFromLocalStorage();
+
+
+    async function deleteJob(jobId) {
+    const jobContainer = document.getElementById(jobId);
+
+    // Get the server-side job ID
+    const serverId = jobContainer.dataset.serverId;
+
+    // Check if the server ID is undefined or null
+    if (!serverId) {
+        console.warn('Server ID is undefined. Cannot delete job from the database.');
+        return;
+    }
+
+    // Remove the job from the UI
+    jobContainer.remove();
+
+    // Remove the job from local storage
+    const jobs = JSON.parse(localStorage.getItem('jobs')) || [];
+    const indexToRemove = parseInt(jobId.split('_')[1]) - 1;
+    jobs.splice(indexToRemove, 1);
+    localStorage.setItem('jobs', JSON.stringify(jobs));
+
+    // Delete the job from the database
+    try {
+        const response = await fetch(`http://127.0.0.1:305/deleteJob/${serverId}`, {
+            method: 'DELETE',
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error deleting job: ${response.statusText}`);
+        }
+
+        console.log('Job deleted successfully from the database.');
+    } catch (error) {
+        console.error('Error deleting job:', error);
+    }
+}
+
+</script>
+
+</body>
+</html>

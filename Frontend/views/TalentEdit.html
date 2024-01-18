@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/TalentEdit.css">
+    <title>Talent Profile Edit</title>
+    <style>
+        /* Update your TalentEdit.css file */
+        #jobPostsContainer {
+        width: 8000px;
+            margin: 0px auto;
+            
+            
+        }
+
+        .jobPost {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+          
+            background-color: #f9f9f9;
+        }
+
+        .jobPost h3 {
+            color: #333;
+        }
+
+        .jobPost p {
+            color: #777;
+        }
+        .job p:nth-child(2) {
+  margin-bottom: 5px;
+}
+.job {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+}
+
+.job p:first-child {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+
+.job p:nth-child(3) {
+  color: #777;
+}
+#jobList {
+    max-height: 700px; /* Adjust the maximum height as needed */
+    overflow-y: auto; /* Enable vertical scroll */
+    margin: 20px auto;
+}
+
+.job {
+    /* Your existing styles for job items */
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Add this style to ensure a minimum width for each job item */
+.jobContainer {
+    width: 700px; 
+}
+
+
+/* Add these styles to your existing CSS file or create a new one */
+
+.job {
+    border: 1px solid #ddd;
+    padding: 20px;
+    /* margin: 10px 0; */
+    background-color: #f9f9f9;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.job:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.job p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.job button.sendMessageBtn {
+    background-color: #0156d7;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.job button.sendMessageBtn:hover {
+    background-color: #013aa5;
+}
+@media only screen and (max-width: 320px) {
+    .navbar {
+        /* flex-direction: column; */
+        /* align-items: flex-start; */
+    }
+
+    .leftside {
+        margin-bottom: 10px;
+    }
+
+    .navbar a {
+        margin-bottom: 10px;
+    }
+
+    .main {
+        padding: 10px;
+    }
+
+    .job {
+        padding: 15px;
+       
+        /* margin-bottom: 90px; *
+        back/
+        back
+        /* margin-bottom: 15px;gap: 50px; */
+    }
+
+    .job button.sendMessageBtn {
+        padding: 8px;
+    }
+
+/* ... (previous styles) */
+
+#jobList {
+    height: 100%px;
+    overflow-y: auto;
+    margin-top: 40px;
+    background: linear-gradient(to bottom, #F5F5F5, #3498db, #333333);
+
+    /* margin: 20px auto 20vh; Add margin to create space between jobList and footer */
+}
+
+/* ... (remaining styles) */
+
+  
+}
+/* Add more styling as needed */
+
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="leftside">
+            <a href="./index.html"><img src="../public/images/community-people-friends-group-svgrepo-com.svg"
+                    class="logo"></a><p>Skill Work Community</p>
+            <ul id="menuList">
+                <li><a href="image.html">About</a></li>
+                <li><a href="receive.html">Request</a></li>
+                <li><a href="displayPage.html">proposals</a></li>
+                <li><a href="freelancer-form.html">FAQ</a></li>
+                <button id="LogoutBtn">Log out</button>
+            </ul>
+            <div class="buttons">
+                
+                <!-- <button id="LogoutBtn">Log out</button> -->
+                <!-- <button id="editProfileBtn">Edit Profile</button> -->
+            </div>
+        </div>
+        <nav>
+            <!-- Update your navigation bar in TalentEdit.html -->
+            <ul id="menuList">
+                
+                <!-- <li><a href="">Home</a></li> -->
+                <!-- <li><a href="#" id="findJobBtn">Find Job</a></li> -->
+            </ul>
+            <div class="buttons">
+                
+                <!-- <button id="LogoutBtn">Log out</button> -->
+                <!-- <button id="editProfileBtn">Edit Profile</button> -->
+            </div>
+        </nav>
+    </div>
+    <div class="main">
+        <div class="Profile">
+            <div class="profileImage">
+                <img id="profileImage" src="../public/images/profile.svg" alt="Profile Image">
+            </div>
+            <h1 class="username"></h1>
+            <p>phone number: <span class="phoneNumber"></span></p>
+            <p>email: <span class="email"></span></p>
+            <p>Job Title: <span class="jobTitle"></span></p>
+            <p>location: <span class="Location"></span></p>
+            <p>About: <span class="about"></span></p>
+            <p>Language: <span class="language"></span></p>
+            <p>Hourly rate: <span class="hourlyRate"></span></p>
+            <!-- Add this button within the Profile div -->
+
+    <!-- Add this form within the Profile div, initially set to display: none -->
+    <form id="editProfileForm" style="display: none;">
+        <label for="editName">Name:</label>
+        <input type="text" id="editName" name="editName" required>
+        <!-- Add similar input fields for other profile attributes -->
+        <button type="button" id="saveChangesBtn">Save Changes</button>
+    </form>
+    
+        </div>
+        <div class="textarea">
+            <div class="into">
+                <!-- <h3>Welcome back <span class="username"></span></h3>
+                <p>Don't be defined by a skill or category — express your own skills with self-tailored offers. Sell your
+                    custom services in bitesize offers and start building lasting relationships with clients. -->
+                <!-- </p> -->
+            </div>
+            <h1>JOBS</h1>
+            <div id="jobList"></div>
+            <!-- <div class="stats"> -->
+                <div class="users">
+                </div>
+                <div id="jobPostsContainer"></div>
+                <!-- <div class="projects"></div>
+                <div class="reviews"></div> --><!-- ... (your existing code) -->
+
+<!-- Add a container for the buttons with the id "buttonContainer" -->
+<div id="buttonContainer" class="buttons"></div>
+
+<!-- ... (your existing code) -->
+
+            </div>
+            <!-- <div class="detailed_Stats"></div> -->
+        </div>
+    </div>
+    <div class="footer">
+        <div class="1">
+            <h5>Categories</h5>
+            <ul>
+                <li>Graphics & Design</li>
+                <li>Digital Marketing</li>
+                <li>Video & Animation</li>
+                <li>Music & Audio</li>
+                <li>Writing & Translation/li>
+                <li>Logo Maker</li>
+            </ul>
+        </div>
+        <div class="2">
+            <h5>About</h5>
+            <ul>
+                <li>Careers</li>
+                <li>Press & News</li>
+                <li>Partnerships</li>
+                <li>Privacy Policy</li>
+                <li>Terms of Service</li>
+                <li>Investor Relations</li>
+            </ul>
+        </div>
+        <div class="3">
+            <h5>Community</h5>
+            <ul>
+                <li>Forum</li>
+                <li>Influencers</li>
+                <li>Affiliates</li>
+                <li>Podcast</li>
+                <li>Invite a Friend</li>
+                <li>Events</li>
+            </ul>
+        </div>
+        <div class="4">
+            <h5>Support</h5>
+            <ul>
+                <li>Data</li>
+                <li>Business</li>
+                <li>Lifestyle</li>
+                <li>Photography</li>
+                <li>Sitemap</li>
+                <li>Design</li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <script>
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+            const editProfileBtn = document.getElementById('editProfileBtn');
+            const editProfileForm = document.getElementById('editProfileForm');
+
+          
+
+            const saveChangesBtn = document.getElementById('saveChangesBtn');
+
+            saveChangesBtn.addEventListener('click', function () {
+                // Retrieve edited data from form fields
+                const editedName = document.getElementById('editName').value;
+                // Retrieve other edited form fields in a similar way
+
+                // Update profile display with edited data
+                document.querySelector('.username').innerText = editedName;
+                // Update other profile elements in a similar way
+
+                // Optionally, update local storage with the edited data
+                // ...
+
+                // Hide edit form, show profile display
+                editProfileForm.style.display = 'none';
+                document.querySelector('.Profile').style.display = 'block';
+            });
+        });
+
+
+
+
+        const LogoutBtn = document.getElementById('LogoutBtn');
+        LogoutBtn.addEventListener("click", function () {
+            window.location.href = "../views/edit.html";
+        });
+    
+        document.addEventListener("DOMContentLoaded", function () {
+            const storedData = localStorage.getItem("formData");
+    
+            if (!storedData) {
+                console.error("Form data not found.");
+                return;
+            }
+    
+            const parsedData = JSON.parse(storedData);
+    
+            document.querySelector(".username").innerText = parsedData.name;
+            document.querySelector(".phoneNumber").innerText = parsedData.phoneNumber;
+            document.querySelector(".email").innerText = parsedData.email;
+            document.querySelector(".jobTitle").innerText = parsedData.jobTitle;
+            document.querySelector(".about").innerText = parsedData.about;
+            document.querySelector(".Location").innerText = parsedData.location;
+            document.querySelector(".language").innerText = parsedData.language;
+            document.querySelector(".hourlyRate").innerText = parsedData.hourlyRate;
+    
+            const profileImage = document.getElementById("profileImage");
+        if (parsedData.image_path) {
+            profileImage.src = parsedData.image_path;
+        }
+
+            fetchJobsByCategory(parsedData.jobTitle);
+        });
+    
+        
+    async function fetchJobsByCategory(category) {
+    try {
+        const response = await fetch(`http://127.0.0.1:305/fetchJobs?category=${category}`);
+
+        if (!response.ok) {
+            throw new Error(`Error fetching jobs: ${response.statusText}`);
+        }
+
+        const responseData = await response.json();
+
+        console.log("Raw Response Data:", responseData);
+
+        if (Array.isArray(responseData.jobs)) {
+            console.log("Fetched Jobs:", responseData.jobs);
+            displayFetchedJobs(responseData.jobs);
+        } else {
+            throw new Error("Invalid data format received from the server.");
+        }
+    } catch (error) {
+        console.error("Error fetching jobs:", error);
+    }
+}
+
+
+ 
+
+
+function displayFetchedJobs(jobs) {
+    const jobList = document.getElementById("jobList");
+
+    jobs.forEach((job, index) => {
+        const jobContainer = document.createElement("div");
+        jobContainer.classList.add("job");
+        jobContainer.id = `job_${index + 1}`;
+
+        const loggedInUserEmail = document.querySelector(".email").innerText;
+
+        const jobTitleElement = document.createElement("p");
+        jobTitleElement.textContent = `Job Title: ${job.job_title}`;
+
+        const jobDescriptionElement = document.createElement("p");
+        jobDescriptionElement.textContent = `Job Description: ${job.job_description}`;
+
+        const createdAtElement = document.createElement("p");
+        createdAtElement.textContent = `Created At: ${job.created_at}`;
+
+        const sendMessageBtn = document.createElement("button");
+        sendMessageBtn.textContent = "Send Message";
+        sendMessageBtn.classList.add("sendMessageBtn");
+
+        sendMessageBtn.addEventListener("click", function () {
+            const senderEmail = loggedInUserEmail;
+            const jobEmail = encodeURIComponent(job.email);
+            const jobDescription = encodeURIComponent(job.job_description);
+
+            window.location.href = `./TalentProfile.html?email=${jobEmail}&senderEmail=${senderEmail}&jobDescription=${jobDescription}`;
+        });
+
+        jobContainer.appendChild(sendMessageBtn);
+        jobContainer.appendChild(jobTitleElement);
+        jobContainer.appendChild(jobDescriptionElement);
+        jobContainer.appendChild(createdAtElement);
+
+        // Prepend the current job container to the beginning of the job list
+        jobList.prepend(jobContainer);
+    });
+}
+
+
+
+        
+    </script>
+    
+    </body>
+
+</html>
+

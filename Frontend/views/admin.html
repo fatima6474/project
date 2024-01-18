@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.chart-container {
+      margin-top: 20px;
+    }
+
+h1 {
+    color: blue;
+    margin: 0;
+    padding: 10px;
+    background-color: black;
+    text-align: center;
+}
+
+#menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+#menu a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+#content {
+    padding: 50px 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #0156d7;
+    color: white;
+}
+
+.deleteButton {
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#profile-container {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(56, 15, 190, 0.1);
+}
+
+#profile-container h2 {
+    color: #333;
+}
+
+#profile-container p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 2;
+}
+
+.hamburger div {
+  width: 20px;
+  height: 3px;
+  background-color: #e20101;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+#menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+#menu a {
+  color: white;
+  padding-left: 40px;
+  text-decoration: none;
+  display: block;
+}
+
+#content {
+  padding: 50px 20px;
+}
+
+
+  </style>
+</head>
+
+<body><h1 id="welcomeMessage">Admin Page</h1>
+
+  <br><br><br><br><br><br><br><br>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- <h1>Admin Page</h1> -->
+  <div id="menu">
+    <a href="#" onclick="toggleTable('talentsTable')">Talents Table</a>
+    <a href="#" onclick="toggleTable('formUsersTable')">Form Users Table</a>
+    <a href="#" onclick="toggleProfile()">Profile</a>
+  </div>
+    <div id="talentsTable">
+  <h2>Talents Table</h2>
+  <table id="talentsTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Job Title</th>
+        <th>About</th>
+        <th>Location</th>
+        <th>Language</th>
+        <th>Hourly Rate</th>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+</div><br><br><br><br>
+  <h2>Form Users Table</h2>
+  <table id="formUsersTable" >
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>email</th>
+        <th>password</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <table id="categoriesTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Category Name</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody id="categoriesTableBody"></tbody>
+      </table>
+      
+    </tbody>
+    <div id="profile-container">
+      <h2>User Profile</h2>
+      <p><strong>Username:</strong> <span id="profile-username"></span></p>
+      <p><strong>Password:</strong> <span id="profile-password"></span></p>
+    </div>
+
+
+  
+    
+  </table>
+
+  <script>
+   const menu = document.getElementById('menu');
+const talentsTable = document.getElementById('talentsTable');
+const formUsersTable = document.getElementById('formUsersTable');
+const profileContainer = document.getElementById('profile-container');
+const welcomeMessage = document.getElementById('welcomeMessage');
+
+
+const isLoggedIn = true;
+
+function checkLogin() {
+    if (isLoggedIn) {
+        welcomeMessage.textContent = 'Welcome Admin';
+        welcomeMessage.style.backgroundColor = '#4CAF50'; 
+        menu.innerHTML += '<a href="#" onclick="logout()">Logout</a>';
+    } else {
+        welcomeMessage.textContent = 'Admin Page';
+        welcomeMessage.style.backgroundColor = '#f2f2f2';
+    }
+}
+
+function toggleTable(tableId) {
+    talentsTable.style.display = 'none';
+    formUsersTable.style.display = 'none';
+    profileContainer.style.display = 'none';
+
+    const selectedTable = document.getElementById(tableId);
+    selectedTable.style.display = 'block';
+
+   
+    menu.style.display = 'none';
+}
+
+function toggleProfile() {
+    talentsTable.style.display = 'none';
+    formUsersTable.style.display = 'none';
+    profileContainer.style.display = 'block';
+
+    
+    menu.style.display = 'none';
+}
+
+function toggleMenu() {
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+function logout() {
+   
+    location.reload();
+}
+
+
+async function fetchTalentsData() {
+    try {
+        const response = await fetch('http://localhost:305/category/former');
+        console.log('Response Status (Talents):', response.status); // Log the HTTP status code
+
+        const data = await response.json();
+        console.log('Server Response (Talents):', data); // Log the server response
+
+        const talents = data.talents;
+
+        const talentsTableBody = document.querySelector('#talentsTable tbody');
+        talents.forEach(talent => {
+            const row = document.createElement('tr');
+            Object.entries(talent).forEach(([key, value]) => {
+                const cell = document.createElement('td');
+                cell.textContent = value;
+                row.appendChild(cell);
+            });
+
+          
+            const deleteCell = document.createElement('td');
+            const deleteButton = document.createElement('button');
+            deleteButton.className = 'deleteButton';
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function () {
+                deleteUser(talent.id);
+            };
+            deleteCell.appendChild(deleteButton);
+            row.appendChild(deleteCell);
+
+            talentsTableBody.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Error fetching talents data:', error);
+    }
+}
+
+
+async function fetchFormUsersData() {
+    try {
+        const response = await fetch('http://localhost:305/category/formusers');
+        console.log('Response Status (Form Users):', response.status);
+        const data = await response.json();
+        console.log('Server Response (Form Users):', data); 
+
+        const formUsers = data.formUsers;
+
+        const formUsersTableBody = document.querySelector('#formUsersTable tbody');
+        formUsers.forEach(user => {
+            const row = document.createElement('tr');
+            Object.entries(user).forEach(([key, value]) => {
+                const cell = document.createElement('td');
+                cell.textContent = value;
+                row.appendChild(cell);
+            });
+            formUsersTableBody.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Error fetching form users data:', error);
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    checkLogin();
+    fetchTalentsData();
+    fetchFormUsersData();
+});
+
+async function fetchCatiesData() {
+      try {
+        const response = await fetch('http://localhost:305/category/caties');
+        console.log('Response Status (Caties):', response.status);
+        const data = await response.json();
+        console.log('Server Response (Caties):', data);
+
+        const categoriesTableBody = document.getElementById('categoriesTableBody');
+        data.caties.forEach(category => {
+          const row = document.createElement('tr');
+
+          const idCell = document.createElement('td');
+          idCell.textContent = category.id;
+          row.appendChild(idCell);
+
+          const nameCell = document.createElement('td');
+          nameCell.textContent = category.category_name;
+          row.appendChild(nameCell);
+
+          const linkCell = document.createElement('td');
+          const link = document.createElement('a');
+          link.href = category.href;
+          link.textContent = 'View Details';
+          linkCell.appendChild(link);
+          row.appendChild(linkCell);
+
+          categoriesTableBody.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Error fetching caties data:', error);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+  // ... (your existing code) ...
+  fetchCatiesData(); // Corrected function name
+});
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Messaging</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #message-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #message-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
+
+        #message-input {
+            width: 100%;
+            margin-top: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="message-container">
+        <ul id="message-list"></ul>
+        <textarea id="message-input" placeholder="Type your message..."></textarea>
+        <button onclick="sendMessage()">Send Message</button>
+    </div>
+
+    <script>
+        // Sample JavaScript code for sending a message
+        function sendMessage() {
+            const recipientEmail = 'recipient@example.com'; // Replace with recipient's email
+            const message = document.getElementById('message-input').value;
+
+            fetch('/send-message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ recipientEmail, message }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // Handle success, update UI, etc.
+            })
+            .catch(error => {
+                console.error('Error sending message:', error);
+                // Handle errors, show error message, etc.
+            });
+        }
+    </script>
+</body>
+</html>

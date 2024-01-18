@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/register.css">
+    <title>number-1</title>
+    <!-- <script defer src="no1.js"></script> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <!-- <h5>Registration Message</h5> -->
+            <form id="form">
+                <h1>Start living your dream work</h1>
+                <div class="input-tab">
+                    <label for="username">Username:</label>
+                    <input id="username" type="text" placeholder="Enter Username">
+                    <p id="usernameErrorMessage"></p>
+                </div>
+                <div class="input-tab">
+                    <label for="email">Email:</label>
+                    <input id="email" type="text" placeholder="Enter your Email">
+                    <p id="emailErrorMessage"></p>
+                </div>
+                <div class="input-tab">
+                    <label for="password">Password:</label>
+                    <input id="password" type="password" placeholder="Enter your Password">
+                    <p id="passwordErrorMessage"></p>
+                </div>
+                <div class="input-tab">
+                    <label for="password2">Confirm Password:</label>
+                    <input id="password2" type="password" placeholder="Confirm your Password">
+                    <p id="password2ErrorMessage"></p>
+                </div>
+                <div class="radio"> 
+                    <label>Client<input type="radio" id="radioBtn1" name="radiobutton" class="radioBtn" value="User" checked></label>
+                    <label>Talent<input type="radio" id="radioBtn2" name="radiobutton" class="radioBtn" value="Freelancer"></label>
+                </div>
+                <div class="btn">
+                    <button id="submitBtn"  type="submit" >Register</button>                 
+                </div>
+                <a href="/Frontend/views/login.html">Already have an account? Login </a>
+            </form>
+        </div>
+    </div>
+    <script src="../public/js/register.js"></script>
+</body>
+</html>
+                <!-- <div class="radio"> 
+                    <label>User<input type="radio" id="radioBtn1" name="radiobutton" value="User"></label>
+                    <label>Freelancer<input type="radio" id="radioBtn2" name="radiobutton" value="Freelancer"></label>
+                </div> -->

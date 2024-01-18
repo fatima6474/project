@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div {
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        div.message-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Received Messages</h1>
+        <div id="messageContainer" class="message-container"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            displayReceivedMessages();
+        });
+
+        function displayReceivedMessages() {
+            const receivedMessages = JSON.parse(localStorage.getItem('receivedMessages')) || [];
+
+            if (receivedMessages.length > 0) {
+                const messageContainer = document.getElementById('messageContainer');
+                messageContainer.innerHTML = "<strong>Received Messages:</strong><br>";
+
+                receivedMessages.forEach((message, index) => {
+                    messageContainer.innerHTML += `<p><strong>Message ${index + 1}:</strong><br>
+                                                  Sender Email: ${message.senderEmail}<br>
+                                                  Job Description: ${message.jobDescription}<br>
+                                                  Message Text: ${message.messageText}</p><br>`;
+                });
+            } else {
+                const messageContainer = document.getElementById('messageContainer');
+                messageContainer.textContent = "No received messages found.";
+            }
+        }
+    </script>
+</body>
+
+</html>

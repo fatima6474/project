@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: blue;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    h1 {
+      color: blue;
+      margin: 0;
+      padding: 10px;
+      background-color: black;
+      text-align: center;
+    }
+
+    .dashboard {
+      display: flex;
+      
+      padding: 20px;
+    }
+
+    .sidebar {
+      width: 20%;
+      height: 600px;
+      padding-right: 20px;
+      box-sizing: border-box;
+    }
+
+    .content {
+      width: 80%;
+    }
+
+    canvas {
+      max-width: 100%;
+    }
+
+    .table-container,
+    .analysis-container {
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      background-color: #f2f2f2;
+    }
+
+/* Add the following style for the square div containing circles and table names */
+.square-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.form-users .table-name {
+  margin-top: 5px;
+  font-size: 12px;
+  color: gray;
+}
+
+/* Update the circle styling in the income section */
+.income-info .circle {
+  width: 40px;
+  height: 40px;
+  background-color: green;
+}
+
+/* Add the following style for the circular elements in the income section */
+.income-info .circle-container {
+  align-items: center;
+  margin-top: 10px;
+}
+
+.income-info .circle-container .circle {
+  margin: 5px;
+}
+
+/* Add the following style for the circular elements in the income section */
+.income-info .circle-container .table-name {
+  font-size: 14px;
+  color: gray;
+}
+
+    table {
+      width: 50%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .circle-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: blue;
+      color: white;
+      border-radius: 10%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin: 5px;
+    }
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 15px;
+      text-align: left;
+    }/* Add the following styles for square containers */
+
+
+/* Update the circle styling in the form users section */
+.form-users .circle-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.form-users .circle {
+  width: 30px;
+  height: 30px;
+  /* background-color: blue; */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin: 5px;
+}
+
+
+
+.form-users .circle-container .square-container .circle {
+  margin: 5px;
+}
+
+.form-users .circle-container .square-container .table-name {
+  font-size: 12px;
+  color: gray;
+}
+
+
+    th {
+      background-color: #0156d7;
+      color: white;
+    }
+    #incomeSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .income-info {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .info-item {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #f2f2f2;
+  }
+/* Add the following styles for square containers */
+.square-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Update the circle styling */
+.circle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.table-name {
+  margin-top: 5px;
+  font-size: 20px;
+  color: gray;
+}
+
+  .info-value {
+    font-size:20;
+    font-weight: bold;
+    color: blue;
+  }
+  /* Add the following style for circular elements */
+  .circle-container {
+     
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: blue;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin: 5px;
+    }
+ 
+  .info-label {
+    margin-top: 10px;
+    font-size: 18px;
+    color: gray;
+  }
+    .chart {
+      height: 800px;
+      margin-top: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      padding: 10px;
+    }
+
+    /* Update the following style for the circular elements in the form users section */
+.form-users .circle-container {
+ 
+}
+
+.form-users .circle {
+  
+}
+
+
+    .sidebar-item {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #ddd;
+      margin-bottom: 5px;
+      border-radius: 4px;
+    }
+
+    .selected {
+      background-color: #000000;
+    }
+
+    .all-circles-container {
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 400px;
+    margin-top: 20px;
+  }
+
+  .circle-square {
+    width: 200px; /* Set your desired width for the square */
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    background-color: #f2f2f2; /* Set your desired background color */
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .circle-container {
+    width: 90px; /* Set your desired width for the circle */
+    height: 90px; /* Set your desired height for the circle */
+  }
+
+  
+
+  </style>
+</head>
+
+<body>
+  <h1>Admin Dashboard</h1>
+
+  <div class="dashboard">
+    <div class="sidebar">
+      <div class="sidebar-item" onclick="showContent('talentsTableContainer', 'talentsTableContainerBtn')">Talents</div>
+      <div class="sidebar-item" onclick="showContent('talentsBarChart', 'talentsBarChartBtn')">Bar Chart for Talents</div>
+      <div class="sidebar-item" onclick="showContent('talentsPieChart', 'talentsPieChartBtn')">Pie Chart for Talents</div>
+      <div class="sidebar-item" onclick="showContent('formUsersTableContainer', 'formUsersTableContainerBtn')">Form Users</div>
+      <!-- <div class="sidebar-item" onclick="showContent('formUsersBarChart', 'formUsersBarChartBtn')">Bar Chart for Form Users</div>
+      <div class="sidebar-item" onclick="showContent('formUsersPieChart', 'formUsersPieChartBtn')">Pie Chart for Form Users</div> -->
+      <div class="sidebar-item" onclick="showContent('categoriesTableContainer', 'categoriesTableContainerBtn')">Categories</div>
+      <div class="sidebar-item" onclick="showIncomeSection()">Income</div>
+  
+<!-- <div class="sidebar-item" onclick="showCircles()">Circles</div> -->
+    </div>
+
+    <div class="content">
+      <div class="table-container" id="talentsTableContainer">
+        <h2>Talents Table</h2>
+        <table id="talentsTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Job Title</th>
+              <th>About</th>
+              <th>Location</th>
+              <th>Language</th>
+              <th>Hourly Rate</th>
+              <th>Name</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="talentsTableBody">
+            <!-- Table rows will be dynamically populated with data -->
+          </tbody>
+        </table>
+      </div>
+    
+
+<div class="table-container" id="categoriesTableContainer">
+  <h2>Categories Table</h2>
+  <table id="categoriesTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Category Name</th>
+        <th>Href</th>
+      </tr>
+    </thead> <button onclick="addJobForCategory('{{ID}}', '{{Category Name}}')">Add Job</button>
+
+    <tbody id="categoriesTableBody">
+      <!-- Table rows will be dynamically populated with data -->
+    </tbody>
+  </table>
+</div>
+
+
+      <div class="chart" id="talentsBarChart"></div>
+      <div class="chart" id="talentsPieChart"></div>
+
+      <div class="table-container" id="formUsersTableContainer">
+        <h2>Form Users Table</h2>
+        <table id="formUsersTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <!-- <th>Password</th> -->
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody id="formUsersTableBody">
+            <!-- Table rows will be dynamically populated with data -->
+          </tbody>
+        </table>
+      </div>
+      <div class="content" id="incomeSection">
+        <div class="income-info">
+          <div class="info-item">
+            <div class="info-value" id="incomeAmount">0</div>
+            <div class="info-label">Income</div>
+          </div>
+          <div class="info-item">
+            <div class="info-value" id="subscriberCount">0</div>
+            <div class="info-label">Subscribers</div>
+          </div>
+          <!-- Add more info-items for other relevant information -->
+        </div>
+      </div>
+      
+      <div class="chart" id="formUsersBarChart"></div>
+      <div class="chart" id="formUsersPieChart"></div>
+    </div>
+  </div>
+ 
+  <div class="all-circles-container">
+    <div class="circle-square">
+      <div class="circle-container" id="talentsCircles"></div>
+      <div class="table-name">Talents</div>
+    </div>
+    <div class="circle-square">
+      <div class="circle-container" id="categoriesCircles"></div>
+      <div class="table-name">Categories</div>
+    </div>
+    <div class="circle-square">
+      <div class="circle-container" id="formUsersCircles"></div>
+      <div class="table-name">Form Users</div>
+    </div>
+    <!-- Add more containers if needed -->
+  </div>
+
+  <script>
+    window.onload = async () => {
+      // await fetchCategories();
+      await fetchTalentsData();
+      await fetchFormUsersData();
+      createCharts();
+
+      await fetchCategories();
+      // showCircles(); // Show circles for all tables
+      showIncomeSection(); // Show 'Income' section on page load
+    };
+
+    function createCharts() {
+      createBarChart('talentsBarChart', [], 'Job Title');
+      createPieChart('talentsPieChart', [], 'Job Title');
+      createBarChart('formUsersBarChart', [], 'Role');
+      createPieChart('formUsersPieChart', [], 'Role');
+    }
+
+   
+    async function fetchCategories() {
+  try {
+    const response = await fetch('http://localhost:305/categories');
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const categories = data.categories;
+
+    if (!categories) {
+      console.error('Categories data is undefined or null.');
+      return;
+    }
+
+    const categoriesTableBody = document.getElementById('categoriesTableBody');
+    categoriesTableBody.innerHTML = ''; // Clear existing table data
+
+    categories.forEach(category => {
+      const row = document.createElement('tr');
+      Object.entries(category).forEach(([key, value]) => {
+        const cell = document.createElement('td');
+        cell.textContent = value;
+        row.appendChild(cell);
+      });
+      categoriesTableBody.appendChild(row);
+    });
+
+    // Create circles after populating the table
+    createTableCircles('categoriesTableBody', 'categoriesCircles');
+  } catch (error) {
+    console.error('Error fetching categories data:', error);
+  }
+}
+
+
+async function fetchFormUsersData() {
+  try {
+    const response = await fetch('http://localhost:305/category/formusers');
+    const data = await response.json();
+    const formUsers = data.formUsers;
+
+    // Log the received data for debugging
+    console.log('Form Users Data:', formUsers);
+
+    // Filter out entries where the 'roles' field is undefined
+    const filteredFormUsers = formUsers.filter(user => user.roles !== undefined);
+
+    const formUsersTableBody = document.getElementById('formUsersTableBody');
+    formUsersTableBody.innerHTML = ''; // Clear existing table data
+
+    filteredFormUsers.forEach(user => {
+      // Check if the 'password' property exists before adding it to the table
+      Object.entries(user).forEach(([key, value]) => {
+        if (key !== 'password') {
+          const cell = document.createElement('td');
+          cell.textContent = value;
+          row.appendChild(cell);
+        }
+      });
+
+      const row = document.createElement('tr');
+      formUsersTableBody.appendChild(row);
+    });
+
+    // Create and update Bar Chart for Form Users
+    createBarChart('formUsersBarChart', filteredFormUsers, 'roles');
+
+    // Create and update Pie Chart for Form Users
+    createPieChart('formUsersPieChart', filteredFormUsers, 'roles');
+  } catch (error) {
+    console.error('Error fetching form users data:', error);
+  }
+}
+
+
+
+async function fetchTalentsData() {
+  try {
+    const response = await fetch('http://localhost:305/category/former');
+    const data = await response.json();
+    const talents = data.talents;
+
+    const talentsTableBody = document.getElementById('talentsTableBody');
+    talentsTableBody.innerHTML = ''; // Clear existing table data
+
+    talents.forEach(talent => {
+      const row = document.createElement('tr');
+      Object.entries(talent).forEach(([key, value]) => {
+        const cell = document.createElement('td');
+        cell.textContent = value;
+        row.appendChild(cell);
+      });
+
+      const deleteCell = document.createElement('td');
+      const deleteButton = document.createElement('button');
+      deleteButton.className = 'deleteButton';
+      deleteButton.textContent = 'Delete';
+      deleteButton.onclick = function () {
+        deleteUser(talent.id);
+      };
+      deleteCell.appendChild(deleteButton);
+      row.appendChild(deleteCell);
+
+      talentsTableBody.appendChild(row);
+    });
+
+    // Create circles after populating the table
+    createTableCircles('talentsTableBody', 'talentsCircles');
+
+    // Display talents table by default
+    showContent('talentsTableContainer', 'talentsTableContainerBtn');
+
+    // Create and update Bar Chart for Talents
+    createBarChart('talentsBarChart', talents, 'job_title');
+
+    // Create and update Pie Chart for Talents
+    createPieChart('talentsPieChart', talents, 'job_title');
+  } catch (error) {
+    console.error('Error fetching talents data:', error);
+  }
+}
+
+async function fetchFormUsersData() {
+  try {
+    const response = await fetch('http://localhost:305/category/formusers');
+    const data = await response.json();
+    const formUsers = data.formUsers;
+
+    const formUsersTableBody = document.getElementById('formUsersTableBody');
+    formUsersTableBody.innerHTML = ''; // Clear existing table data
+
+    formUsers.forEach(user => {
+      const row = document.createElement('tr');
+      Object.entries(user).forEach(([key, value]) => {
+        const cell = document.createElement('td');
+        cell.textContent = value;
+        row.appendChild(cell);
+      });
+      formUsersTableBody.appendChild(row);
+    });
+
+    // Create circles after populating the table
+    createTableCircles('formUsersTableBody', 'formUsersCircles', 'Form Users');
+
+    // Create and update Bar Chart for Form Users
+    createBarChart('formUsersBarChart', formUsers, 'Role');
+
+    // Create and update Pie Chart for Form Users
+    createPieChart('formUsersPieChart', formUsers, 'Role');
+  } catch (error) {
+    console.error('Error fetching form users data:', error);
+  }
+}
+
+
+    function createBarChart(chartId, data, labelKey) {
+      const container = document.getElementById(chartId);
+      if (!container) return;
+
+      const canvas = document.createElement('canvas');
+      container.appendChild(canvas);
+
+      const ctx = canvas.getContext('2d');
+
+      const labels = data.map(item => item[labelKey]);
+      const values = data.map(item => item.ID); // Replace 'ID' with the property you want to visualize
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: labelKey,
+            data: values,
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
+    
+   function createPieChart(chartId, data, labelKey) {
+  const container = document.getElementById(chartId);
+  if (!container) return;
+
+  const canvas = document.createElement('canvas');
+  container.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+
+  console.log('Data for Pie Chart:', data);
+
+  // Extract roles data
+  const rolesData = data.map(item => item[labelKey]);
+
+  // Check if there is data to display
+  if (rolesData.length === 0) {
+    console.log('No data to display for the pie chart.');
+    return;
+  }
+
+  const uniqueRoles = [...new Set(rolesData)];
+  console.log('Unique Roles:', uniqueRoles);
+
+  const roleCounts = uniqueRoles.map(role => rolesData.filter(item => item === role).length);
+  console.log('Role Counts:', roleCounts);
+
+  const names = uniqueRoles;
+
+  const backgroundColors = getRandomColors(names.length);
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: names,
+      datasets: [{
+        data: roleCounts,
+        backgroundColor: backgroundColors,
+        borderWidth: 1
+      }]
+    }
+  });
+
+  // Add labels on the segments
+  names.forEach((name, index) => {
+    const legendItem = document.createElement('div');
+    legendItem.innerHTML = `<span style="background-color: ${backgroundColors[index]}; border: 1px solid #ddd; display: inline-block; width: 20px; height: 20px;"></span>${name}`;
+    container.appendChild(legendItem);
+  });
+}
+
+   
+// Function to generate random colors
+function getRandomColors(count) {
+  const colors = [];
+  for (let i = 0; i < count; i++) {
+    const randomColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.2)`;
+    colors.push(randomColor);
+  }
+  return colors;
+}
+
+
+    function deleteUser(userId) {
+      // Implement logic to delete a user
+      console.log('Delete user with ID:', userId);
+    }
+
+    function showContent(contentId, buttonId) {
+      const contents = document.querySelectorAll('.table-container, .chart');
+      const buttons = document.querySelectorAll('.sidebar-item');
+
+      contents.forEach(content => {
+        content.style.display = 'none';
+      });
+
+      buttons.forEach(button => {
+        button.classList.remove('selected');
+      });
+
+      const contentElement = document.getElementById(contentId);
+      if (contentElement) {
+        contentElement.style.display = 'block';
+      }
+
+      const buttonElement = document.getElementById(buttonId);
+      if (buttonElement) {
+        buttonElement.classList.add('selected');
+      }
+    }
+    async function addJob() {
+  // Collect job details from the form
+  const jobTitle = document.getElementById('jobTitle').value;
+  // Collect other job details similarly
+
+  // Prepare data to be sent to the server
+  const jobData = {
+    jobTitle: jobTitle,
+    // Add other job details properties
+  };
+
+  try {
+    // Make a POST request to the server to add the job
+    const response = await fetch('http://localhost:305/catie', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(jobData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    // Job added successfully, you can update the UI or close the modal
+    console.log('Job added successfully');
+  } catch (error) {
+    console.error('Error adding job:', error);
+  }
+}
+// Other functions...
+
+function addJobForCategory(categoryId, categoryName) {
+    // Prompt the user to enter job details
+    const jobTitle = prompt('Enter the job title:');
+    const href = prompt('Enter the href:');
+
+    if (!jobTitle || !href) {
+      alert('Please fill in all the details.');
+      return;
+    }
+
+    // Prepare data to be sent to the server
+    const jobData = {
+      jobTitle: jobTitle,
+      href: href,
+      category: {
+        id: categoryId,
+        name: categoryName,
+      },
+    };
+
+    // Make a POST request to the server to add the job
+    addJobToCategory(jobData);
+  }
+
+  async function addJobToCategory(jobData) {
+    try {
+      const response = await fetch('http://localhost:305/category/job', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jobData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      // Job added successfully, you can update the UI or provide feedback to the user
+      alert('Job added successfully!');
+    } catch (error) {
+      console.error('Error adding job:', error);
+      alert('Error adding job. Please try again.');
+    }
+  }
+
+  
+  function showIncomeSection() {
+    // Hide other content
+    hideAllContent();
+
+    // Show Income section
+    const incomeSection = document.getElementById('incomeSection');
+    if (incomeSection) {
+      incomeSection.style.display = 'block';
+    }
+
+    // Fetch and update income information
+    updateIncomeInformation();
+  }
+
+  async function updateIncomeInformation() {
+    try {
+      // Replace the following URL with your actual endpoint for fetching income information
+      const response = await fetch('http://localhost:305/income');
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      // Update the income amount
+      const incomeAmount = document.getElementById('incomeAmount');
+      if (incomeAmount) {
+        incomeAmount.textContent = data.incomeAmount;
+      }
+
+      // Update the subscriber count
+      const subscriberCount = document.getElementById('subscriberCount');
+      if (subscriberCount) {
+        subscriberCount.textContent = data.subscriberCount;
+      }
+
+      // Add more code to update other information if needed
+    } catch (error) {
+      console.error('Error fetching income information:', error);
+    }
+  }
+
+  function hideAllContent() {
+    // Hide all content sections
+    const contentSections = document.querySelectorAll('.table-container, .chart, #incomeSection');
+    contentSections.forEach(section => {
+      section.style.display = 'none';
+    });
+
+    // Deselect all sidebar items
+    const sidebarItems = document.querySelectorAll('.sidebar-item');
+    sidebarItems.forEach(item => {
+      item.classList.remove('selected');
+    });
+  }
+
+ // Function to create a circular element with a number
+ function createNumberCircle(number) {
+      const circle = document.createElement('div');
+      circle.className = 'circle';
+      circle.textContent = number;
+      return circle;
+    }
+
+ 
+    function createFormUsersCircles() {
+  const formUsersTableBody = document.getElementById('formUsersTableBody');
+  const circleContainer = document.getElementById('formUsersCircles');
+  circleContainer.innerHTML = ''; // Clear existing circles
+
+  const totalRows = formUsersTableBody.getElementsByTagName('tr').length;
+
+  // Create a div for the square container
+  const squareContainer = document.createElement('div');
+  squareContainer.className = 'square-container';
+
+  // Create a div for the circle and table name
+  const outerDiv = document.createElement('div');
+  outerDiv.className = 'circle-container form-users'; // Add the form-users class
+
+  const circleDiv = document.createElement('div');
+  circleDiv.className = 'circle';
+  circleDiv.textContent = totalRows.toString();
+
+  const tableNameDiv = document.createElement('div');
+  tableNameDiv.className = 'table-name';
+  tableNameDiv.textContent = 'Form Users';
+
+  // Append the circle and table name to the div
+  outerDiv.appendChild(circleDiv);
+  outerDiv.appendChild(tableNameDiv);
+
+  // Append the outer div to the square container
+  squareContainer.appendChild(outerDiv);
+
+  // Append the square container to the circle container
+  circleContainer.appendChild(squareContainer);
+}
+
+
+
+    // Function to create circles for rows in a table
+function createTableCircles(tableId, circleContainerId, tableName) {
+  const tableBody = document.getElementById(tableId);
+  const circleContainer = document.getElementById(circleContainerId);
+  circleContainer.innerHTML = ''; // Clear existing circles
+
+  const totalRows = tableBody.childNodes.length;
+
+  // Create a div for the circle and table name
+  const outerDiv = document.createElement('div');
+  outerDiv.className = 'circle-container'; // Adjust the class if needed
+
+  const circleDiv = document.createElement('div');
+  circleDiv.className = 'circle';
+  circleDiv.textContent = totalRows.toString();
+
+  const tableNameDiv = document.createElement('div');
+  tableNameDiv.className = 'table-name';
+  tableNameDiv.textContent = tableName;
+
+  // Append the circle and table name to the div
+  outerDiv.appendChild(circleDiv);
+  outerDiv.appendChild(tableNameDiv);
+
+  // Append the outer div to the container
+  circleContainer.appendChild(outerDiv);
+}
+
+// Function to show circles for talents, categories, and form users
+function showCircles() {
+  createTableCircles('talentsTableBody', 'talentsCircles', 'Talents');
+  createTableCircles('categoriesTableBody', 'categoriesCircles', 'Categories');
+  createFormUsersCircles(); // Add circles for form users
+  // Add more calls for other tables if needed
+}
+
+  
+  </script>
+
+</body>
+
+</html>

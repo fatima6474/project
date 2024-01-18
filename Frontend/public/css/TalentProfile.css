@@ -1,0 +1,357 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200&display=swap'); */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 70px auto 0 auto ;
+    /* background: url(n5.jpg); */
+    /* background-color: rgb(225, 222, 222); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* overflow: hidden; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+.leftside{
+    display: flex;
+    
+}
+.navbar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #0156d7;
+    /* background-color: rgb(47, 44, 44); */
+    /* background-color: transparent; */
+    position: fixed;
+    z-index: 100;
+    margin: 0px 2px;
+    padding-left: 4%;
+    padding-right: 4%;
+    top: 0;
+}
+.navbar p{
+    color: white;
+    margin-left: 2vh;
+    font-size: 18px;
+    margin-top: 45px;
+}
+.logo{
+    width: 50px;
+    cursor: pointer;
+    margin: 30px 0;
+}
+.menuList {
+    font-size: 30px;
+    margin-right: 20vh;
+    display: flex;
+
+}
+.menu_icon{
+    width: 25px;
+    cursor: pointer;
+    display: none;
+}
+nav{
+    flex: 1;
+    text-align: right;
+    /* margin-right: 20vh; */
+    
+}
+.leftside ul {
+    list-style: none;
+    display: inline-block;
+    margin-top: 45px;
+    margin-left: 70px;
+    transition: font-size 0.5s;
+
+}
+.leftside ul li{
+    list-style: none;
+    display: inline-block;
+    margin-right: 26px;
+    transition: font-size 0.5s;
+}
+.leftside ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 19px;
+}
+nav ul li a:hover{
+    font-weight: bold;
+    
+}
+nav{
+    display: flex;
+    justify-content: center;
+    margin-left: 23%;
+}
+
+.search input{
+    width: 54.4vh;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-right: 1vh;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+}
+.search{
+    margin-top: 1vh;
+    width: 67vh;
+    margin-left: -60vh;
+    border-radius: 20px ;
+}
+.search #searchBtn{
+    border: none;
+    background-color: rgb(1, 86, 215);
+    padding: 1vh;
+    font-size: 18px;
+    color: white;
+    width: 7vh;
+    height: 2vh;
+}
+.buttons{
+    margin-left: 19vh;
+    margin-top: 1vh;
+    margin-right: -40vh;
+    gap: 3vh;
+    display: flex;
+}
+#ProfileTag{
+    width: 7vh;
+    height: 7vh;
+    padding: 1.3vh;
+    border-radius: 50%;
+    border: none;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav button{
+    width: 8vh;
+    padding: 1vh;
+    border-radius: 20px;
+    border: none;
+    font-size: 15px;
+}
+
+.section{
+    margin-top: 5vh;
+    margin-left: 40vh;
+}
+
+#ProfileTag:hover {
+    box-shadow: 2px 2px #3a71d3;
+    transform: scale(1.1);
+     cursor: pointer;
+}
+
+.hero{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    gap: 20vh;
+    padding: 10vh;
+}
+.hero .textArea{
+    margin-top: -10vh;
+}
+.hero h1{
+    font-size: 60px;
+}
+.hero h6{
+    font-size: 35px;
+}
+.Image img{
+    width: 60vh;
+    height:60vh;
+    border-radius: 20px;
+}
+
+
+.main{
+    height: 90vh;
+    background-color: whitesmoke;
+    width: 100%;
+    /* position: relative;
+    z-index: -1; */
+}
+
+.coverImage{
+    margin-top: 4.59vh;
+    height: 35vh;
+    background-color: rgb(144, 144, 144);
+    width: 100%;
+}
+
+#ImageButton{
+    background-color: whitesmoke;
+    color: black;
+    margin-top: 15vh;
+    margin-left: 89vh;
+    padding: 1.3vh;
+    border-radius: 10px;
+    font-size: 20px;
+    border: none;
+}
+
+.Profile{
+    height: 50vh;
+    background-color: white;
+    width: 30vh;
+    padding: 2vh;
+    /* text-align: center; */
+    border-radius: 10px;
+    border: 1px solid #3a71d3;
+}
+
+.ProfImage{
+    height: 10vh;
+    width: 10vh;
+    border-radius: 50%;
+    /* background-color: whitesmoke; */
+    background-color: linear-gradient(90deg, #113d8a, #17428d, white);
+    align-items: center;
+    justify-content: center;
+    margin-left: 7.5vh;
+    border: 2px solid #3a71d3;
+}
+.Profile ul{
+    margin-top: 1vh;
+    margin-left: 3vh;
+}
+
+
+
+
+
+p{
+    font-size: 18px;
+}
+h3{
+    font-weight: bold;
+}
+/* form */
+
+form div {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-tab p {
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 1vh;
+    margin-top: 5px;
+}
+
+.textarea p {
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 1vh;
+    margin-top: 5px;
+}
+
+#profilePicture{
+    padding: 10px 20px;
+    border-radius: 50%;
+    border: 1px solid  black;
+    font-size: 20px;
+    width: 10vh;
+    height: 10vh;
+}
+
+#imageInput{
+    padding: 10px 20px;
+    /* border-radius: 50%; */
+    border: 1px solid  black;
+    font-size: 20px;
+
+}
+
+form input {
+    padding: 10px 20px;
+    border-radius: 9px;
+    border: 1px solid  black;
+    font-size: 20px;
+}
+
+form textarea {
+    padding: 10px 20px;
+    border-radius: 9px;
+    border: 1px solid  black;
+    font-size: 20px;
+}
+
+form label {
+    font-size: 18px;
+    color:#3a71d3; ;
+}
+
+#submitBtn {
+    margin-top: 30px;
+    width: 250px;
+    background-color:#3a71d3;;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    align-items: center;
+    align-self: center;
+    margin-left: 26vh;
+}
+#submitBtn:hover {
+    box-shadow: 2px 2px #3a71d3;
+    transform: scale(1.1);
+     cursor: pointer;
+}
+
+
+
+
+/* footer */
+
+
+
+.footer{
+    padding: 0vh 3vh;
+    margin-top: 8vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30vh;
+    padding-left: 20vh;
+    width: 100%;
+    height: 40vh;
+    background-color: white;
+}
+
+.footer h5{
+    font-size: 22px;
+}
+
+.footer ul{
+    margin-top: 2vh;
+}
+.footer li{
+    font-size: 18px;
+    list-style: none;
+    margin-top: 1vh;
+}
+
+/* End of footer */

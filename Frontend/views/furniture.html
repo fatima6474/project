@@ -1,0 +1,81 @@
+<!-- messages.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Saved Messages</title>
+    <!-- Include necessary styles and scripts -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        div {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+   
+
+        /* Add responsive styles */
+        @media only screen and (max-width: 3200px) {
+            div {
+                padding: 10px; /* Adjust padding for smaller screens */
+            }
+        }
+        /* Customize the styles further as needed */
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Saved Messages</h1>
+        <div id="messageContainer"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Retrieve saved messages from localStorage
+            const savedMessages = JSON.parse(localStorage.getItem('savedMessages')) || [];
+            const messageContainer = document.getElementById('messageContainer');
+
+            // Display saved messages
+            savedMessages.forEach((message, index) => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message';
+                messageDiv.innerHTML = `<p>Receiver Email: ${message.receiverEmail}</p><p>Message: ${message.messageText}</p>`;
+
+                // Add click event to each message
+                messageDiv.addEventListener('click', () => {
+                    navigateToMessage(message.senderEmail, message.receiverEmail);
+                });
+
+                messageContainer.appendChild(messageDiv);
+            });
+        });
+
+        function navigateToMessage(senderEmail, receiverEmail) {
+            window.location.href = `message.html?senderEmail=${senderEmail}&receiverEmail=${receiverEmail}`;
+        }
+    </script>
+</body>
+</html>
