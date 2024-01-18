@@ -26,24 +26,16 @@ require('dotenv').config();
 //   password: "6474",
 //   port: 5432,
 // });
-const pool = new Pool({
 
+const pool = new Pool({
   PGHOST: 'ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech',
   PGDATABASE: 'skill_community',
   PGUSER: 'fatima6474',
   PGPASSWORD: 'OHjLTRYkG36P',
-
-    ssl: {
+  ssl: {
       rejectUnauthorized: false,
-     },
-     sslmode: 'require'
-  
-  
-  // user: "postgres",
-  // host: "localhost",
-  // database: "postgres",
-  // password: "6474",
-  // port: 5432,
+  },
+  sslmode: 'require'
 });
 
 const corsOptions = {
