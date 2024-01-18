@@ -7,19 +7,19 @@ const searchError = document.getElementById('searchError')
 
 
 loginBtn.addEventListener("click", function() {
-    window.location.href = "../views/login.html";
+    window.location.href = "login.html";
 });
 
 signupBtn.addEventListener("click", function() {
-    window.location.href = "../views/register.html";
+    window.location.href = "register.html";
 });
 
 startBtn.addEventListener("click", function() {
-    window.location.href = "../views/register.html";
+    window.location.href = "register.html";
 });
 
 signupBtn.addEventListener("click", function() {
-    window.location.href = "../views/register.html";
+    window.location.href = "register.html";
 });
 
 
