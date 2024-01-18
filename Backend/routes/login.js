@@ -59,7 +59,7 @@ router.post("/", async (req, res, next) => {
     const { Pool } = require('pg');
 
 const pool = new Pool({
-  connectionString: 'postgresql://username:password@localhost:5432/database?sslmode=require',
+  connectionString: 'postgresql://fatima6474:OHjLTRYkG36P@ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech:5432/skill_community?sslmode=require',
 });
 
 pool.query('SELECT NOW()', (err, res) => {
