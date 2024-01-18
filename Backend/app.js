@@ -51,7 +51,8 @@ const pool = new Pool({
   ssl: {
     // ca: fs.readFileSync('path/to/ca-certificate.pem'), // Path to the CA certificate provided by Render
     rejectUnauthorized: true,  // Set this to true in production
-  },
+  },   sslmode: 'require'
+
 });
 
 
