@@ -358,17 +358,6 @@ app.get('/fetchUserEmail', async (req, res) => {
 });
 
 
-app.get("/fetchMessagesForConversation", (req, res) => {
-  const receiverEmail = req.query.receiverEmail;
-  const senderEmail = req.query.senderEmail;
-  const jobDescription = req.query.jobDescription;
-
-  console.log("Receiver Email:", receiverEmail);
-  console.log("Sender Email:", senderEmail);
-  console.log("Job Description:", jobDescription);
-
-  // Continue processing the request...
-});
 
 app.get("/category/:categoryName", async (req, res) => {
   const categoryName = req.params.categoryName.toLowerCase();
