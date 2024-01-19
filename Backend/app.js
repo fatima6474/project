@@ -26,12 +26,11 @@ require('dotenv').config();
 //   password: "n",
 //   port: 5432,
 // });
-// const { Pool } = require('pg');
+// const { Pool } = require('pg'); 
 const pool = new Pool({
   host: 'ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech',
   database: 'skill_community',
   user: 'fatima6474',
-  
   password: 'OHjLTRYkG36P',
   ssl: { rejectUnauthorized: false }, // For development, remove in production
 });
