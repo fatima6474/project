@@ -266,7 +266,7 @@ function logout() {
 
 async function fetchTalentsData() {
     try {
-        const response = await fetch('http://localhost:305/category/former');
+        const response = await fetch('https://skillworkcommunity.onrender.com/category/former');
         console.log('Response Status (Talents):', response.status); // Log the HTTP status code
 
         const data = await response.json();
@@ -304,7 +304,7 @@ async function fetchTalentsData() {
 
 async function fetchFormUsersData() {
     try {
-        const response = await fetch('http://localhost:305/category/formusers');
+        const response = await fetch('https://skillworkcommunity.onrender.com/category/formusers');
         console.log('Response Status (Form Users):', response.status);
         const data = await response.json();
         console.log('Server Response (Form Users):', data); 
@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchCatiesData() {
       try {
-        const response = await fetch('http://localhost:305/category/caties');
+        const response = await fetch('https://skillworkcommunity.onrender.com/category/caties');
         console.log('Response Status (Caties):', response.status);
         const data = await response.json();
         console.log('Server Response (Caties):', data);

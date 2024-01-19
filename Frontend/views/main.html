@@ -1222,7 +1222,7 @@ background-color:  #0156d7;
    
     async function fetchData(category) {
     try {
-        const response = await fetch(`http://localhost:305/category/${category}`);
+        const response = await fetch(`https://skillworkcommunity.onrender.com/category/${category}`);
         const user = JSON.parse(localStorage.getItem("user"));
 
         if (!user) {

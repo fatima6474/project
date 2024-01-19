@@ -65,7 +65,7 @@ searchBtn.addEventListener('click', async ()=>{
 
         const searchItem = document.getElementById('search').value
         console.log(searchItem);
-        const baseURL = 'http://localhost:305/dashboard/categories/';
+        const baseURL = 'https://skillworkcommunity.onrender.com/dashboard/categories/';
        const res =  await fetch(baseURL + searchItem, {
             method: 'GET',
             headers: {

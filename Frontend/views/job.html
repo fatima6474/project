@@ -266,7 +266,7 @@
     });
 
     try {
-        const response = await fetch('http://127.0.0.1:305/submitJob', {
+        const response = await fetch('https://skillworkcommunity.onrender.com/submitJob', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -381,7 +381,7 @@ function getUserEmail() {
 
     // Delete the job from the database
     try {
-        const response = await fetch(`http://127.0.0.1:305/deleteJob/${serverId}`, {
+        const response = await fetch(`https://skillworkcommunity.onrender.com/deleteJob/${serverId}`, {
             method: 'DELETE',
         });
 

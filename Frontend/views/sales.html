@@ -442,7 +442,7 @@
 
     async function fetchData(category) {
     try {
-        const response = await fetch(`http://localhost:305/category/${category}`);
+        const response = await fetch(`https://skillworkcommunity.onrender.com/category/${category}`);
         const data = await response.json();
 
         const talentList = document.getElementById(`${category.toLowerCase()}TalentList`);
@@ -574,7 +574,7 @@ function togglePopup(talent) {
 
 async function fetchData(category, state = "") {
     try {
-        const url = state ? `http://localhost:305/category/${category}?state=${state}` : `http://localhost:305/category/${category}`;
+        const url = state ? `https://skillworkcommunity.onrender.com/category/${category}?state=${state}` : `https://skillworkcommunity.onrender.com/category/${category}`;
         const response = await fetch(url);
         const data = await response.json();
 

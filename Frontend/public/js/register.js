@@ -10,7 +10,7 @@ const username = document.querySelector('#username'),
       password2ErrorMsg = document.querySelector('#password2ErrorMessage'),
       emailPattern =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
       passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/,
-      baseURL = "http://localhost:305/";
+      baseURL = "https://skillworkcommunity.onrender.com/";
 
 
 buttonBtn.addEventListener('click', async (e) => {

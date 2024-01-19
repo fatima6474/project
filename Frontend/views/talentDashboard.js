@@ -30,7 +30,7 @@ document.getElementById("form").addEventListener("submit", function (event) {
   // Use AJAX to send the form data to your server
   $.ajax({
       type: "POST",
-      url: "http://localhost:305/submit",
+      url: "https://skillworkcommunity.onrender.com/submit",
       data: JSON.stringify(data),
       contentType: "application/json",
       success: function (response) {

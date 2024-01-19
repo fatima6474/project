@@ -466,7 +466,7 @@
    
     async function fetchCategories() {
   try {
-    const response = await fetch('http://localhost:305/categories');
+    const response = await fetch('https://skillworkcommunity.onrender.com/categories');
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -503,7 +503,7 @@
 
 async function fetchFormUsersData() {
   try {
-    const response = await fetch('http://localhost:305/category/formusers');
+    const response = await fetch('https://skillworkcommunity.onrender.com/category/formusers');
     const data = await response.json();
     const formUsers = data.formUsers;
 
@@ -544,7 +544,7 @@ async function fetchFormUsersData() {
 
 async function fetchTalentsData() {
   try {
-    const response = await fetch('http://localhost:305/category/former');
+    const response = await fetch('https://skillworkcommunity.onrender.com/category/former');
     const data = await response.json();
     const talents = data.talents;
 
@@ -590,7 +590,7 @@ async function fetchTalentsData() {
 
 async function fetchFormUsersData() {
   try {
-    const response = await fetch('http://localhost:305/category/formusers');
+    const response = await fetch('https://skillworkcommunity.onrender.com/category/formusers');
     const data = await response.json();
     const formUsers = data.formUsers;
 
@@ -757,7 +757,7 @@ function getRandomColors(count) {
 
   try {
     // Make a POST request to the server to add the job
-    const response = await fetch('http://localhost:305/catie', {
+    const response = await fetch('https://skillworkcommunity.onrender.com/catie', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -803,7 +803,7 @@ function addJobForCategory(categoryId, categoryName) {
 
   async function addJobToCategory(jobData) {
     try {
-      const response = await fetch('http://localhost:305/category/job', {
+      const response = await fetch('https://skillworkcommunity.onrender.com/category/job', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -841,7 +841,7 @@ function addJobForCategory(categoryId, categoryName) {
   async function updateIncomeInformation() {
     try {
       // Replace the following URL with your actual endpoint for fetching income information
-      const response = await fetch('http://localhost:305/income');
+      const response = await fetch('https://skillworkcommunity.onrender.com/income');
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

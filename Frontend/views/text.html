@@ -172,7 +172,7 @@
 
         async function loadMessages(senderEmail, receiverEmail) {
             try {
-                const response = await fetch(`http://127.0.0.1:305/api/messages?senderEmail=${senderEmail}&receiverEmail=${receiverEmail}`);
+                const response = await fetch(`https://skillworkcommunity.onrender.com/api/messages?senderEmail=${senderEmail}&receiverEmail=${receiverEmail}`);
                 if (!response.ok) {
                     throw new Error(`Error fetching messages: ${response.status} ${response.statusText}`);
                 }
@@ -187,7 +187,7 @@
 
         async function sendMessage(senderEmail, receiverEmail, text) {
             try {
-                const response = await fetch('http://127.0.0.1:305/api/messages', {
+                const response = await fetch('https://skillworkcommunity.onrender.com/api/messages', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
