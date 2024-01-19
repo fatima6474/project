@@ -15,16 +15,7 @@ router.get("/", async function (req, res, next) {
     }
 });
 
-router.get("/f", async function (req, res, next) {
-    try {
-        const results = await db.query("SELECT * FROM form")
-        res.json(results.rows)
-        
-    } catch (err) {
-        return next(err);
-        
-    }
-});
+
 
 router.get("/name/:name", async (req, res, next) => {
   try {
