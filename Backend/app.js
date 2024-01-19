@@ -590,11 +590,11 @@ const handleLogin = async () => {
 
 
 // Error handling middleware
-app.use(function(req, res, next) {
-  let err = new Error("Not Found");
-  err.status = 404;
-  next(err);
-});
+// app.use(function(req, res, next) {
+//   let err = new Error("Not Found");
+//   err.status = 404;
+//   next(err);
+// });
 
 if (app.get("env") === "development") {
   app.use(function(err, req, res, next) {
