@@ -48,7 +48,7 @@ router.get("/roles/:roles", async (req, res, next) => {
   router.post("/", async (req, res, next) =>{
     let hashedPassword = await bcrypt.hash(req.body.password, saltRounds)
     try {
-      const results = await db.query("SELECT email FROM formusers WHERE email=$1", [req.body.email]);
+      const results = await pool.query("SELECT email FROM formusers WHERE email=$1", [req.body.email]);
       if (results.rows.length > 0) {
         res.json({ message: "Already Exists" });
       } else {
