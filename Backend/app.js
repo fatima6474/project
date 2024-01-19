@@ -34,7 +34,7 @@ const pool = new Pool({
   password: 'OHjLTRYkG36P',
   ssl: { rejectUnauthorized: false }, // For development, remove in production
 });
- // Replace with your actual environment variable name
+ // Replace with your actual environment variable nae
 
 
 // pool.on('error', (err, client) => {
