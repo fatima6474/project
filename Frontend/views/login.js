@@ -113,11 +113,11 @@ const signupBtn = document.getElementById('signupBtn');
 
 
 loginBtn.addEventListener("click", function() {
-    window.location.href = "../views/login.html";
+    window.location.href = "login.html";
 });
 
 signupBtn.addEventListener("click", function() {
-    window.location.href = "../views/register.html";
+    window.location.href = "register.html";
 });
 
 

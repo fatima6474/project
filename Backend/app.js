@@ -2,8 +2,6 @@ const express = require("express");
 const app = express();
 
 
-
-
 // const io = require('socke.io')(http);
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
@@ -19,24 +17,30 @@ require('dotenv').config();
 
 
 // PostgreSQLzz connection pool
-// const pool = new Pool({
-//   user: "postgres",
-//   host: "localhost",
-//   database: "postgres",
-//   password: "n",
-//   port: 5432,
-// });
-// const { Pool } = require('pg'); 
 const pool = new Pool({
-  host: 'ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech',
-  database: 'skill_community',
-  user: 'fatima6474',
-  password: 'OHjLTRYkG36P',
-  ssl: { rejectUnauthorized: false }, // For development, remove in production
+  user: "postgres",
+  host: "localhost",
+  database: "postgres",
+  password: "n",
+  port: 5432,
 });
+// const { Pool } = require('pg'); 
+// const pool = new Pool({
+//   host: 'ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech',
+//   database: 'skill_community',
+//   user: 'fatima6474',
+//   password: 'OHjLTRYkG36P',
+//   ssl: { rejectUnauthorized: false }, // For development, remove in production
+// });
  // Replace with your actual environment variable nae
 
-
+ pool.connect((err) =>{
+  if(err){
+      console.log(err)
+  }else{
+      console.log("connected to db");
+  }
+})
 // pool.on('error', (err, client) => {
 //   console.error('Unexpected error on idle client', err);
 //   process.exit(-1);
