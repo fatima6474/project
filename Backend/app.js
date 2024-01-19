@@ -26,14 +26,33 @@ require('dotenv').config();
 //   password: "6474",
 //   port: 5432,
 // });
+// const { Pool } = require('pg;
 const pool = new Pool({
-  PGHOST: 'ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech',
-  PGDATABASE: 'skill_community',
-  PGUSER: 'fatima6474',
-  PGPASSWORD: 'OHjLTRYkG36P',
-  sslmode: 'require', // Add this line
+  host: 'ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech',
+  database: 'skill_community',
+  user: 'fatima6474',
+  password: process.env.DB_PASSWORD,
+  // password: 'OHjLTRYkG36P',
+  ssl: { rejectUnauthorized: false }, // For development, remove in production
 });
-console.log('PostgreSQL Connection String:', pool.options.connectionString);
+console.log('Password:', process.env.DB_PASSWORD); // Replace with your actual environment variable name
+
+
+pool.on('error', (err, client) => {
+  console.error('Unexpected error on idle client', err);
+  process.exit(-1);
+});
+
+pool.query('SELECT NOW()', (err, res) => {
+  console.log('PostgreSQL Connection String:', pool.options.connectionString);
+  if (err) {
+    console.error('Error executing query', err);
+  } else {
+    console.log('Query result:', res.rows);
+  }
+});
+
+// console.log('PostgreSQL Connection String:', pool.options.connectionString)
 
 
 const corsOptions = {
