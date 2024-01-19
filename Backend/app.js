@@ -18,21 +18,16 @@ require('dotenv').config();
 
 // PostgreSQLzz connection pool
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "postgres",
-  password: "n",
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  ssl:{
+    rejectUnauthorized: false,
+  },
+  sslmode: 'require'
 });
-// const { Pool } = require('pg'); 
-// const pool = new Pool({
-//   host: 'ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech',
-//   database: 'skill_community',
-//   user: 'fatima6474',
-//   password: 'OHjLTRYkG36P',
-//   ssl: { rejectUnauthorized: false }, // For development, remove in production
-// });
- // Replace with your actual environment variable nae
+
 
  pool.connect((err) =>{
   if(err){
@@ -63,8 +58,6 @@ const pool = new Pool({
 //   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
 //   credentials: true,
 // };
-
-app.use(cors());
 app.use(express.static("views"));
 app.use(express.json());
 app.use(cors());
