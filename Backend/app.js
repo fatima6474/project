@@ -23,34 +23,34 @@ require('dotenv').config();
 //   user: "postgres",
 //   host: "localhost",
 //   database: "postgres",
-//   password: "6474",
+//   password: "n",
 //   port: 5432,
 // });
-// const { Pool } = require('pg;
+// const { Pool } = require('pg');
 const pool = new Pool({
   host: 'ep-old-unit-a2zzakiw.eu-central-1.aws.neon.tech',
   database: 'skill_community',
   user: 'fatima6474',
-  password: process.env.DB_PASSWORD,
-  // password: 'OHjLTRYkG36P',
+  
+  password: 'OHjLTRYkG36P',
   ssl: { rejectUnauthorized: false }, // For development, remove in production
 });
-console.log('Password:', process.env.DB_PASSWORD); // Replace with your actual environment variable name
+ // Replace with your actual environment variable name
 
 
-pool.on('error', (err, client) => {
-  console.error('Unexpected error on idle client', err);
-  process.exit(-1);
-});
+// pool.on('error', (err, client) => {
+//   console.error('Unexpected error on idle client', err);
+//   process.exit(-1);
+// });
 
-pool.query('SELECT NOW()', (err, res) => {
-  console.log('PostgreSQL Connection String:', pool.options.connectionString);
-  if (err) {
-    console.error('Error executing query', err);
-  } else {
-    console.log('Query result:', res.rows);
-  }
-});
+// pool.query('SELECT NOW()', (err, res) => {
+//   console.log('PostgreSQL Connection String:', pool.options.connectionString);
+//   if (err) {
+//     console.error('Error executing query', err);
+//   } else {
+//     console.log('Query result:', res.rows);
+//   }
+// });
 
 // console.log('PostgreSQL Connection String:', pool.options.connectionString)
 
