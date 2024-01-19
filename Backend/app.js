@@ -58,21 +58,22 @@ const pool = new Pool({
 // console.log('PostgreSQL Connection String:', pool.options.connectionString)
 
 
-const corsOptions = {
-  origin: "http://127.0.0.1:5501",
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-  credentials: true,
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: "http://127.0.0.1:5501",
+//   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+//   credentials: true,
+// };
+
+app.use(cors());
 app.use(express.static("views"));
 app.use(express.json());
 app.use(cors());
 app.use(morgan("tiny"));
-app.use(cors(corsOptions));
-app.use("/register", registerRoutes);
-app.use("/login", loginRoutes);
-app.use("/talentDashboard", talentDashboard);
-app.use("/dashboard", dashboardRoutes);
+// app.use(cors(corsOptions));
+app.use("/register", cors(), registerRoutes);
+app.use("/login",cors(), loginRoutes);
+app.use("/talentDashboard", cors(), talentDashboard);
+app.use("/dashboard", cors(), dashboardRoutes);
 
 // Cloudinary configuratio
 cloudinary.config({
