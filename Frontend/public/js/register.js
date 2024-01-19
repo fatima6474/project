@@ -171,17 +171,17 @@ async function postData(url, data) {
 )
 
 
-const loginBtn = document.getElementById('loginBtn');
-const signupBtn = document.getElementById('signupBtn');
+// const loginBtn = document.getElementById('loginBtn');
+// const signupBtn = document.getElementById('signupBtn');
 
 
-loginBtn.addEventListener("click", function() {
-    window.location.href = "../views/login.html";
-});
+// loginBtn.addEventListener("click", function() {
+//     window.location.href = "../views/login.html";
+// });
 
-signupBtn.addEventListener("click", function() {
-    window.location.href = "../views/register.html";
-});
+// signupBtn.addEventListener("click", function() {
+//     window.location.href = "../views/register.html";
+// });
 
 
 
