@@ -13,7 +13,7 @@ const username = document.querySelector('#username'),
       baseURL = "https://skillworkcommunity.onrender.com/";
 
 
-buttonBtn.addEventListener('click', async (e) => {
+submitBtn.addEventListener('click', async (e) => {
     const role = check()
     e.preventDefault();
 
@@ -112,6 +112,7 @@ password2.addEventListener("input", confirmPasswordValidation);
 
 
 
+
 async function postData(url, data) {
   try {
     const res = await fetch(url, {
@@ -121,13 +122,6 @@ async function postData(url, data) {
       },
       body: JSON.stringify(data),
     });
-
-    console.log('Response Status:', res.status);
-
-    const bodyText = await res.text();
-    console.log('Response Text:', bodyText);
-
-   
 
 
 
