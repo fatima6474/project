@@ -115,7 +115,7 @@ password2.addEventListener("input", confirmPasswordValidation);
 
 async function postData(url, data) {
   try {
-    const res = await fetch(url, {
+    const res = await(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
