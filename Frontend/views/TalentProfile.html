@@ -68,10 +68,10 @@
             // const userObject = JSON.parse(localStorage.getItem('user'));
             // const senderEmail = userObject && userObject.email;
     
-            if (!senderEmail) {
-                console.error('Sender email not found in local storage.');
-                return;
-            }
+            // if (!senderEmail) {
+            //     console.error('Sender email not found in local storage.');
+            //     return;
+            // }
     
             // Retrieve receiver email from URL parameters
             const receiverEmail = new URLSearchParams(window.location.search).get('email');
