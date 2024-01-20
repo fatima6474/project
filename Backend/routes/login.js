@@ -63,10 +63,14 @@ router.post("/", async (req, res, next) => {
 
     // Respond with the user information
     res.json({ token, message: "logged", ...user });
-      } catch (err) {
-        return next(err)
-      }
-    })
+      
+    console.log("Login successful:", { token, message: "logged", username, roles, email, id });
+    res.json({ token, message: "logged", username, roles, email, id });
+  } catch (err) {
+    console.error("Error during login:", err);
+    return next(err);
+  }
+});
     module.exports= router;
 
 // router.post("/", async (req, res, next) => {
