@@ -76,8 +76,12 @@ async function loginPost(url, data) {
       body: JSON.stringify(data),
     });
 
-    
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
     const bodydata = await res.json();
+
     if (bodydata.message == "Invalid") {
       emailErrorMsg.innerText = 'Please enter your correct email or password';
     }
@@ -92,13 +96,12 @@ async function loginPost(url, data) {
     console.log(bodydata.token);
 
     if (bodydata.message == "logged") {
- 
       if (bodydata.roles === "Freelancer") {
         window.location.href = "talentEdit.html";
-    } else {
-    window.location.href =  "index2.html";
-    }
-  
+      } else {
+        window.location.href = "index2.html";
+      }
+    
     
       console.log(bodydata);
       console.log(data);
