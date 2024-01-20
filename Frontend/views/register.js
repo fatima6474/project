@@ -111,17 +111,38 @@ function confirmPasswordValidation(){
 password2.addEventListener("input", confirmPasswordValidation);
 
 
-
+await fetch(baseURL+ "/register/register", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ name: username.value, email: password.value})
+          })
+          .then(response => response.json())
+          .then(data => {
+              console.log(data);
+          })
+      
+  
+  })
+  
 
 async function postData(baseURL, data) {
   try {
-    const res = await fetch(baseURL, {
+    const res =await fetch(baseURL+ "/register/register", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+          "Content-Type": "application/json"
       },
-      body: JSON.stringify(data),
-    });
+      body: JSON.stringify({ name: username.value, email: password.value})
+      })
+      .then(response => response.json())
+      .then(data => {
+          console.log(data);
+      })
+  
+
+    // });
 
 
 
@@ -167,8 +188,6 @@ async function postData(baseURL, data) {
 
 
 
-}
-)
 
 
 // const loginBtn = document.getElementById('loginBtn');
