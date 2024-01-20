@@ -9,7 +9,7 @@ body {
     justify-content: center;
     /* margin: 70px auto 0 auto ; */
     background-color: whitesmoke;
-    background-image: url("../images/BG4.png");
+    background-image: url("BG4.png");
     /* filter: blur(15px); */
     background-size: cover;
     background-repeat: no-repeat;
