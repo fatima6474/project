@@ -4,7 +4,7 @@ const db = require("../db");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-router.get("/", async function (req, res, next) {
+app.get("/", async function (req, res, next) {
     try {
         const results = await db.query("SELECT * FROM users")
         res.json(results.rows)
@@ -17,7 +17,7 @@ router.get("/", async function (req, res, next) {
 
 
 
-router.get("/name/:name", async (req, res, next) => {
+app.get("/name/:name", async (req, res, next) => {
   try {
       const results = await db.query("SELECT * FROM users WHERE name=$1", [req.params.name]);
       if (results.rows.length === 0) {
@@ -29,7 +29,7 @@ router.get("/name/:name", async (req, res, next) => {
   }
 })
 
-router.get("/roles/:roles", async (req, res, next) => {
+app.get("/roles/:roles", async (req, res, next) => {
   try {
       const results = await db.query("SELECT * FROM users WHERE roles=$1", [req.params.roles]);
       if (results.rows.length === 0) {
@@ -45,7 +45,7 @@ router.get("/roles/:roles", async (req, res, next) => {
 
 
 
-  router.post("/", async (req, res, next) =>{
+  app.post("/", async (req, res, next) =>{
     let hashedPassword = await bcrypt.hash(req.body.password, saltRounds)
     try {
       const results = await pool.query("SELECT email FROM formusers WHERE email=$1", [req.body.email]);
