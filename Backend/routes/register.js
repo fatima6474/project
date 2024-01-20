@@ -4,6 +4,16 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
+router.get("/", async function (req, res, next) {
+    try {
+        const results = await db.query("SELECT * FROM users")
+        res.json(results.rows)
+        
+    } catch (err) {
+        return next(err);
+        
+    }
+});
 
 
 
@@ -47,11 +57,10 @@ router.get("/roles/:roles", async (req, res, next) => {
         const user = await db.query(queryText, values);
         res.json({success: true, data: user.rows[0], message: "Success"});
       }
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal Server Error' });
+    } catch (err) {
+      return next(err)
     }
-  });
+  })
 
 
 
