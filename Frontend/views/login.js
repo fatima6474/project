@@ -5,7 +5,7 @@ const email = document.querySelector('#email'),
       passwordErrorMsg = document.querySelector('#passwordErrorMessage'),
       emailPattern =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
       passwordPattern =   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@#()^$!%*?&]{8,}$/;
-      baseURL = "https://skillworkcommunity.onrender.com/";
+      baseURL = "https://skillworkcommunity.onrender.com";
 
 
 buttonBtn.addEventListener('click', async (e) => {
@@ -72,14 +72,6 @@ async function loginPost(url, data) {
       body: JSON.stringify(data),
     });
 
-    if (!res.ok) {
-      console.error(`Server responded with status ${res.status}: ${res.statusText}`);
-      const text = await res.text();
-      console.error(`Response text: ${text}`);
-      return;
-    }
-
-    // const bodydata = await res.json();
     
     const bodydata = await res.json();
     if (bodydata.message == "Invalid") {
