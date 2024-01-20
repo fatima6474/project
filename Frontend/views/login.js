@@ -22,7 +22,7 @@ buttonBtn.addEventListener('click', async (e) => {
   }
 
   // ... rest of your code ...
-});
+// });
 
     // ... rest of your code ...
 // });
