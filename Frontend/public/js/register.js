@@ -110,7 +110,6 @@ function confirmPasswordValidation(){
 
 password2.addEventListener("input", confirmPasswordValidation);
 
-
 async function postData(url, data) {
   try {
     const res = await fetch(url, {
@@ -122,10 +121,10 @@ async function postData(url, data) {
     });
 
     console.log('Response Status:', res.status);
+    console.log('Response Text:', await res.text());
 
     // Check if the response is not OK (status code other than 2xx)
     if (!res.ok) {
-      console.error('Error Response:', await res.text());
       throw new Error('Server Error');
     }
 
