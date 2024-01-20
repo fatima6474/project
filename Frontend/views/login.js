@@ -66,7 +66,7 @@ password.addEventListener("input", passwordValidation);
 
 console.log(password.value);
 
-async function loginPost(url, data) {
+async function postData(url, data) {
   try {
     const res = await fetch(url, {
       method: "POST",
@@ -76,7 +76,20 @@ async function loginPost(url, data) {
       body: JSON.stringify(data),
     });
 
-    
+    if (!res.ok) {
+      // If response status is not in the 2xx range, consider it an error
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
+    // const bodydata = await res.json();
+    // console.log(bodydata);
+
+    // Your existing code handling the response goes here
+    if (bodydata.message === "Success") {
+      // ...
+    } else if (bodydata.message === "Already Exists") {
+      // ...
+    }
     const bodydata = await res.json();
     if (bodydata.message == "Invalid") {
       emailErrorMsg.innerText = 'Please enter your correct email or password';
