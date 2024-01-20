@@ -129,20 +129,13 @@ await fetch(baseURL+ "/register/register", {
 
 async function postData(baseURL, data) {
   try {
-    const res =await fetch(baseURL+ "/register/register", {
+    const res = await fetch(baseURL, {
       method: "POST",
       headers: {
-          "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name: username.value, email: password.value})
-      })
-      .then(response => response.json())
-      .then(data => {
-          console.log(data);
-      })
-  
-
-    // });
+      body: JSON.stringify(data),
+    });
 
 
 
@@ -188,6 +181,8 @@ async function postData(baseURL, data) {
 
 
 
+}
+)
 
 
 // const loginBtn = document.getElementById('loginBtn');
