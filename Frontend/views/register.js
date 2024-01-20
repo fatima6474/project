@@ -10,7 +10,7 @@ const username = document.querySelector('#username'),
       password2ErrorMsg = document.querySelector('#password2ErrorMessage'),
       emailPattern =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
       passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/,
-      baseURL = "https://skillworkcommunity.onrender.com/register";
+      baseURL = "https://skillworkcommunity.onrender.com/";
 
 
 buttonBtn.addEventListener('click', async (e) => {
@@ -113,9 +113,9 @@ password2.addEventListener("input", confirmPasswordValidation);
 
 
 
-async function postData(baseURL, data) {
+async function postData(url, data) {
   try {
-    const res = await fetch(baseURL, {
+    const res = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
