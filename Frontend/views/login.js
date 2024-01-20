@@ -5,24 +5,25 @@ const email = document.querySelector('#email'),
       passwordErrorMsg = document.querySelector('#passwordErrorMessage'),
       emailPattern =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
       passwordPattern =   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@#()^$!%*?&]{8,}$/;
-      baseURL = "https://skillworkcommunity.onrender.com";
-
+     // Corrected baseURL
+const baseURL = "https://skillworkcommunity.onrender.com/";
 
 buttonBtn.addEventListener('click', async (e) => {
     e.preventDefault();
 
-if (
-    emailValidation() &&
-    passwordValidation() 
-   
-   ) {
-    let userData = {
-      email: email.value.trim(),
-      password: password.value,
-    };
-    console.log("line 23");
-    loginPost(`${baseURL}login`, userData);
-  }
+    if (emailValidation() && passwordValidation()) {
+        let userData = {
+            email: email.value.trim(),
+            password: password.value,
+        };
+
+        console.log("line 23");
+        loginPost(`${baseURL}login`, userData);
+    }
+
+    // ... rest of your code ...
+// });
+
 
 
 function emailValidation(){
@@ -62,9 +63,9 @@ password.addEventListener("input", passwordValidation);
 
 console.log(password.value);
 
-async function loginPost(baseURL, data) {
+async function loginPost(url, data) {
   try {
-    const res = await fetch(baseURL, {
+    const res = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
