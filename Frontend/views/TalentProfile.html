@@ -65,8 +65,8 @@
             const messageText = messageInput.value;
     
             // Retrieve sender email from localStorage
-            const userObject = JSON.parse(localStorage.getItem('user'));
-            const senderEmail = userObject && userObject.email;
+            // const userObject = JSON.parse(localStorage.getItem('user'));
+            // const senderEmail = userObject && userObject.email;
     
             if (!senderEmail) {
                 console.error('Sender email not found in local storage.');
