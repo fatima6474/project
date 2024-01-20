@@ -30,7 +30,7 @@ if (
       password: password.value,
       roles: role
     };
-    postData(`${baseURL}register`, userData);
+    postData(`${baseURL}/register`, userData);
     console.log(`This is the ${role}`);
   }
 
