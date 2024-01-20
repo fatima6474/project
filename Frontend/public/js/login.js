@@ -103,7 +103,7 @@ async function loginPost(url, data) {
     
       console.log(bodydata);
       console.log(data);
-    }
+    
   } catch (err) {
     console.error(`Error: ${err}`);
   }
