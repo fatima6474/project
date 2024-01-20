@@ -175,9 +175,9 @@ async function postData(url, data) {
 // const signupBtn = document.getElementById('signupBtn');
 
 
-// loginBtn.addEventListener("click", function() {
-//     window.location.href = "../views/login.html";
-// });
+loginBtn.addEventListener("click", function() {
+    window.location.href = "../views/login.html";
+});
 
 // signupBtn.addEventListener("click", function() {
 //     window.location.href = "../views/register.html";
