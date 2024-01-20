@@ -127,9 +127,6 @@ async function postData(url, data) {
     const bodyText = await res.text();
     console.log('Response Text:', bodyText);
 
-    const bodydata = await res.json();
-    console.log('Parsed JSON:', bodydata);
-
    
 
 
