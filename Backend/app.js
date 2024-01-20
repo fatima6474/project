@@ -291,6 +291,27 @@ app.post('/api/messages', async (req, res) => {
 });
 
 
+app.post("/register", async (req, res, next) => {
+  try {
+    const { name, email, password, roles } = req.body;
+
+    // Hash the password before storing it
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Store user information in the database
+    const result = await pool.query(
+      "INSERT INTO formusers (name, email, password, roles) VALUES ($1, $2, $3, $4) RETURNING *",
+      [name, email, hashedPassword, roles]
+    );
+
+    const newUser = result.rows[0];
+
+    res.status(201).json({ success: true, user: newUser });
+  } catch (error) {
+    console.error("Error during registration:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 
 
