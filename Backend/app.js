@@ -291,21 +291,7 @@ app.post('/api/messages', async (req, res) => {
 });
 
 
-// Add this route to handle message submissions
-app.post('/api/messages', async (req, res) => {
-  const { senderEmail, receiverEmail, text } = req.body;
-  try {
-      const result = await pool.query(
-          'INSERT INTO messages (sender_email, receiver_email, text) VALUES ($1, $2, $3) RETURNING *',
-          [senderEmail, receiverEmail, text]
-      );
-      const newMessage = result.rows[0];
-      res.status(201).json({ success: true, message: newMessage });
-  } catch (error) {
-      console.error('Error sending message:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
+
 
 
 
@@ -595,8 +581,11 @@ if (app.get("env") === "development") {
   });
 }
 
-
-
 app.listen(305, function() {
   console.log("Server starting on port 305!");
 });
+
+
+// app.listen(305, function() {
+//   console.log("Server starting on port 305!");
+// });
