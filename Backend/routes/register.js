@@ -4,16 +4,6 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-router.get("/", async function (req, res, next) {
-    try {
-        const results = await db.query("SELECT * FROM users")
-        res.json(results.rows)
-        
-    } catch (err) {
-        return next(err);
-        
-    }
-});
 
 
 
