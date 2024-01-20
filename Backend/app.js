@@ -322,7 +322,43 @@ app.get("/category/formusers", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+// Endpoint for user login
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
 
+  try {
+    // Query the database to get user details based on the provided email
+    const userQuery = await pool.query('SELECT * FROM formusers WHERE email = $1', [email]);
+
+    if (userQuery.rows.length === 0) {
+      // User with the provided email not found
+      return res.status(401).json({ message: 'Invalid email or password' });
+    }
+
+    // Compare the provided password with the hashed password stored in the database
+    const isPasswordValid = await bcrypt.compare(password, userQuery.rows[0].password);
+
+    if (!isPasswordValid) {
+      // Incorrect password
+      return res.status(401).json({ message: 'Invalid email or password' });
+    }
+
+    // If email and password are valid, create and send a JWT token
+    const token = createJwtToken(userQuery.rows[0].id, userQuery.rows[0].email);
+
+    // Return user information and token in the response
+    res.status(200).json({
+      message: 'Logged in successfully',
+      token,
+      username: userQuery.rows[0].username,
+      email: userQuery.rows[0].email,
+      roles: userQuery.rows[0].roles,
+    });
+  } catch (error) {
+    console.error('Error during login:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 // Add this route to fetch the user's email
 app.get('/fetchUserEmail', async (req, res) => {
   try {
