@@ -108,17 +108,17 @@ async function loginPost(url, data) {
 })
 
 
-const loginBtn = document.getElementById('loginBtn');
-const signupBtn = document.getElementById('signupBtn');
+// const loginBtn = document.getElementById('loginBtn');
+// const signupBtn = document.getElementById('signupBtn');
 
 
-loginBtn.addEventListener("click", function() {
-    window.location.href = "login.html";
-});
+// loginBtn.addEventListener("click", function() {
+//     window.location.href = "login.html";
+// });
 
-signupBtn.addEventListener("click", function() {
-    window.location.href = "register.html";
-});
+// signupBtn.addEventListener("click", function() {
+//     window.location.href = "register.html";
+// });
 
 
 
