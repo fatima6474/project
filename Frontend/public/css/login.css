@@ -238,7 +238,7 @@ nav button{
         margin-top: 150px;
         justify-content: center;
         background-color: whitesmoke;
-        background-image: url("../images/BG4.png");
+        /* background-image: url("../images/BG4.png"); */
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
