@@ -90,9 +90,9 @@ async function loginPost(url, data) {
     if (bodydata.message == "logged") {
  
       if (bodydata.roles === "Freelancer") {
-        window.location.href = "../views/talentEdit.html";
+        window.location.href = "talentEdit.html";
     } else {
-    window.location.href =  "../views/index2.html";
+    window.location.href =  "index2.html";
     }
   
     
