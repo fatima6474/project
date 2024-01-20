@@ -10,7 +10,7 @@ const nodeWit = require('node-wit');
 
 router.get("/", async function (req, res, next) {
     try {
-        const results = await db.query("SELECT * FROM users")
+        const results = await db.query("SELECT * FROM formusers")
         res.json(results.rows)
         
     } catch (err) {
