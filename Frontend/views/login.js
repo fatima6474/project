@@ -6,7 +6,7 @@ const email = document.querySelector('#email'),
       emailPattern =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
       passwordPattern =   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@#()^$!%*?&]{8,}$/;
      // Corrected baseURL
-const url = "https://skillworkcommunity.onrender.com/";
+const baseURL = "https://skillworkcommunity.onrender.com/";
 
 buttonBtn.addEventListener('click', async (e) => {
   e.preventDefault();
@@ -18,7 +18,7 @@ buttonBtn.addEventListener('click', async (e) => {
       };
 
       console.log("line 23");
-      loginPost(`${url}login`, userData);
+      loginPost(`${baseURL}login`, userData);
   }
 
   // ... rest of your code ...
@@ -96,12 +96,13 @@ async function loginPost(url, data) {
     console.log(bodydata.token);
 
     if (bodydata.message == "logged") {
+ 
       if (bodydata.roles === "Freelancer") {
         window.location.href = "talentEdit.html";
-      } else {
-        window.location.href = "index2.html";
-      }
-    
+    } else {
+    window.location.href =  "index2.html";
+    }
+  
     
       console.log(bodydata);
       console.log(data);
