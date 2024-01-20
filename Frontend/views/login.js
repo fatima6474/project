@@ -18,7 +18,7 @@ buttonBtn.addEventListener('click', async (e) => {
       };
 
       console.log("line 23");
-      loginPost(`${baseURL}/login`, userData);
+      loginPost(`${baseURL}login`, userData);
   }
 
   // ... rest of your code ...
