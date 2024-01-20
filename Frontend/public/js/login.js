@@ -64,11 +64,11 @@ async function loginPost(url, data) {
     const res = await fetch(url, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+          "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    });
-
+  });
+  
     
     const bodydata = await res.json();
     if (bodydata.message == "Invalid") {
@@ -85,12 +85,20 @@ async function loginPost(url, data) {
     console.log(bodydata.token);
 
     if (bodydata.message == "logged") {
- 
+      console.log(bodydata);
+      console.log(data);
+  
+      localStorage.setItem("token", bodydata.token);
+      localStorage.setItem("username", bodydata.username);
+      localStorage.setItem("email", bodydata.email);
+      localStorage.setItem("roles", bodydata.roles);
+  
       if (bodydata.roles === "Freelancer") {
-        window.location.href = "../views/talentEdit.html";
-    } else {
-    window.location.href =  "../views/index2.html";
-    }
+          window.location.href = "../views/talentEdit.html";
+      } else {
+          window.location.href = "../views/index2.html";
+      }
+  }
   
     
       console.log(bodydata);
