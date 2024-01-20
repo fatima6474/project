@@ -937,7 +937,7 @@ background-color:  #0156d7;
     <div class="container">
         <h1>TOP CATEGORIES</h1>
 
-        <h2 class="job-title" id="HouseRepair"><a class="cli" href="houserepair.html">HouseRepair</a></h2>
+        <h2 class="job-title" id="HouseRepair"><a class="cli" href="houserepair.html"></a></h2>
         <!-- <h3 class="job-subtitle">Talented Individuals</h3> -->
         <ul class="talent-list" id="houserepairTalentList"></ul>
           
@@ -991,7 +991,7 @@ background-color:  #0156d7;
                     <h5>"We have built a network of trusted freelancers we can depend on when we need something done."</h5>
                 </div>
                 <div class="profile">
-                    <img src="../public/images/I1.jpg" alt="image1">
+                    <img src="I1.jpg" alt="image1">
                     <div class="profileName">
                         <h6>Ana Rodriguez</h6>
                         <!-- <p>Santamaria Shirtmakers</p> -->
@@ -1003,7 +1003,7 @@ background-color:  #0156d7;
                     <h5>"The ease of communication and security provided make the process of outsourcing effortless"</h5>
                 </div>
                 <div class="profile">
-                    <img src="../public/images/I2.jpeg" alt="image2">
+                    <img src="I2.jpeg" alt="image2">
                     <div class="profileName">
                         <h6>Bronte Aurell</h6>
                         <!-- <p>ScandiKitchen</p> -->
@@ -1223,7 +1223,7 @@ background-color:  #0156d7;
     async function fetchData(category) {
     try {
         const response = await fetch(`https://skillworkcommunity.onrender.com/category/${category}`);
-        const user = JSON.parse(localStorage.getItem("user"));
+        // const user = JSON.parse(localStorage.getItem("user"));
 
         if (!user) {
             console.error("User information not found in local storage");
