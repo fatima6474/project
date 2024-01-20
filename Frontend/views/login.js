@@ -72,6 +72,14 @@ async function loginPost(url, data) {
       body: JSON.stringify(data),
     });
 
+    if (!res.ok) {
+      console.error(`Server responded with status ${res.status}: ${res.statusText}`);
+      const text = await res.text();
+      console.error(`Response text: ${text}`);
+      return;
+    }
+
+    // const bodydata = await res.json();
     
     const bodydata = await res.json();
     if (bodydata.message == "Invalid") {
