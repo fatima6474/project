@@ -62,7 +62,7 @@ password.addEventListener("input", passwordValidation);
 
 console.log(password.value);
 
-async function loginPost(url, data) {
+async function loginPost(baseURL, data) {
   try {
     const res = await fetch(baseURL, {
       method: "POST",
