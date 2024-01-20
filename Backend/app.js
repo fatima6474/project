@@ -398,10 +398,10 @@ app.get('/receive', (req, res) => {
 // / Endpoint to handle message creation
 app.post('/api/text', async (req, res) => {
   try {
-    const { senderEmail, receiverEmail, jobDescription, messageText } = req.body;
+    const {receiverEmail, jobDescription, messageText } = req.body;
     const insertTextQuery = `
-      INSERT INTO text (sender_email, receiver_email, job_description, message_text)
-      VALUES ($1, $2, $3, $4)
+      INSERT INTO text (receiver_email, job_description, message_text)
+      VALUES ($1, $2, $3)
     `;
     const values = [senderEmail, receiverEmail, jobDescription, messageText];
     await pool.query(insertTextQuery, values);
