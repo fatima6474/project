@@ -6,7 +6,7 @@ const email = document.querySelector('#email'),
       emailPattern =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
       passwordPattern =   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@#()^$!%*?&]{8,}$/;
      // Corrected baseURL
-const baseURL = "https://skillworkcommunity.onrender.com/";
+const baseURL = "https://skillworkcommunity.onrender.com";
 
 buttonBtn.addEventListener('click', async (e) => {
     e.preventDefault();
@@ -65,7 +65,7 @@ console.log(password.value);
 
 async function loginPost(url, data) {
   try {
-    const res = await fetch(baseURL, {
+    const res = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
