@@ -47,10 +47,11 @@ router.get("/roles/:roles", async (req, res, next) => {
         const user = await db.query(queryText, values);
         res.json({success: true, data: user.rows[0], message: "Success"});
       }
-    } catch (err) {
-      return next(err)
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
     }
-  })
+  });
 
 
 
