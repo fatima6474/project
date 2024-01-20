@@ -330,7 +330,7 @@ app.get('/fetchUserEmail', async (req, res) => {
     const userId = req.query.userId;
 
     // Query the database or use any other method to fetch the user's email based on their ID
-    const result = await pool.query('SELECT email FROM users WHERE id = $1', [userId]);
+    const result = await pool.query('SELECT email FROM formusers WHERE id = $1', [userId]);
 
     // Extract the email from the result
     const userEmail = result.rows[0].email;
