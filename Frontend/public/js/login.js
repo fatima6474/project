@@ -125,24 +125,24 @@ signupBtn.addEventListener("click", function() {
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
-  const form = document.getElementById('form');
-  const submitBtn = document.getElementById('submitBtn');
+// document.addEventListener('DOMContentLoaded', function () {
+//   const form = document.getElementById('form');
+//   const submitBtn = document.getElementById('submitBtn');
 
-  submitBtn.addEventListener('click', function () {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+//   submitBtn.addEventListener('click', function () {
+//       const email = document.getElementById('email').value;
+//       const password = document.getElementById('password').value;
 
-      // Check if the provided credentials match the specified values
-      if (email === 'fatiadmin@gmail.com' && password === 'Fatimaqwerty@6474') {
-          // Redirect to admin.html
-          window.location.href = 'admin.html';
-      } else {
-          // Display an error message (you can customize this part)
-          alert('Invalid email or password. Please try again.');
-      }
-  });
-});
+//       // Check if the provided credentials match the specified values
+//       if (email === 'fatiadmin@gmail.com' && password === 'Fatimaqwerty@6474') {
+//           // Redirect to admin.html
+//           window.location.href = 'admin.html';
+//       } else {
+//           // Display an error message (you can customize this part)
+//           alert('Invalid email or password. Please try again.');
+//       }
+//   });
+// });
 
 // async function postData(url, data) {
 //     try {
