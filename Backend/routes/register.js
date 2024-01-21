@@ -3,17 +3,10 @@ const router = express.Router();
 const db = require("../db");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-// const { pool } = require("./app");
-router.get("/", async function (req, res, next) {
-    try {
-        const results = await db.query("SELECT * FROM formusers")
-        res.json(results.rows)
-        
-    } catch (err) {
-        return next(err);
-        
-    }
-});
+// const { pool } = require("./app")
+
+
+
 
 const { Pool } = require("pg");
 
@@ -33,6 +26,35 @@ const pool = new Pool({
   sslmode: 'require'
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+router.get("/", async function (req, res, next) {
+    try {
+        const results = await db.query("SELECT * FROM formusers")
+        res.json(results.rows)
+        
+    } catch (err) {
+        return next(err);
+        
+    }
+});
 
 router.get("/name/:name", async (req, res, next) => {
   try {
