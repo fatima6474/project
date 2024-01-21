@@ -66,7 +66,7 @@ app.use(morgan("tiny"));
 // app.use(cors(corsOptions));
 app.use("/register", cors(), registerRoutes);
 app.use("/login",cors(), loginRoutes);
-app.use("/form",cors(), formRoutes);
+
 app.use("/talentDashboard", cors(), talentDashboard);
 app.use("/dashboard", cors(), dashboardRoutes);
 // Enable CORS for all routes
@@ -301,7 +301,6 @@ app.options('/api/messages', (req, res) => {
   res.setHeader('Access-Control-Allow-Methods', 'POST');
   res.sendStatus(200);
 });
-
 // Endpoint to send a message
 app.post('/api/messages', async (req, res) => {
   const { senderEmail, receiverEmail, text } = req.body;
