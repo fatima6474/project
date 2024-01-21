@@ -71,27 +71,6 @@ app.use("/dashboard", cors(), dashboardRoutes);
 // Enable CORS for all routes
 app.use(cors({ origin: 'https://skill-workcommunity.com.ng', credentials: true }));
 app.use(express.json());
-app.use(cookieParser());
-// Allow requests from a specific origin
-const corsOptions = {
-  origin: 'https://skill-workcommunity.com.ng',
-  credentials: true, // Enable credentials (cookies, authorization headers, etc.)
-};
-
-app.use(cors(corsOptions));
-app.use((req, res, next) => {
-    res.setHeader('Set-Cookie', 'Secure; SameSite=None');
-    next();
-});
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Credentials', 'true');
-  next();
-});
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
 
 // Cloudinary configuratio
 cloudinary.config({
@@ -127,10 +106,8 @@ const uploadImage = (imageBuffer) => {
 };
 app.options('/api/messages', (req, res) => {
   res.setHeader('Access-Control-Allow-Methods', 'POST');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.sendStatus(200);
 });
-
 app.get('/api/messages', async (req, res) => {
   const { senderEmail, receiverEmail } = req.query;
 
