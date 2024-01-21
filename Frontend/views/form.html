@@ -55,51 +55,57 @@
 <!-- Your HTML code -->
 
 <script>
-    document.getElementById('sendBtn').addEventListener('click', () => {
-        const messageInput = document.getElementById('messageInput');
-        const messageText = messageInput.value;
+  document.getElementById('sendBtn').addEventListener('click', () => {
+    const messageInput = document.getElementById('messageInput');
+    const messageText = messageInput.value;
 
-        // Retrieve sender email from localStorage
-        const userObject = JSON.parse(localStorage.getItem('user'));
-        const senderEmail = userObject && userObject.email;
+    // Retrieve sender email from localStorage
+    const userObject = JSON.parse(localStorage.getItem('user'));
+    const senderEmail = userObject && userObject.email;
 
-        if (!senderEmail) {
-            console.error('Sender email not found in local storage.');
+    if (!senderEmail) {
+        console.error('Sender email not found in local storage.');
+        return;
+    }
+
+    // Retrieve receiver email from URL parameters
+    const talentEmail = new URLSearchParams(window.location.search).get('talentEmail');
+    console.log('Sender Email:', senderEmail);
+    console.log('Talent Email:', talentEmail);
+
+    sendMessage(senderEmail, talentEmail, messageText);
+});
+async function sendMessage(senderEmail, receiverEmail, messageText) {
+    try {
+        if (!receiverEmail) {
+            console.error('Receiver email not found in URL parameters.');
             return;
         }
 
-        // Retrieve receiver email from URL parameters
-        const talentEmail = new URLSearchParams(window.location.search).get('talentEmail');
+        const response = await fetch('https://skillworkcommunity.onrender.com/api/messages', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ senderEmail, receiverEmail, text: messageText }),
+            credentials: 'include',
+        });
 
-        sendMessage(senderEmail, talentEmail, messageText);
-    });
-
-    async function sendMessage(senderEmail, receiverEmail, messageText) {
-        try {
-            const response = await fetch('https://skillworkcommunity.onrender.com/api/messages', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ senderEmail, receiverEmail, text: messageText }),
-    credentials: 'include',
-});
-
-
-            if (!response.ok) {
-                throw new Error(`Error sending message: ${response.status} ${response.statusText}`);
-            }
-
-            // Save message in local storage
-            saveMessageLocally(receiverEmail, messageText);
-
-            // Optionally, you can handle the response or perform UI updates
-            window.location.href = 'furniture.html'; // Redirect to the desired page
-
-        } catch (error) {
-            console.error('Error sending message:', error);
+        if (!response.ok) {
+            throw new Error(`Error sending message: ${response.status} ${response.statusText}`);
         }
+
+        // Save message in local storage
+        saveMessageLocally(receiverEmail, messageText);
+
+        // Optionally, you can handle the response or perform UI updates
+        window.location.href = 'furniture.html'; // Redirect to the desired page
+    } catch (error) {
+        console.error('Error sending message:', error);
     }
+}
+
+
 
     function saveMessageLocally(receiverEmail, messageText) {
         const savedMessages = JSON.parse(localStorage.getItem('savedMessages')) || [];
