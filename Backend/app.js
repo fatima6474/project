@@ -68,7 +68,7 @@ app.use("/login",cors(), loginRoutes);
 app.use("/talentDashboard", cors(), talentDashboard);
 app.use("/dashboard", cors(), dashboardRoutes);
 // Enable CORS for all routes
-app.use(cors({ origin: 'https://projectskills.vercel.app', credentials: true }));
+// app.use(cors({ origin: 'https://projectskills.vercel.app', credentials: true }));
 
 // Cloudinary configuratio
 cloudinary.config({
