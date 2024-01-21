@@ -9,25 +9,7 @@ const secret = "jkjkjkkjkskjksjks"
 const nodeWit = require('node-wit');
 
 
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_DATABASE,
-  password: process.env.DB_PASSWORD,
-  ssl:{
-    rejectUnauthorized: false,
-  },
-  sslmode: 'require'
-});
-
-
- pool.connect((err) =>{
-  if(err){
-      console.log(err)
-  }else{
-      console.log("connected to db");
-  }
-})
+const { Pool } = require("pg");
 
 
 
