@@ -69,8 +69,30 @@ app.use("/login",cors(), loginRoutes);
 app.use("/talentDashboard", cors(), talentDashboard);
 app.use("/dashboard", cors(), dashboardRoutes);
 // Enable CORS for all routes
-app.use(cors({ origin: 'https://skill-workcommunity.com.ng', credentials: true }));
+// app.use(cors({ origin: 'https://skill-workcommunity.com.ng', credentials: true }));
 app.use(express.json());
+
+
+
+
+app.use(cors({
+  origin: 'https://skill-workcommunity.com.ng',
+  credentials: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  headers: 'Content-Type, Authorization',
+}));
+
+app.options('/api/messages', (req, res) => {
+  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Origin', 'https://skill-workcommunity.com.ng');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Content-Type', 'application/json');  // Add this line
+  res.sendStatus(200);
+});
+
+
+
 
 // Cloudinary configuratio
 cloudinary.config({
