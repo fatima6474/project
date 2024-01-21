@@ -700,7 +700,7 @@ h2{
 /* Original CSS (up to .details .desc) remains unchanged */
 
 /* Mobile Styles */
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 750px) {
     .navbar {
          padding: 2% 4%; 
         width: 30%; 
