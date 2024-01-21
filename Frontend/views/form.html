@@ -75,13 +75,9 @@
 
     sendMessage(senderEmail, talentEmail, messageText);
 });
+
 async function sendMessage(senderEmail, receiverEmail, messageText) {
     try {
-        if (!receiverEmail) {
-            console.error('Receiver email not found in URL parameters.');
-            return;
-        }
-
         const response = await fetch('https://skillworkcommunity.onrender.com/api/messages', {
             method: 'POST',
             headers: {
@@ -89,6 +85,7 @@ async function sendMessage(senderEmail, receiverEmail, messageText) {
             },
             body: JSON.stringify({ senderEmail, receiverEmail, text: messageText }),
             credentials: 'include',
+            mode: 'cors', // Add this line
         });
 
         if (!response.ok) {
@@ -100,11 +97,11 @@ async function sendMessage(senderEmail, receiverEmail, messageText) {
 
         // Optionally, you can handle the response or perform UI updates
         window.location.href = 'furniture.html'; // Redirect to the desired page
+
     } catch (error) {
         console.error('Error sending message:', error);
     }
 }
-
 
 
     function saveMessageLocally(receiverEmail, messageText) {
