@@ -143,11 +143,11 @@ async function postData(url, data) {
       
         localStorage.setItem("user", JSON.stringify(user));
       
-        window.location.href = "../views/login.html"; /// Change this path  
+        window.location.href = "login.html"; /// Change this path  
         if (bodydata.data.roles == "Freelancer") {
-          window.location.href = "../views/TalentDashboard.html"; 
+          window.location.href = "TalentDashboard.html"; 
         } else{
-          window.location.href = "../views/edit.html";
+          window.location.href = "edit.html";
         }
 
 
