@@ -10,7 +10,7 @@ const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 require('dotenv').config();
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 
 // PostgreSQL connection pool
 const pool = new Pool({
