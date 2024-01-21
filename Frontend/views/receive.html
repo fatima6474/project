@@ -180,7 +180,25 @@
 
 #chatList p:last-child {
     border-bottom: none;
-}
+}   @media screen and (max-width: 600px) {
+            /* Adjust styles for screens with a width of 600 pixels or less (typical mobile devices) */
+            #chatList,
+            #chatContent {
+                padding: 10px; /* Reduced padding for better mobile layout */
+            }
+
+            #messageContainer {
+                padding: 10px; /* Reduced padding for better mobile layout */
+            }
+
+            .user-message,
+            .talent-message {
+                max-width: 90%; /* Increase message width for better visibility on smaller screens */
+            }
+
+            #sendBtn {
+                width: 100%; /* Full width for the send button on mobile */
+            }}
 
 /* Add more styling as needed */
 
