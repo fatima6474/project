@@ -103,7 +103,10 @@ const uploadImage = (imageBuffer) => {
     ).end(imageBuffer);
   });
 };
-
+app.options('/api/messages', (req, res) => {
+  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.sendStatus(200);
+});
 app.get('/api/messages', async (req, res) => {
   const { senderEmail, receiverEmail } = req.query;
 
