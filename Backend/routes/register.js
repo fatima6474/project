@@ -15,6 +15,23 @@ router.get("/", async function (req, res, next) {
     }
 });
 
+const { Pool } = require("pg");
+
+
+
+
+
+// PostgreSQLzz connection pool
+const pool = new Pool({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  ssl:{
+    rejectUnauthorized: false,
+  },
+  sslmode: 'require'
+});
 
 
 router.get("/name/:name", async (req, res, next) => {
