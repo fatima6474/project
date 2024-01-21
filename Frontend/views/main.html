@@ -1146,222 +1146,222 @@ background-color:  #0156d7;
     </body>
     <script src="main.js"></script>
     <script>
-//    const slidesContainer = document.querySelector('.slides');
-//     const slides = document.querySelectorAll('.slide');
-//     let currentSlide = 0;
-//     let slideInterval;
+   const slidesContainer = document.querySelector('.slides');
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    let slideInterval;
 
-//     function showSlide(index) {
-//         const transformValue = -index * 100 + '%';
-//         slidesContainer.style.transform = `translateX(${transformValue})`;
-//     }
+    function showSlide(index) {
+        const transformValue = -index * 100 + '%';
+        slidesContainer.style.transform = `translateX(${transformValue})`;
+    }
 
-//     function nextSlide() {
-//         currentSlide = (currentSlide + 1) % slides.length;
-//         showSlide(currentSlide);
-//     }
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
 
-//     function prevSlide() {
-//         currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-//         showSlide(currentSlide);
-//     }
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
 
-//     function startAutoSlide() {
-//         slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-//     }
+    function startAutoSlide() {
+        slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    }
 
-//     function stopAutoSlide() {
-//         clearInterval(slideInterval);
-//     }
+    function stopAutoSlide() {
+        clearInterval(slideInterval);
+    }
 
-//     // Initial setup
-//     showSlide(currentSlide);
-//     startAutoSlide();
+    // Initial setup
+    showSlide(currentSlide);
+    startAutoSlide();
      
-//     document.addEventListener('DOMContentLoaded', function () {
-//     const menuToggle = document.querySelector('.menu-toggle');
-//     const navMenu = document.querySelector('.nav-menu');
-//     const navLinks = document.querySelectorAll('.nav-menu a');
+    document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
 
-//     menuToggle.addEventListener('click', function () {
-//         navMenu.classList.toggle('active');
-//     });
+    menuToggle.addEventListener('click', function () {
+        navMenu.classList.toggle('active');
+    });
 
-//     navLinks.forEach(link => {
-//         link.addEventListener('click', function () {
-//             navMenu.classList.remove('active');
-//         });
-//     });
-// });
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            navMenu.classList.remove('active');
+        });
+    });
+});
 
-//    // <script>
-//     document.addEventListener('DOMContentLoaded', () => {
-//         // Fetch data for each category
-//         fetchData("HouseRepair");
+   // <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Fetch data for each category
+        fetchData("HouseRepair");
        
 
-//         // Add an event listener to close the popup when clicking outside of it
-//         document.addEventListener('click', (event) => {
-//             const talentPopups = document.querySelectorAll('.talent-details-popup-container');
-//             talentPopups.forEach(popup => {
-//                 if (!popup.contains(event.target)) {
-//                     popup.classList.remove('show');
-//                 }
-//             });
-//         });
-//     });
+        // Add an event listener to close the popup when clicking outside of it
+        document.addEventListener('click', (event) => {
+            const talentPopups = document.querySelectorAll('.talent-details-popup-container');
+            talentPopups.forEach(popup => {
+                if (!popup.contains(event.target)) {
+                    popup.classList.remove('show');
+                }
+            });
+        });
+    });
 
 
-//     function navigateToTalentDetails(talent) {
-//         // Store the selected talent details in localStorage
-//         localStorage.setItem('selectedTalent', JSON.stringify(talent));
+    function navigateToTalentDetails(talent) {
+        // Store the selected talent details in localStorage
+        localStorage.setItem('selectedTalent', JSON.stringify(talent));
 
-//         // Navigate to the talent-details.html page
-//         window.location.href = 'freelancer-dashboard.html';
-//     }
+        // Navigate to the talent-details.html page
+        window.location.href = 'freelancer-dashboard.html';
+    }
    
-//     async function fetchData(category) {
-//     try {
-//         const response = await fetch(`https://skillworkcommunity.onrender.com/category/${category}`);
-//         // const user = JSON.parse(localStorage.getItem("user"));
+    async function fetchData(category) {
+    try {
+        const response = await fetch(`https://skillworkcommunity.onrender.com/category/${category}`);
+        // const user = JSON.parse(localStorage.getItem("user"));
 
-//         if (!user) {
-//             console.error("User information not found in local storage");
-//             return;
-//         }
+        if (!user) {
+            console.error("User information not found in local storage");
+            return;
+        }
 
-//         if (!response.ok) {
-//             throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
-//         }
+        if (!response.ok) {
+            throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
+        }
 
-//         const responseData = await response.json();
-//         const talentsArray = responseData.talents;
+        const responseData = await response.json();
+        const talentsArray = responseData.talents;
 
        
 
-//         // Limit to 4 talents per category
-//         const limitedTalentsArray = talentsArray.slice(0, 3);
+        // Limit to 4 talents per category
+        const limitedTalentsArray = talentsArray.slice(0, 3);
 
-//         limitedTalentsArray.forEach(talent => {
-//             createTalentListItem(talent, user);
-//         });
-//     } catch (error) {
-//         console.error("Error fetching data:", error);
-//     }
-// }
+        limitedTalentsArray.forEach(talent => {
+            createTalentListItem(talent, user);
+        });
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
 
 
-// function createTalentListItem(talent, user) {
-//     // console.log('Creating talent list item:', talent);
-//     const listItem = document.createElement("li");
-//     listItem.classList.add("talent-item");
+function createTalentListItem(talent, user) {
+    // console.log('Creating talent list item:', talent);
+    const listItem = document.createElement("li");
+    listItem.classList.add("talent-item");
    
-//     listItem.innerHTML = `
-//     <div class="talent-card">
-//         <div class="talent-image" style="background-image: url('${talent.image_path}');"></div>
+    listItem.innerHTML = `
+    <div class="talent-card">
+        <div class="talent-image" style="background-image: url('${talent.image_path}');"></div>
 
 
-//         <div class="talent-info">
-//             <h3 class="username">${talent.name}</h3>  
-//             <p>Job Title: <span class="jobTitle">${talent.job_title}</span></p>
-//             <p>Location: <span class="location">${talent.location}</span></p>
-//             <button class="view-details-button"></button>
-//             <button class="send-message-button" onclick="navigateToMessage('${user.email}', '${talent.email}')"></button>
+        <div class="talent-info">
+            <h3 class="username">${talent.name}</h3>  
+            <p>Job Title: <span class="jobTitle">${talent.job_title}</span></p>
+            <p>Location: <span class="location">${talent.location}</span></p>
+            <button class="view-details-button"></button>
+            <button class="send-message-button" onclick="navigateToMessage('${user.email}', '${talent.email}')"></button>
 
-//         </div><br><br>
-//         <div class="talent-details-popup-container">
-//             <p>Name: <span class="modal-name">${talent.name}</span></p>
-//                        <!-- Add more details here as needed -->
-//             <p>Email: <span class="modal-email">${talent.email}</span></p>
-//             <p>Location: <span class="modal-location">${talent.location}</span></p>
-//             <p>Job Title: <span class="modal-jobTitle">${talent.job_title}</span></p>
-//             <p>About: <span class="modal-about">${talent.about}</span></p>
-//             <p>Languages: <span class="modal-languages">${talent.languages}</span></p>
-//             <p>Hourly Rate: <span class="modal-hourlyRate">${talent.hourly_rate}</span></p>
-//             <!-- Add more details here as needed -->
+        </div><br><br>
+        <div class="talent-details-popup-container">
+            <p>Name: <span class="modal-name">${talent.name}</span></p>
+                       <!-- Add more details here as needed -->
+            <p>Email: <span class="modal-email">${talent.email}</span></p>
+            <p>Location: <span class="modal-location">${talent.location}</span></p>
+            <p>Job Title: <span class="modal-jobTitle">${talent.job_title}</span></p>
+            <p>About: <span class="modal-about">${talent.about}</span></p>
+            <p>Languages: <span class="modal-languages">${talent.languages}</span></p>
+            <p>Hourly Rate: <span class="modal-hourlyRate">${talent.hourly_rate}</span></p>
+            <!-- Add more details here as needed -->
         
-//     </div>`;
+    </div>`;
    
-//     const talentCard = listItem.querySelector('.talent-card');
-//             const talentPopupContainer = listItem.querySelector('.talent-details-popup-container');
-//             const viewDetailsButton = listItem.querySelector('.view-details-button');
-//             const sendMessageButton = listItem.querySelector('.send-message-button');
+    const talentCard = listItem.querySelector('.talent-card');
+            const talentPopupContainer = listItem.querySelector('.talent-details-popup-container');
+            const viewDetailsButton = listItem.querySelector('.view-details-button');
+            const sendMessageButton = listItem.querySelector('.send-message-button');
 
-//             talentCard.addEventListener('click', () => {
-//                 talentPopupContainer.classList.toggle('show');
-//             });
+            talentCard.addEventListener('click', () => {
+                talentPopupContainer.classList.toggle('show');
+            });
 
-//             viewDetailsButton.addEventListener('click', (event) => {
-//                 event.stopPropagation();
-//                 togglePopup(talent);
-//             });
+            viewDetailsButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                togglePopup(talent);
+            });
 
           
 
-//             // const talentCard = listItem.querySelector('.talent-card');
+            // const talentCard = listItem.querySelector('.talent-card');
 
-// talentCard.addEventListener('click', () => {
-//     navigateToTalentDetails(talent);
-// });
-//             // const sendMessageButton = listItem.querySelector('.send-message-button');
-
-
-//             // Append the created talent card to the talent list
-//             const talentList = document.getElementById(`${talent.job_title.toLowerCase()}TalentList`);
-//             talentList.appendChild(listItem);
-//         }
+talentCard.addEventListener('click', () => {
+    navigateToTalentDetails(talent);
+});
+            // const sendMessageButton = listItem.querySelector('.send-message-button');
 
 
-//     // return listItem;
+            // Append the created talent card to the talent list
+            const talentList = document.getElementById(`${talent.job_title.toLowerCase()}TalentList`);
+            talentList.appendChild(listItem);
+        }
+
+
+    // return listItem;
 
 
 
-// function togglePopup(talent) {
-//     const modal = document.getElementById('myModal');
-//     const modalName = modal.querySelector('.modal-name');
-//     // const modalPhoneNumber = modal.querySelector('.modal-phoneNumber');
-//     const modalEmail = modal.querySelector('.modal-email');
-//     const modalLocation = modal.querySelector('.modal-location');
-//     const modalJobTitle = modal.querySelector('.modal-jobTitle');
-//     const modalAbout = modal.querySelector('.modal-about');
-//     const modalLanguages = modal.querySelector('.modal-languages');
-//     const modalHourlyRate = modal.querySelector('.modal-hourlyRate');
-//     // Add more variables for other details
+function togglePopup(talent) {
+    const modal = document.getElementById('myModal');
+    const modalName = modal.querySelector('.modal-name');
+    // const modalPhoneNumber = modal.querySelector('.modal-phoneNumber');
+    const modalEmail = modal.querySelector('.modal-email');
+    const modalLocation = modal.querySelector('.modal-location');
+    const modalJobTitle = modal.querySelector('.modal-jobTitle');
+    const modalAbout = modal.querySelector('.modal-about');
+    const modalLanguages = modal.querySelector('.modal-languages');
+    const modalHourlyRate = modal.querySelector('.modal-hourlyRate');
+    // Add more variables for other details
 
-//     modalName.textContent = talent.name;
-//     // modalPhoneNumber.textContent = talent.phoneNumber;
-//     modalEmail.textContent = talent.email;
-//     modalLocation.textContent = talent.location;
-//     modalJobTitle.textContent = talent.job_title;
-//     modalAbout.textContent = talent.about;
-//     modalLanguages.textContent = talent.languages;
-//     modalHourlyRate.textContent = talent.hourly_rate;
-//     // Populate other details here
+    modalName.textContent = talent.name;
+    // modalPhoneNumber.textContent = talent.phoneNumber;
+    modalEmail.textContent = talent.email;
+    modalLocation.textContent = talent.location;
+    modalJobTitle.textContent = talent.job_title;
+    modalAbout.textContent = talent.about;
+    modalLanguages.textContent = talent.languages;
+    modalHourlyRate.textContent = talent.hourly_rate;
+    // Populate other details here
 
-//     // Display the modal
-//     modal.style.display = 'block';
-// }
+    // Display the modal
+    modal.style.display = 'block';
+}
 
-// function navigateToMessage(senderEmail, receiverEmail) {
-//     console.log('Sender Email:', senderEmail);
-//     console.log('Receiver Email:', receiverEmail);
-//     window.location.href = `message.html?senderEmail=${senderEmail}&receiverEmail=${receiverEmail}`;
-// }
+function navigateToMessage(senderEmail, receiverEmail) {
+    console.log('Sender Email:', senderEmail);
+    console.log('Receiver Email:', receiverEmail);
+    window.location.href = `message.html?senderEmail=${senderEmail}&receiverEmail=${receiverEmail}`;
+}
 
 
-//     var modal = document.getElementById('myModal');
+    var modal = document.getElementById('myModal');
 
-//     // Get the <span> element that closes the modal
-//     var closeBtn = document.querySelector('.close');
+    // Get the <span> element that closes the modal
+    var closeBtn = document.querySelector('.close');
 
     
 
-//     // When the user clicks anywhere outside of the modal, close it
-//     window.onclick = function (event) {
-//         if (event.target == modal) {
-//             modal.style.display = 'none';
-//         }
-//     }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
   
 
 
