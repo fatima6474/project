@@ -66,6 +66,7 @@ app.use(morgan("tiny"));
 // app.use(cors(corsOptions));
 app.use("/register", cors(), registerRoutes);
 app.use("/login",cors(), loginRoutes);
+app.use("/form",cors(), formRoutes);
 app.use("/talentDashboard", cors(), talentDashboard);
 app.use("/dashboard", cors(), dashboardRoutes);
 // Enable CORS for all routes
