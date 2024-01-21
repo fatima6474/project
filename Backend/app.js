@@ -75,7 +75,6 @@ app.use(express.json());
 
 
 
-
 app.use(cors({
   origin: 'https://skill-workcommunity.com.ng',
   credentials: true,
@@ -84,14 +83,13 @@ app.use(cors({
 }));
 
 app.options('/api/messages', (req, res) => {
-  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS'); // Include OPTIONS method
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.setHeader('Access-Control-Allow-Origin', 'https://skill-workcommunity.com.ng');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Content-Type', 'application/json');  // Add this line
+  res.setHeader('Content-Type', 'application/json');
   res.sendStatus(200);
 });
-
 
 
 
