@@ -1,55 +1,106 @@
 const express = require("express");
 const app = express();
+// Enable CORS for all routes
+
+
+// const io = require('socke.io')(http);
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const registerRoutes = require("./routes/register");// this is the shhign up
+const loginRoutes = require("./routes/login");
+const talentDashboard = require("./routes/talentDashboard");
+const dashboardRoutes = require("./routes/dashboard");
 const { Pool } = require("pg");
 const cors = require("cors");
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
-const bcrypt = require('bcrypt');
-const cookieParser = require('cookie-parser');
-const path = require('path');
 require('dotenv').config();
 
 
-// PostgreSQL connection pool
+// PostgreSQLzz connection pool
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
   database: process.env.DB_DATABASE,
   password: process.env.DB_PASSWORD,
-  ssl: {
+  ssl:{
     rejectUnauthorized: false,
   },
   sslmode: 'require'
 });
 
-pool.connect((err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("connected to db");
-  }
-});
 
+ pool.connect((err) =>{
+  if(err){
+      console.log(err)
+  }else{
+      console.log("connected to db");
+  }
+})
+// pool.on('error', (err, client) => {
+//   console.error('Unexpected error on idle client', err);
+//   process.exit(-1);
+// });
+
+// pool.query('SELECT NOW()', (err, res) => {
+//   console.log('PostgreSQL Connection String:', pool.options.connectionString);
+//   if (err) {
+//     console.error('Error executing query', err);
+//   } else {
+//     console.log('Query result:', res.rows);
+//   }
+// });
+
+// console.log('PostgreSQL Connection String:', pool.options.connectionString)
+
+
+// const corsOptions = {
+//   origin: "http://127.0.0.1:5501",
+//   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+//   credentials: true,
+// };
 app.use(express.static("views"));
 app.use(express.json());
+app.use(cors());
+app.use(morgan("tiny"));
+// app.use(cors(corsOptions));
+app.use("/register", cors(), registerRoutes);
+app.use("/login",cors(), loginRoutes);
+app.use("/talentDashboard", cors(), talentDashboard);
+app.use("/dashboard", cors(), dashboardRoutes);
+// Enable CORS for all routes
+app.use(cors({ origin: 'https://skill-workcommunity.com.ng', credentials: true }));
+app.use(express.json());
 app.use(cookieParser());
-// app.use(cors({ origin: 'https://skill-workcommunity.com.ng', credentials: true }));
-app.use(cors({
+// Allow requests from a specific origin
+const corsOptions = {
   origin: 'https://skill-workcommunity.com.ng',
-  credentials: true,
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  headers: 'Content-Type, Authorization',
-}));
+  credentials: true, // Enable credentials (cookies, authorization headers, etc.)
+};
 
-// Cloudinary configuration
+app.use(cors(corsOptions));
+app.use((req, res, next) => {
+    res.setHeader('Set-Cookie', 'Secure; SameSite=None');
+    next();
+});
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
+// Cloudinary configuratio
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
   secure: true,
 });
+
 
 // Multer middleware for handling file uploads
 const storage = multer.memoryStorage();
@@ -77,24 +128,22 @@ const uploadImage = (imageBuffer) => {
 app.options('/api/messages', (req, res) => {
   res.setHeader('Access-Control-Allow-Methods', 'POST');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Access-Control-Allow-Origin', 'https://skill-workcommunity.com.ng');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Content-Type', 'application/json');  // Add this line
   res.sendStatus(200);
 });
 
+app.get('/api/messages', async (req, res) => {
+  const { senderEmail, receiverEmail } = req.query;
 
-app.post('/api/messages', async (req, res) => {
-  const { senderEmail, receiverEmail, text } = req.body;
   try {
     const result = await pool.query(
-      'INSERT INTO messages (sender_email, receiver_email, text) VALUES ($1, $2, $3) RETURNING *',
-      [senderEmail, receiverEmail, text]
+      'SELECT * FROM messages WHERE (sender_email = $1 AND receiver_email = $2) OR (sender_email = $2 AND receiver_email = $1) ORDER BY timestamp',
+      [senderEmail, receiverEmail]
     );
-    const newMessage = result.rows[0];
-    res.status(201).json({ success: true, message: newMessage });
+
+    const messages = result.rows;
+    res.json({ messages });
   } catch (error) {
-    console.error('Error sending message:', error);
+    console.error('Error fetching messages:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
