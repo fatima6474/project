@@ -93,7 +93,7 @@ router.get("/roles/:roles", async (req, res, next) => {
       } else {
         const queryText = ("INSERT INTO formusers (name, email, password, roles) VALUES ($1, $2, $3, $4) RETURNING *")
         const values = [req.body.name, req.body.email, hashedPassword, req.body.roles];
-        const user = await db.query(queryText, values);
+        const user = await pool.query(queryText, values);
         res.json({success: true, data: user.rows[0], message: "Success"});
       }
     } catch (err) {
