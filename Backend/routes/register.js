@@ -47,7 +47,7 @@ const pool = new Pool({
 
 router.get("/", async function (req, res, next) {
     try {
-        const results = await db.query("SELECT * FROM formusers")
+        const results = await pool.query("SELECT * FROM formusers")
         res.json(results.rows)
         
     } catch (err) {
@@ -58,7 +58,7 @@ router.get("/", async function (req, res, next) {
 
 router.get("/name/:name", async (req, res, next) => {
   try {
-      const results = await db.query("SELECT * FROM formusers WHERE name=$1", [req.params.name]);
+      const results = await pool.query("SELECT * FROM formusers WHERE name=$1", [req.params.name]);
       if (results.rows.length === 0) {
           return res.status(404).send("User not found!")
       }
@@ -70,7 +70,7 @@ router.get("/name/:name", async (req, res, next) => {
 
 router.get("/roles/:roles", async (req, res, next) => {
   try {
-      const results = await db.query("SELECT * FROM formusers WHERE roles=$1", [req.params.roles]);
+      const results = await pool.query("SELECT * FROM formusers WHERE roles=$1", [req.params.roles]);
       if (results.rows.length === 0) {
           return res.status(404).send("User not found!")
       }
