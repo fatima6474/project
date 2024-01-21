@@ -34,7 +34,13 @@ pool.connect((err) => {
 app.use(express.static("views"));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: 'https://skill-workcommunity.com.ng', credentials: true }));
+// app.use(cors({ origin: 'https://skill-workcommunity.com.ng', credentials: true }));
+app.use(cors({
+  origin: 'https://skill-workcommunity.com.ng',
+  credentials: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  headers: 'Content-Type, Authorization',
+}));
 
 // Cloudinary configuration
 cloudinary.config({
@@ -71,6 +77,7 @@ app.options('/api/messages', (req, res) => {
   res.setHeader('Access-Control-Allow-Methods', 'POST');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.setHeader('Access-Control-Allow-Origin', 'https://skill-workcommunity.com.ng');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.sendStatus(200);
 });
 
