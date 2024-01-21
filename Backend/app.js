@@ -70,8 +70,10 @@ const uploadImage = (imageBuffer) => {
 app.options('/api/messages', (req, res) => {
   res.setHeader('Access-Control-Allow-Methods', 'POST');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Origin', 'https://skill-workcommunity.com.ng');
   res.sendStatus(200);
 });
+
 
 app.post('/api/messages', async (req, res) => {
   const { senderEmail, receiverEmail, text } = req.body;
