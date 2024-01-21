@@ -145,7 +145,7 @@ async function postData(url, data) {
       
         window.location.href = "login.html"; /// Change this path  
         if (bodydata.data.roles == "Freelancer") {
-          window.location.href = "TalentDashboard.html"; 
+          window.location.href = "talentDashboard.html"; 
         } else{
           window.location.href = "edit.html";
         }
