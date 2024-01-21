@@ -27,7 +27,7 @@ router.get("/", async function (req, res, next) {
 
 router.post("/", async (req, res, next) => {
   try {
-      const foundUser = await db.query("SELECT * FROM formusers WHERE email=$1", [req.body.email])
+      const foundUser = await pool.query("SELECT * FROM formusers WHERE email=$1", [req.body.email])
       if (foundUser.rows.length == 0) {
           return res.json({ message: "Invalid" });
       }
