@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
-
+// Enable CORS for all routes
+app.use(cors({ 
+  origin: 'https://skill-workcommunity.com.ng', // Replace with the actual origin of your client-side code
+  credentials: true, // Include if your API uses cookies or authentication
+}));
 
 // const io = require('socke.io')(http);
 const bodyParser = require("body-parser");
