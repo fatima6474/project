@@ -77,6 +77,15 @@ app.use((req, res, next) => {
     res.setHeader('Set-Cookie', 'Secure; SameSite=None');
     next();
 });
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://skill-workcommunity.com.ng');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
 // Cloudinary configuratio
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
