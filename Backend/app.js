@@ -70,7 +70,13 @@ app.use("/talentDashboard", cors(), talentDashboard);
 app.use("/dashboard", cors(), dashboardRoutes);
 // Enable CORS for all routes
 app.use(cors({ origin: 'https://skill-workcommunity.com.ng', credentials: true }));
+app.use(express.json());
+app.use(cookieParser());
 
+app.use((req, res, next) => {
+    res.setHeader('Set-Cookie', 'Secure; SameSite=None');
+    next();
+});
 // Cloudinary configuratio
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -105,8 +111,10 @@ const uploadImage = (imageBuffer) => {
 };
 app.options('/api/messages', (req, res) => {
   res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.sendStatus(200);
 });
+
 app.get('/api/messages', async (req, res) => {
   const { senderEmail, receiverEmail } = req.query;
 
