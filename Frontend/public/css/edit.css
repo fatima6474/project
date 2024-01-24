@@ -1048,7 +1048,7 @@ h2{
     
     .imagex {
         width: 90%; /* Adjusted width for mobile */
-        background-image: url("../images/p2.jpg");
+        background-image: url("p2.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         border-radius: 0px 25px 25px 0px;
