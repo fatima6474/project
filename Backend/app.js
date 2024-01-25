@@ -81,9 +81,9 @@ app.use(express.json());
 
 // app.options('*', cors());
 // Add this before the route handling the POST request
-app.options('/api/messages', cors());
+// app.options('/api/messages', cors());
 
-
+app.options('/api/messages', cors(corsOptions));
 // app.use(cors({
 //   origin: 'https://skill-workcommunity.com.ng',
 //   credentials: true,
@@ -302,7 +302,7 @@ app.post("/submit", upload.single("image"), async (req, res) => {
 // Endpoint to send a message
 
 // Endpoint to send a message
-app.post('/api/messages', async (req, res) => {
+app.post('/api/messages',cors(corsOptions), async (req, res) => {
   const { senderEmail, receiverEmail, text } = req.body;
   try {
     const result = await pool.query(
