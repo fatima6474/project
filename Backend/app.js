@@ -84,21 +84,21 @@ app.use(express.json());
 app.options('/api/messages', cors());
 
 
-app.use(cors({
-  origin: 'https://skill-workcommunity.com.ng',
-  credentials: true,
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  headers: 'Content-Type, Authorization',
-}));
+// app.use(cors({
+//   origin: 'https://skill-workcommunity.com.ng',
+//   credentials: true,
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   headers: 'Content-Type, Authorization',
+// }));
 
-app.options('/api/messages', (req, res) => {
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS'); // Include OPTIONS method
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Access-Control-Allow-Origin', 'https://skill-workcommunity.com.ng');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Content-Type', 'application/json');
-  res.sendStatus(200);
-});
+// app.options('/api/messages', (req, res) => {
+//   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS'); // Include OPTIONS method
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+//   res.setHeader('Access-Control-Allow-Origin', 'https://skill-workcommunity.com.ng');
+//   res.setHeader('Access-Control-Allow-Credentials', 'true');
+//   res.setHeader('Content-Type', 'application/json');
+//   res.sendStatus(200);
+// });
 
 
 
