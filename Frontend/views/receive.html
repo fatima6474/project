@@ -693,6 +693,72 @@ async function fetchAndDisplaySentMessages() {
         console.error("Error fetching and displaying sent messages:", error);
     }
 }
+// ...
+
+// Function to fetch sent messages based on the logged-in user's email
+async function fetchSentMessages(loggedInUserEmail) {
+    try {
+        const response = await fetch(`https://skillworkcommunity.onrender.com/fetchSentMessages?senderEmail=${loggedInUserEmail}`);
+
+        if (!response.ok) {
+            throw new Error(`Error fetching sent messages: ${response.statusText}`);
+        }
+
+        const responseData = await response.json();
+
+        // console.log("Raw Sent Messages Data:", responseData);
+
+        if (Array.isArray(responseData.sentMessages)) {
+            // console.log("Fetched Sent Messages:", responseData.sentMessages);
+            return responseData.sentMessages;
+        } else {
+            throw new Error("Invalid data format received for sent messages.");
+        }
+    } catch (error) {
+        console.error("Error fetching sent messages:", error);
+        return [];
+    }
+}
+
+// ...
+
+// Modify the displayReceiverMessages function to fetch and display sent messages
+async function displayReceiverMessages(receiverMessages, loggedInUserEmail) {
+    const messagesContainer = document.getElementById("messageContainer");
+    messagesContainer.innerHTML = ""; // Clear existing messages
+
+    // Display received messages
+    receiverMessages.forEach((message, index) => {
+        const messageContainer = document.createElement("div");
+        messageContainer.classList.add("message");
+        messageContainer.id = `message_${index + 1}`;
+
+        const textElement = document.createElement("p");
+        textElement.textContent = `Text: ${message.text}`;
+
+        const timestampElement = document.createElement("p");
+        timestampElement.textContent = `Timestamp: ${message.timestamp}`;
+
+        if (message.senderEmail === loggedInUserEmail) {
+            // If the message is sent by the logged-in user, apply user-message style
+            messageContainer.classList.add("user-message");
+        } else {
+            // If the message is received, apply talent-message style
+            messageContainer.classList.add("talent-message");
+        }
+
+        messageContainer.appendChild(textElement);
+        messageContainer.appendChild(timestampElement);
+
+        messagesContainer.appendChild(messageContainer);
+    });
+
+    // Fetch and display sent messages
+    const sentMessages = await fetchSentMessages(loggedInUserEmail);
+    displaySentMessages(sentMessages);
+}
+
+// ...
 
   </script>
     
