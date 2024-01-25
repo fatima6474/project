@@ -573,6 +573,42 @@ const handleLogin = async () => {
         email: "user@example.com",
         password: "password123",
       }),
+    });app.get('/fetchMessagesForConversation', async (req, res) => {
+      try {
+        // Extract necessary information from the request, e.g., senderEmail, receiverEmail, jobDescription
+        const { senderEmail, receiverEmail, jobDescription } = req.query;
+    
+        // Implement the logic to fetch messages based on senderEmail, receiverEmail, jobDescription
+        // You can use your database queries or any other method here
+    
+        // For example:
+        const messages = await fetchMessages(senderEmail, receiverEmail, jobDescription);
+    
+        // Respond with the fetched messages
+        res.status(200).json({ messages });
+      } catch (error) {
+        console.error('Error fetching messages for conversation:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+    });
+    
+    app.get('/fetchSentMessages', async (req, res) => {
+      try {
+        // Extract necessary information from the request, e.g., senderEmail
+        const { senderEmail } = req.query;
+    
+        // Implement the logic to fetch sent messages based on senderEmail
+        // You can use your database queries or any other method here
+    
+        // For example:
+        const sentMessages = await fetchSentMessages(senderEmail);
+    
+        // Respond with the fetched sent messages
+        res.status(200).json({ sentMessages });
+      } catch (error) {
+        console.error('Error fetching sent messages:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
     });
     
     app.delete('/deleteJob/:jobId', async (req, res) => {
