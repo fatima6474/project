@@ -76,6 +76,33 @@
         function navigateToMessage(senderEmail, receiverEmail) {
             window.location.href = `message.html?senderEmail=${senderEmail}&receiverEmail=${receiverEmail}`;
         }
+
+
+        if (!message.read) {
+                    showNotification(message.receiverEmail, message.messageText);
+                    // Mark the message as read
+                    message.read = true;
+                }
+            // });
+  // Save updated messages to localStorage
+//   localStorage.setItem('savedMessages', JSON.stringify(savedMessages));
+        // });
+
+        function navigateToMessage(senderEmail, receiverEmail) {
+            window.location.href = `message.html?senderEmail=${senderEmail}&receiverEmail=${receiverEmail}`;
+        }
+
+        function showNotification(title, body) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification(title, { body });
+            } else if ('Notification' in window && Notification.permission !== 'denied') {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        new Notification(title, { body });
+                    }
+                });
+            }
+        }
     </script>
 </body>
 </html>
