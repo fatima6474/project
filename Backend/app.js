@@ -73,6 +73,7 @@ app.use("/dashboard", cors(), dashboardRoutes);
 // app.use(cors({ origin: 'https://skill-workcommunity.com.ng', credentials: true }));
 app.use(express.json());
 
+app.options('*', cors());
 
 
 app.use(cors({
