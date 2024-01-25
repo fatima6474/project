@@ -16,6 +16,12 @@ const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 require('dotenv').config();
 
+const corsOptions = {
+  origin: 'https://skill-workcommunity.com.ng',
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 // PostgreSQLzz connection pool
 const pool = new Pool({
@@ -74,6 +80,8 @@ app.use("/dashboard", cors(), dashboardRoutes);
 app.use(express.json());
 
 // app.options('*', cors());
+// Add this before the route handling the POST request
+app.options('/api/messages', cors());
 
 
 app.use(cors({
@@ -275,21 +283,21 @@ app.post("/submit", upload.single("image"), async (req, res) => {
 // Other routes
 
 
-// Endpoint to get messages between two users
-app.get('/api/messages', async (req, res) => {
-  const { senderEmail, receiverEmail } = req.query;
-  try {
-    const result = await pool.query(
-      'SELECT * FROM messages WHERE (sender_email = $1 AND receiver_email = $2) OR (sender_email = $2 AND receiver_email = $1) ORDER BY timestamp',
-      [senderEmail, receiverEmail]
-    );
-    const messages = result.rows;
-    res.status(200).json({ messages });
-  } catch (error) {
-    console.error('Error fetching messages:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
+// // Endpoint to get messages between two users
+// app.get('/api/messages', async (req, res) => {
+//   const { senderEmail, receiverEmail } = req.query;
+//   try {
+//     const result = await pool.query(
+//       'SELECT * FROM messages WHERE (sender_email = $1 AND receiver_email = $2) OR (sender_email = $2 AND receiver_email = $1) ORDER BY timestamp',
+//       [senderEmail, receiverEmail]
+//     );
+//     const messages = result.rows;
+//     res.status(200).json({ messages });
+//   } catch (error) {
+//     console.error('Error fetching messages:', error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
 
 // Endpoint to send a message
 
