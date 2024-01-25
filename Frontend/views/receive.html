@@ -207,8 +207,8 @@
 
 <body>
     <div id="chatContainer">
-        <div id="chatListm">
-        
+        <div id="chatList">
+            <!-- Sender emails will be displayed here dynamically -->
         </div>
 
         <!-- Wrap messages and input container in a parent container -->
@@ -311,7 +311,7 @@ async function fetchSenderEmails() {
 
         // Function to display sender emails in the chat list
         function displaySenderEmails(senderEmails) {
-            const chatList = document.getElementById("chatList");
+            const chatList = document.getElementById("chatLists");
     
             // Clear existing sender emails in the chat list
             chatList.innerHTML = "";
