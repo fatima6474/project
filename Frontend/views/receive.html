@@ -249,26 +249,26 @@
 
 // ...
 
-async function fetchAndDisplayMessages(receiverEmail, senderEmail, jobDescription) {
-    try {
-        // Fetch messages from the server based on the conversation parameters
-        const response = await fetch(`https://skillworkcommunity.onrender.com/fetchMessagesForConversation?receiverEmail=${receiverEmail}&senderEmail=${senderEmail}&jobDescription=${jobDescription}`);
+// async function fetchAndDisplayMessages(receiverEmail, senderEmail, jobDescription) {
+//     try {
+//         // Fetch messages from the server based on the conversation parameters
+//         const response = await fetch(`https://skillworkcommunity.onrender.com/fetchMessagesForConversation?receiverEmail=${receiverEmail}&senderEmail=${senderEmail}&jobDescription=${jobDescription}`);
 
-        if (!response.ok) {
-            throw new Error(`Error fetching messages: ${response.statusText}`);
-        }
+//         if (!response.ok) {
+//             throw new Error(`Error fetching messages: ${response.statusText}`);
+//         }
 
-        const responseData = await response.json();
-        const receivedMessages = responseData.messages;
+//         const responseData = await response.json();
+//         const receivedMessages = responseData.messages;
 
-        console.log("Received Messages:", receivedMessages);
+//         console.log("Received Messages:", receivedMessages);
 
-        // Display the received messages in your chatlist
-        // Implement your logic to display messages in the chatlist
-    } catch (error) {
-        console.error("Error fetching messages:", error);
-    }
-}
+//         // Display the received messages in your chatlist
+//         // Implement your logic to display messages in the chatlist
+//     } catch (error) {
+//         console.error("Error fetching messages:", error);
+//     }
+// }
 
 // ...
 
