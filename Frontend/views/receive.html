@@ -43,7 +43,7 @@
             overflow: hidden;
         }
 
-        #chatList {
+        #chatlistsss {
             width: 20%;
             background-color: #ddd;
             padding: 20px;
@@ -164,7 +164,7 @@
     background-color: #f4f4f4;
 }
 
-#chatList {
+#chatlistsss {
     max-width: 600px;
     margin: 20px auto;
     background-color: #fff;
@@ -172,17 +172,17 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#chatList p {
+#chatlistsss p {
     margin: 0;
     padding: 5px;
     border-bottom: 1px solid #ddd;
 }
 
-#chatList p:last-child {
+#chatlistsss p:last-child {
     border-bottom: none;
 }   @media screen and (max-width: 600px) {
             /* Adjust styles for screens with a width of 600 pixels or less (typical mobile devices) */
-            #chatList,
+            #chatlistsss,
             #chatContent {
                 padding: 10px; /* Reduced padding for better mobile layout */
             }
@@ -207,7 +207,7 @@
 
 <body>
     <div id="chatContainer">
-        <div id="chatList">
+        <div id="chatlistsss">
             <!-- Sender emails will be displayed here dynamically -->
         </div>
 
@@ -240,7 +240,7 @@
 //     const senderEmail = queryParams.get("senderEmail");
 //     const jobDescription = queryParams.get("jobDescription");
 
-//     // Display the relevant information in your chatlist (you need to implement this)
+//     // Display the relevant information in your chatlistsss (you need to implement this)
 //     // displayConversationInfo(receiverEmail, jobDescription);
 
 //     // Fetch and display messages for the specified conversation
@@ -263,8 +263,8 @@
 
 //         console.log("Received Messages:", receivedMessages);
 
-//         // Display the received messages in your chatlist
-//         // Implement your logic to display messages in the chatlist
+//         // Display the received messages in your chatlistsss
+//         // Implement your logic to display messages in the chatlistsss
 //     } catch (error) {
 //         console.error("Error fetching messages:", error);
 //     }
@@ -311,10 +311,10 @@ async function fetchSenderEmails() {
 
         // Function to display sender emails in the chat list
         function displaySenderEmails(senderEmails) {
-            const chatList = document.getElementById("chatLists");
+            const chatlistsss = document.getElementById("chatlistssss");
     
             // Clear existing sender emails in the chat list
-            chatList.innerHTML = "";
+            chatlistsss.innerHTML = "";
     
             senderEmails.forEach((senderEmail) => {
                 const senderEmailElement = document.createElement("div");
@@ -339,7 +339,7 @@ async function fetchSenderEmails() {
                     });
                 });
     
-                chatList.appendChild(senderEmailElement);
+                chatlistssss.appendChild(senderEmailElement);
             });
         }
     
@@ -631,10 +631,10 @@ function displayNotification(message) {
 
         // Function to display sender emails in the chat list
 function displaySenderEmails(senderEmails) {
-    const chatList = document.getElementById("chatList");
+    const chatlistssss = document.getElementById("chatlistssss");
 
     // Clear existing sender emails in the chat list
-    chatList.innerHTML = "";
+    chatlistsss.innerHTML = "";
 
     senderEmails.forEach((senderEmail) => {
         const senderEmailElement = document.createElement("div");
@@ -659,7 +659,7 @@ function displaySenderEmails(senderEmails) {
             });
         });
 
-        chatList.appendChild(senderEmailElement);
+        chatlistsss.appendChild(senderEmailElement);
     });
 }
 // Add this function to display sent messages
