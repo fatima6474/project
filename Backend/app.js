@@ -283,21 +283,21 @@ app.post("/submit", upload.single("image"), async (req, res) => {
 // Other routes
 
 
-// // Endpoint to get messages between two users
-// app.get('/api/messages', async (req, res) => {
-//   const { senderEmail, receiverEmail } = req.query;
-//   try {
-//     const result = await pool.query(
-//       'SELECT * FROM messages WHERE (sender_email = $1 AND receiver_email = $2) OR (sender_email = $2 AND receiver_email = $1) ORDER BY timestamp',
-//       [senderEmail, receiverEmail]
-//     );
-//     const messages = result.rows;
-//     res.status(200).json({ messages });
-//   } catch (error) {
-//     console.error('Error fetching messages:', error);
-//     res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// });
+// Endpoint to get messages between two users
+app.get('/api/messages', async (req, res) => {
+  const { senderEmail, receiverEmail } = req.query;
+  try {
+    const result = await pool.query(
+      'SELECT * FROM messages WHERE (sender_email = $1 AND receiver_email = $2) OR (sender_email = $2 AND receiver_email = $1) ORDER BY timestamp',
+      [senderEmail, receiverEmail]
+    );
+    const messages = result.rows;
+    res.status(200).json({ messages });
+  } catch (error) {
+    console.error('Error fetching messages:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 // Endpoint to send a message
 
