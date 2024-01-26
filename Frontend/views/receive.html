@@ -272,42 +272,42 @@
 
 // ...
 
-async function fetchSenderEmails() {
-    try {
-        const parsedData = JSON.parse(localStorage.getItem("formData"));
+// async function fetchSenderEmails() {
+//     try {
+//         const parsedData = JSON.parse(localStorage.getItem("formData"));
 
-        if (!parsedData) {
-            console.error("User data not found in local storage.");
-            return;
-        }
+//         if (!parsedData) {
+//             console.error("User data not found in local storage.");
+//             return;
+//         }
 
-        const loggedInUserEmail = parsedData.email;
+//         const loggedInUserEmail = parsedData.email;
 
-        const response = await fetch("https://skillworkcommunity.onrender.com/fetchSenderEmails");
+//         const response = await fetch("https://skillworkcommunity.onrender.com/fetchSenderEmails");
 
-        if (!response.ok) {
-            throw new Error(`Error fetching sender emails: ${response.statusText}`);
-        }
+//         if (!response.ok) {
+//             throw new Error(`Error fetching sender emails: ${response.statusText}`);
+//         }
 
-        const responseData = await response.json();
+//         const responseData = await response.json();
 
-        // console.log("Raw Sender Emails Data:", responseData);
+//         // console.log("Raw Sender Emails Data:", responseData);
 
-        if (Array.isArray(responseData.senderEmails)) {
-            // console.log("Fetched Sender Emails:", responseData.senderEmails);
+//         if (Array.isArray(responseData.senderEmails)) {
+//             // console.log("Fetched Sender Emails:", responseData.senderEmails);
 
-            // Filter the sender emails to include only the logged-in user's email
-            const relevantSenderEmails = responseData.senderEmails.filter(email => email !== loggedInUserEmail);
+//             // Filter the sender emails to include only the logged-in user's email
+//             const relevantSenderEmails = responseData.senderEmails.filter(email => email !== loggedInUserEmail);
 
-            // Display relevant sender emails
-            displaySenderEmails(relevantSenderEmails);
-        } else {
-            throw new Error("Invalid data format received for sender emails.");
-        }
-    } catch (error) {
-        console.error("Error fetching sender emails:", error);
-    }
-}
+//             // Display relevant sender emails
+//             displaySenderEmails(relevantSenderEmails);
+//         } else {
+//             throw new Error("Invalid data format received for sender emails.");
+//         }
+//     } catch (error) {
+//         console.error("Error fetching sender emails:", error);
+//     }
+// }
 
         // Function to display sender emails in the chat list
         function displaySenderEmails(senderEmails) {
