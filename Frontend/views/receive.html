@@ -524,24 +524,24 @@ function getCurrentTimestamp() {
             } catch (error) {
                 console.error("Error fetching messages:", error);
             }
-        }
+        // }
     
-        // Event listener when the DOM content is loaded
-        document.addEventListener("DOMContentLoaded", async function () {
-            const parsedData = JSON.parse(localStorage.getItem("formData"));
+        // // Event listener when the DOM content is loaded
+        // document.addEventListener("DOMContentLoaded", async function () {
+        //     const parsedData = JSON.parse(localStorage.getItem("formData"));
     
-            if (parsedData) {
-                const loggedInUserEmail = parsedData.email;
+        //     if (parsedData) {
+        //         const loggedInUserEmail = parsedData.email;
     
-                // Fetch and display messages for the logged-in user
-                await fetchMessagesForLoggedInUser(loggedInUserEmail);
+        //         // Fetch and display messages for the logged-in user
+        //         await fetchMessagesForLoggedInUser(loggedInUserEmail);
     
-                // Fetch and display sender emails for the chat list
-                await fetchSenderEmails();
-            } else {
-                console.error("User data not found in local storage.");
-            }
-        });
+        //         // Fetch and display sender emails for the chat list
+        //         await fetchSenderEmails();
+        //     } else {
+        //         console.error("User data not found in local storage.");
+        //     }
+        // });
     
        // Function to send a message
 
