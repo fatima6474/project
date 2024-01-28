@@ -120,64 +120,73 @@ button:hover {
         <button id="sendBtn">Send</button>
     </div>
     <script>
-       document.getElementById('sendBtn').addEventListener('click', () => {
-    const messageInput = document.getElementById('messageInput');
-    const messageText = messageInput.value;
+        document.getElementById('sendBtn').addEventListener('click', () => {
+            const messageInput = document.getElementById('messageInput');
+            const messageText = messageInput.value;
 
-    // Retrieve receiver email and sender email from URL parameters
-    const receiverEmail = new URLSearchParams(window.location.search).get('email');
-    const senderEmail = new URLSearchParams(window.location.search).get('senderEmail'); // Add this line
+            // Retrieve receiver email from URL parameters
+            const receiverEmail = new URLSearchParams(window.location.search).get('email');
 
-    // Retrieve job description from URL parameters
-    const jobDescription = new URLSearchParams(window.location.search).get('jobDescription');
+            // Retrieve job description from URL parameters
+            const jobDescription = new URLSearchParams(window.location.search).get('jobDescription');
 
-    sendMessage(receiverEmail, senderEmail, jobDescription, messageText); // Pass senderEmail
-});
-
-async function sendMessage(receiverEmail, senderEmail, jobDescription, messageText) {
-    try {
-        // Add a check for empty messageText
-        if (!messageText) {
-            console.error('Message text is empty.');
-            return;
-        }
-
-        console.log('Sending message:', { receiverEmail, senderEmail, jobDescription, messageText });
-
-        const response = await fetch('https://skillworkcommunity.onrender.com/api/text', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                receiverEmail,
-                senderEmail, // Include senderEmail in the request
-                jobDescription,
-                messageText: messageText || '', // Ensure a non-null value
-            }),
-            credentials: 'include',
+            sendMessage(receiverEmail, jobDescription, messageText);
         });
 
-        console.log('Response:', response);
+        async function sendMessage(receiverEmail, jobDescription, messageText) {
+            try {
+                // Add a check for empty messageText
+                if (!messageText) {
+                    console.error('Message text is empty.');
+                    return;
+                }
 
-        if (!response.ok) {
-            const responseBody = await response.text(); // Log the response body
-            console.error(`Error sending message: ${response.status} ${response.statusText}`);
-            console.error('Response Body:', responseBody);
-            throw new Error(`Error sending message: ${response.status} ${response.statusText}`);
+                console.log('Sending message:', { receiverEmail, jobDescription, messageText });
+
+const response = await fetch('https://skillworkcommunity.onrender.com/api/text', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        receiverEmail,
+        senderEmail,
+        jobDescription,
+        messageText: messageText || '', // Ensure a non-null value
+    }),
+    credentials: 'include',
+});
+
+console.log('Response:', response);
+if (!response.ok) {
+        const responseBody = await response.text(); // Log the response body
+        console.error(`Error sending message: ${response.status} ${response.statusText}`);
+        console.error('Response Body:', responseBody);
+        throw new Error(`Error sending message: ${response.status} ${response.statusText}`);
+    }
+
+                // Save message in local storage
+                saveMessageLocally(receiverEmail, jobDescription, messageText);
+
+                // Optionally, you can handle the response or perform UI updates
+                window.location.href = 'displaypage.html'; // Redirect to the desired page
+
+            } catch (error) {
+                console.error('Error sending message:', error);
+            }
         }
 
-        // Save message in local storage
-        saveMessageLocally(receiverEmail, jobDescription, messageText);
+        function saveMessageLocally(receiverEmail, jobDescription, messageText) {
+            const savedMessages = JSON.parse(localStorage.getItem('savedMessage')) || [];
+            savedMessages.push({ receiverEmail, jobDescription, messageText });
+            localStorage.setItem('savedMessage', JSON.stringify(savedMessages));
+        }
 
-        // Optionally, you can handle the response or perform UI updates
-        window.location.href = 'displaypage.html'; // Redirect to the desired page
-
-    } catch (error) {
-        console.error('Error sending message:', error);
-    }
-}
-
+        // Display job details
+        const jobDetailsElement = document.getElementById('jobDetails');
+        const jobDescription = new URLSearchParams(window.location.search).get('jobDescription');
+        jobDetailsElement.textContent += ` ${jobDescription}`;
+   
     </script>
     
 </body>
