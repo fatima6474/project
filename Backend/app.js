@@ -438,6 +438,7 @@ app.delete('/deleteJob/:jobId', async (req, res) => {
 app.get('/receive', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard2.html.html'));
 });
+
 app.post('/api/text', async (req, res) => {
   try {
     const { senderEmail, receiverEmail, jobDescription, messageText } = req.body;
@@ -450,9 +451,10 @@ app.post('/api/text', async (req, res) => {
     res.status(201).send('Text sent successfully');
   } catch (error) {
     console.error('Error saving text:', error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send(`Internal Server Error: ${error.message}`);
   }
 });
+
 
 
 
