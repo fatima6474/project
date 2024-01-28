@@ -127,6 +127,9 @@ button:hover {
             // Retrieve receiver email from URL parameters
             const receiverEmail = new URLSearchParams(window.location.search).get('email');
 
+            // Retrieve sender email from URL parameters
+            const senderEmail = new URLSearchParams(window.location.search).get('senderEmail');
+
             // Retrieve job description from URL parameters
             const jobDescription = new URLSearchParams(window.location.search).get('jobDescription');
 
@@ -137,6 +140,7 @@ button:hover {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    senderEmail, // Include senderEmail in the request body
                     receiverEmail,
                     jobDescription,
                     messageText,
