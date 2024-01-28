@@ -438,13 +438,12 @@ app.delete('/deleteJob/:jobId', async (req, res) => {
 app.get('/receive', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard2.html.html'));
 });
-// / Endpoint to handle message creation
 app.post('/api/text', async (req, res) => {
   try {
-    const {receiverEmail, jobDescription, messageText } = req.body;
+    const { senderEmail, receiverEmail, jobDescription, messageText } = req.body;
     const insertTextQuery = `
-      INSERT INTO text (receiver_email, job_description, message_text)
-      VALUES ($1, $2, $3)
+      INSERT INTO text (sender_email, receiver_email, job_description, message_text)
+      VALUES ($1, $2, $3, $4)
     `;
     const values = [senderEmail, receiverEmail, jobDescription, messageText];
     await pool.query(insertTextQuery, values);
@@ -454,6 +453,7 @@ app.post('/api/text', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 
 app.get("/fetch/talents", async (req, res) => {
