@@ -6,8 +6,6 @@ const saltRounds = 10;
 // const { pool } = require("./app")
 
 
-
-
 const { Pool } = require("pg");
 
 
@@ -96,7 +94,10 @@ router.get("/roles/:roles", async (req, res, next) => {
         const user = await pool.query(queryText, values);
         res.json({success: true, data: user.rows[0], message: "Success"});
       }
-    } catch (err) {
+
+
+    } 
+    catch (err) {
       return next(err)
     }
   })
