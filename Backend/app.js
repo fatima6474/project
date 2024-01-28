@@ -441,7 +441,7 @@ app.get('/receive', (req, res) => {
 
 app.post('/api/text', async (req, res) => {
   try {
-    const { senderEmail, receiverEmail, jobDescription, messageText } = req.body;
+    const {receiverEmail, jobDescription, messageText } = req.body;
     const insertTextQuery = `
       INSERT INTO text (receiver_email, job_description, message_text)
       VALUES ($1, $2, $3)
