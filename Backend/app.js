@@ -100,6 +100,13 @@ app.options('/api/messages', cors(corsOptions));
 //   res.sendStatus(200);
 // });
 
+// Add this middleware to allow CORS with credentials
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://skill-workcommunity.com.ng');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 
 // Cloudinary configuratio
