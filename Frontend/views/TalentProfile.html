@@ -120,7 +120,7 @@ button:hover {
         <button id="sendBtn">Send</button>
     </div>
     <script>
-      document.getElementById('sendBtn').addEventListener('click', () => {
+    document.getElementById('sendBtn').addEventListener('click', () => {
             const messageInput = document.getElementById('messageInput');
             const messageText = messageInput.value;
 
@@ -143,8 +143,13 @@ button:hover {
                 }),
                 credentials: 'include',
             })
-                .then(response => response.json())
-                .then(data => {
+                .then(response => response.text())  // Change here to get the response text
+                .then(responseText => {
+                    console.log('Response Text:', responseText);  // Log the response text
+
+                    // Try parsing the response text as JSON
+                    const data = JSON.parse(responseText);
+
                     const { senderEmail } = data;
                     // Save message in local storage
                     saveMessageLocally(senderEmail, receiverEmail, jobDescription, messageText);
