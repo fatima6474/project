@@ -120,7 +120,7 @@ button:hover {
         <button id="sendBtn">Send</button>
     </div>
     <script>
-     document.getElementById('sendBtn').addEventListener('click', () => {
+      document.getElementById('sendBtn').addEventListener('click', () => {
             const messageInput = document.getElementById('messageInput');
             const messageText = messageInput.value;
 
@@ -130,63 +130,32 @@ button:hover {
             // Retrieve job description from URL parameters
             const jobDescription = new URLSearchParams(window.location.search).get('jobDescription');
 
-            // Fetch sender email from the server
-            fetch('https://skillworkcommunity.onrender.com/api/sender', {
-                method: 'GET',
+            // Fetch sender email from the server along with sending the message
+            fetch('https://skillworkcommunity.onrender.com/api/text', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    receiverEmail,
+                    jobDescription,
+                    messageText,
+                }),
                 credentials: 'include',
             })
                 .then(response => response.json())
                 .then(data => {
-                    // Include sender email in the sendMessage function
-                    sendMessage(data.senderEmail, receiverEmail, jobDescription, messageText);
+                    const { senderEmail } = data;
+                    // Save message in local storage
+                    saveMessageLocally(senderEmail, receiverEmail, jobDescription, messageText);
+
+                    // Optionally, you can handle the response or perform UI updates
+                    window.location.href = 'displaypage.html'; // Redirect to the desired page
                 })
                 .catch(error => {
-                    console.error('Error fetching sender email:', error);
+                    console.error('Error sending message:', error);
                 });
         });
-
-        async function sendMessage(senderEmail, receiverEmail, jobDescription, messageText) {
-            try {
-                // Add a check for empty messageText
-                if (!messageText) {
-                    console.error('Message text is empty.');
-                    return;
-                }
-
-                console.log('Sending message:', { senderEmail, receiverEmail, jobDescription, messageText });
-
-                const response = await fetch('https://skillworkcommunity.onrender.com/api/text', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        senderEmail,
-                        receiverEmail,
-                        jobDescription,
-                        messageText,
-                    }),
-                    credentials: 'include',
-                });
-
-                console.log('Response:', response);
-                if (!response.ok) {
-                    const responseBody = await response.text(); // Log the response body
-                    console.error(`Error sending message: ${response.status} ${response.statusText}`);
-                    console.error('Response Body:', responseBody);
-                    throw new Error(`Error sending message: ${response.status} ${response.statusText}`);
-                }
-
-                // Save message in local storage
-                saveMessageLocally(senderEmail, receiverEmail, jobDescription, messageText);
-
-                // Optionally, you can handle the response or perform UI updates
-                window.location.href = 'displaypage.html'; // Redirect to the desired page
-
-            } catch (error) {
-                console.error('Error sending message:', error);
-            }
-        }
 
         function saveMessageLocally(senderEmail, receiverEmail, jobDescription, messageText) {
             const savedMessages = JSON.parse(localStorage.getItem('savedMessage')) || [];
