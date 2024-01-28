@@ -441,12 +441,12 @@ app.get('/receive', (req, res) => {
 
 app.post('/api/text', async (req, res) => {
   try {
-    const {receiverEmail, jobDescription, messageText } = req.body;
+    const { senderEmail, receiverEmail, jobDescription, messageText } = req.body;
     const insertTextQuery = `
-      INSERT INTO text (receiver_email, job_description, message_text)
-      VALUES ($1, $2, $3)
+      INSERT INTO text (sender_email, receiver_email, job_description, message_text)
+      VALUES ($1, $2, $3, $4)
     `;
-    const values = [receiverEmail, jobDescription, messageText];
+    const values = [senderEmail, receiverEmail, jobDescription, messageText];
     await pool.query(insertTextQuery, values);
     res.status(201).send('Text sent successfully');
   } catch (error) {
