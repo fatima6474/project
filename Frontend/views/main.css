@@ -422,7 +422,7 @@ h2 {
     
 
 .slideshow-container {
-    width: 700px;
+    width: 500px;
     text-align: center;
     /* padding-left: 300px; */
     padding-bottom: 50px;
@@ -641,7 +641,7 @@ body {
     height: 30vh;
     margin-top: 30px;
     padding: 2vh;
-    margin-right: -3000px;
+    margin-right: -2000px;
 }
 .reviews .side h5{
     margin-top: 2vh;
