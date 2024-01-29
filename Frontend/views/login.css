@@ -433,7 +433,9 @@ nav button{
     nav ul li a:hover {
         font-weight: bold;
     }
-    
+    #sign-up{
+        padding-right: 60px;
+    }
     nav {
         display: flex;
         justify-content: center;
