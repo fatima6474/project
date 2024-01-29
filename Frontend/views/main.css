@@ -621,46 +621,42 @@ body {
 
 
 
-
-.reviews{
-    width: 70%;
-    display: block;
-    height: 200vh;
-    gap: 10vh;
-    padding: 10vh 0vh;
-    /* margin-right: 90000px; */
-    margin-bottom: -60vh;
+#Reviews_Intro {
+    margin-top: 20px;
+    margin-bottom: 0;
 }
 
-.reviews .side{
-    width: 50%;
-    justify-content: left;
-    /* margin-left: -240px; */
-    background-color: white;
-    border-radius: 30px;
-    height: 30vh;
-    margin-top: 30px;
-    padding: 2vh;
-    margin-right: -3000px;
+.reviews {
+    flex-direction: column;
+    gap: 20px;
+    /* margin: 20%; */
+    margin-left: 0;
+    /* margin-right: 90px; */
+    margin-top: 50px;
+    margin-bottom: 500px;
 }
-.reviews .side h5{
-    margin-top: 2vh;
-    font-size: 13px;
-}
-.reviews .side .text{
-    margin-bottom: 2vh;
-}
-.reviews .side .profile{
-    display: flex;
-}
-.reviews .side img{
-    width: 10vh;
-    height: 10vh;
-    border-radius: 50%;
 
+.reviews .side {
+    width: 100%;
+}
+
+.reviews .side img {
+    width: 20%;
+    height: auto;
+    border-radius: 90%;
+}
+.faq-item {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.reviews .side .profileName {
+    margin-left: 10%;
 }
 .ii{
-    text-align: left;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 10px;
+
 }
 .reviews .side .profileName{
     margin-left: 3vh;
@@ -686,11 +682,6 @@ header {
 
     text-align: center;
     padding: 10px ;
-}
-.review{
-    display: block;
-    width: 40%;margin-right: 90px;
-    padding-left: 100px;
 }
 .com{
     background-color:   #3498db; 
