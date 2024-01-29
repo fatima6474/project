@@ -233,7 +233,7 @@ nav button{
             position: relative;
             width: 100%;
             /* margin-right: 10px; */
-            height: 100vh;
+            height: 100%;
             backdrop-filter: blur(15px);
         }
         
@@ -247,9 +247,27 @@ nav button{
             padding: 30px 20px; /* Adjusted padding for smaller screens */
             border: 2px solid #3a71d3;
             border-radius: 15px;
-            margin-left: 5%; 
+            /* margin-left: 5%;  */
+        }
+        .main {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(12px);
         }
         
+        .container {
+            margin-top: 10vh;
+            z-index: 1;
+            width: 90%; /* Adjusted width for better responsiveness */
+            max-width: 300px; /* Added max-width for better responsiveness */
+            margin: 0 auto; /* Center the container */
+            background-color: whitesmoke;
+            padding: 30px;
+            height: 200%;
+            border: 2px solid #3a71d3;
+            border-radius: 15px;
+        }
         h1 {
             text-align: center;
             font-weight: bold;
