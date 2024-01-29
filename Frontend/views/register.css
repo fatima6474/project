@@ -237,18 +237,7 @@ nav button{
             backdrop-filter: blur(15px);
         }
         
-        .container {
-            margin-top: 17vh;
-            z-index: 1;
-            
-            width: 50vh;
-            height: 78vh;
-            background-color: whitesmoke;
-            padding: 30px 20px; /* Adjusted padding for smaller screens */
-            border: 2px solid #3a71d3;
-            border-radius: 15px;
-            /* margin-left: 5%;  */
-        }
+        
         .main {
             position: relative;
             width: 100%;
@@ -257,7 +246,7 @@ nav button{
         }
         
         .container {
-            margin-top: 10vh;
+            margin-top: 17vh;
             z-index: 1;
             width: 90%; /* Adjusted width for better responsiveness */
             max-width: 300px; /* Added max-width for better responsiveness */
