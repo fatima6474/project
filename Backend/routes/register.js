@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 // const { pool } = require("./app")
 
+const apiInstance = new SibApiV3Sdk({ apiKey: process.env.SENDINBLUE_API_KEY });
 
 const { Pool } = require("pg");
 
@@ -35,6 +36,20 @@ const pool = new Pool({
 
 
 
+const emailData = {
+  to: { email: user.email },
+  subject: 'Welcome to Skill Work Community!',
+  htmlContent: 'Hi there, thanks for signing up!...',
+  from: { email: 'welcome@skill-workcommunity.com.ng' }, // Replace with your verified sender address
+};
+
+apiInstance.transactionalEmailsApi.sendTransacEmail(emailData)
+  .then(() => {
+    console.log('Welcome email sent to:', user.email);
+  })
+  .catch((error) => {
+    console.error('Error sending email:', error);
+  });
 
 
 
