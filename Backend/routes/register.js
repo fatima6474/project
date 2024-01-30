@@ -79,6 +79,7 @@ router.get("/roles/:roles", async (req, res, next) => {
 })
 
 
+
 router.post("/", async (req, res, next) => {
   let hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
   let user; // Move the declaration here
@@ -92,29 +93,27 @@ router.post("/", async (req, res, next) => {
       const values = [req.body.name, req.body.email, hashedPassword, req.body.roles];
       user = await pool.query(queryText, values);
       res.json({ success: true, data: user.rows[0], message: "Success" });
-    }
 
-    const emailData = {
-      to: { email: user.rows[0].email }, // Access the email property of the user object
-      subject: 'Welcome to Skill Work Community!',
-      htmlContent: 'Hi there, thanks for signing up!...',
-      from: { email: 'welcome@skill-workcommunity.com.ng' },
-    };
-    
-    apiInstance.transactionalEmailsApi.sendTransacEmail(emailData)
-      .then(() => {
-        console.log('Welcome email sent to:', user.rows[0].email);
-      })
-      .catch((error) => {
-        console.error('Error sending email:', error);
-      });
-    
+      // Move the email sending part inside the else block
+      const emailData = {
+        to: { email: user.rows[0].email }, // Access the email property of the user object
+        subject: 'Welcome to Skill Work Community!',
+        htmlContent: 'Hi there, thanks for signing up!...',
+        from: { email: 'welcome@skill-workcommunity.com.ng' },
+      };
+
+      apiInstance.transactionalEmailsApi.sendTransacEmail(emailData)
+        .then(() => {
+          console.log('Welcome email sent to:', user.rows[0].email);
+        })
+        .catch((error) => {
+          console.error('Error sending email:', error);
+        });
+    }
   } catch (err) {
     return next(err);
   }
 });
-
-
 
 
 
