@@ -43,7 +43,7 @@
             overflow: hidden;
         }
 
-        #chatlist {
+        #chatList {
             width: 20%;
             background-color: #ddd;
             padding: 20px;
@@ -164,7 +164,7 @@
     background-color: #f4f4f4;
 }
 
-#chatlist {
+#chatList {
     max-width: 600px;
     margin: 20px auto;
     background-color: #fff;
@@ -172,17 +172,17 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#chatlist p {
+#chatList p {
     margin: 0;
     padding: 5px;
     border-bottom: 1px solid #ddd;
 }
 
-#chatlist p:last-child {
+#chatList p:last-child {
     border-bottom: none;
 }   @media screen and (max-width: 600px) {
             /* Adjust styles for screens with a width of 600 pixels or less (typical mobile devices) */
-            #chatlist,
+            #chatList,
             #chatContent {
                 padding: 10px; /* Reduced padding for better mobile layout */
             }
@@ -207,7 +207,7 @@
 
 <body>
     <div id="chatContainer">
-        <div id="chatlist">
+        <div id="chatList">
             <!-- Sender emails will be displayed here dynamically -->
         </div>
 
@@ -230,91 +230,91 @@
         </div>
     </div>
     <!-- Add this script tag to include Socket.IO -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
 
     <script>
        
-//        document.addEventListener("DOMContentLoaded", function () {
-//     const queryParams = new URLSearchParams(window.location.search);
-//     const receiverEmail = queryParams.get("email");
-//     const senderEmail = queryParams.get("senderEmail");
-//     const jobDescription = queryParams.get("jobDescription");
+       document.addEventListener("DOMContentLoaded", function () {
+    const queryParams = new URLSearchParams(window.location.search);
+    const receiverEmail = queryParams.get("email");
+    const senderEmail = queryParams.get("senderEmail");
+    const jobDescription = queryParams.get("jobDescription");
 
-//     // Display the relevant information in your chatlistsss (you need to implement this)
-//     // displayConversationInfo(receiverEmail, jobDescription);
+    // Display the relevant information in your chatlist (you need to implement this)
+    // displayConversationInfo(receiverEmail, jobDescription);
 
-//     // Fetch and display messages for the specified conversation
-//     fetchAndDisplayMessages(receiverEmail, senderEmail, jobDescription);
-// });
-
-// ...
-
-// async function fetchAndDisplayMessages(receiverEmail, senderEmail, jobDescription) {
-//     try {
-//         // Fetch messages from the server based on the conversation parameters
-//         const response = await fetch(`https://skillworkcommunity.onrender.com/fetchMessagesForConversation?receiverEmail=${receiverEmail}&senderEmail=${senderEmail}&jobDescription=${jobDescription}`);
-
-//         if (!response.ok) {
-//             throw new Error(`Error fetching messages: ${response.statusText}`);
-//         }
-
-//         const responseData = await response.json();
-//         const receivedMessages = responseData.messages;
-
-//         console.log("Received Messages:", receivedMessages);
-
-//         // Display the received messages in your chatlistsss
-//         // Implement your logic to display messages in the chatlistsss
-//     } catch (error) {
-//         console.error("Error fetching messages:", error);
-//     }
-// }
+    // Fetch and display messages for the specified conversation
+    fetchAndDisplayMessages(receiverEmail, senderEmail, jobDescription);
+});
 
 // ...
 
-// async function fetchSenderEmails() {
-//     try {
-//         const parsedData = JSON.parse(localStorage.getItem("formData"));
+async function fetchAndDisplayMessages(receiverEmail, senderEmail, jobDescription) {
+    try {
+        // Fetch messages from the server based on the conversation parameters
+        const response = await fetch(`https://skillworkcommunity.onrender.com/fetchMessagesForConversation?receiverEmail=${receiverEmail}&senderEmail=${senderEmail}&jobDescription=${jobDescription}`);
 
-//         if (!parsedData) {
-//             console.error("User data not found in local storage.");
-//             return;
-//         }
+        if (!response.ok) {
+            throw new Error(`Error fetching messages: ${response.statusText}`);
+        }
 
-//         const loggedInUserEmail = parsedData.email;
+        const responseData = await response.json();
+        const receivedMessages = responseData.messages;
 
-//         const response = await fetch("https://skillworkcommunity.onrender.com/fetchSenderEmails");
+        console.log("Received Messages:", receivedMessages);
 
-//         if (!response.ok) {
-//             throw new Error(`Error fetching sender emails: ${response.statusText}`);
-//         }
+        // Display the received messages in your chatlist
+        // Implement your logic to display messages in the chatlist
+    } catch (error) {
+        console.error("Error fetching messages:", error);
+    }
+}
 
-//         const responseData = await response.json();
+// ...
 
-//         // console.log("Raw Sender Emails Data:", responseData);
+async function fetchSenderEmails() {
+    try {
+        const parsedData = JSON.parse(localStorage.getItem("formData"));
 
-//         if (Array.isArray(responseData.senderEmails)) {
-//             // console.log("Fetched Sender Emails:", responseData.senderEmails);
+        if (!parsedData) {
+            console.error("User data not found in local storage.");
+            return;
+        }
 
-//             // Filter the sender emails to include only the logged-in user's email
-//             const relevantSenderEmails = responseData.senderEmails.filter(email => email !== loggedInUserEmail);
+        const loggedInUserEmail = parsedData.email;
 
-//             // Display relevant sender emails
-//             displaySenderEmails(relevantSenderEmails);
-//         } else {
-//             throw new Error("Invalid data format received for sender emails.");
-//         }
-//     } catch (error) {
-//         console.error("Error fetching sender emails:", error);
-//     }
-// }
+        const response = await fetch("https://skillworkcommunity.onrender.com/fetchSenderEmails");
+
+        if (!response.ok) {
+            throw new Error(`Error fetching sender emails: ${response.statusText}`);
+        }
+
+        const responseData = await response.json();
+
+        // console.log("Raw Sender Emails Data:", responseData);
+
+        if (Array.isArray(responseData.senderEmails)) {
+            // console.log("Fetched Sender Emails:", responseData.senderEmails);
+
+            // Filter the sender emails to include only the logged-in user's email
+            const relevantSenderEmails = responseData.senderEmails.filter(email => email !== loggedInUserEmail);
+
+            // Display relevant sender emails
+            displaySenderEmails(relevantSenderEmails);
+        } else {
+            throw new Error("Invalid data format received for sender emails.");
+        }
+    } catch (error) {
+        console.error("Error fetching sender emails:", error);
+    }
+}
 
         // Function to display sender emails in the chat list
         function displaySenderEmails(senderEmails) {
-            const chatlistsss = document.getElementById("chatlistssss");
+            const chatList = document.getElementById("chatList");
     
             // Clear existing sender emails in the chat list
-            chatlistsss.innerHTML = "";
+            chatList.innerHTML = "";
     
             senderEmails.forEach((senderEmail) => {
                 const senderEmailElement = document.createElement("div");
@@ -339,7 +339,7 @@
                     });
                 });
     
-                chatlistssss.appendChild(senderEmailElement);
+                chatList.appendChild(senderEmailElement);
             });
         }
     
@@ -526,22 +526,22 @@ function getCurrentTimestamp() {
             }
         }
     
-        // // Event listener when the DOM content is loaded
-        // document.addEventListener("DOMContentLoaded", async function () {
-        //     const parsedData = JSON.parse(localStorage.getItem("formData"));
+        // Event listener when the DOM content is loaded
+        document.addEventListener("DOMContentLoaded", async function () {
+            const parsedData = JSON.parse(localStorage.getItem("formData"));
     
-        //     if (parsedData) {
-        //         const loggedInUserEmail = parsedData.email;
+            if (parsedData) {
+                const loggedInUserEmail = parsedData.email;
     
-        //         // Fetch and display messages for the logged-in user
-        //         await fetchMessagesForLoggedInUser(loggedInUserEmail);
+                // Fetch and display messages for the logged-in user
+                await fetchMessagesForLoggedInUser(loggedInUserEmail);
     
-        //         // Fetch and display sender emails for the chat list
-        //         await fetchSenderEmails();
-        //     } else {
-        //         console.error("User data not found in local storage.");
-        //     }
-        // });
+                // Fetch and display sender emails for the chat list
+                await fetchSenderEmails();
+            } else {
+                console.error("User data not found in local storage.");
+            }
+        });
     
        // Function to send a message
 
@@ -631,10 +631,10 @@ function displayNotification(message) {
 
         // Function to display sender emails in the chat list
 function displaySenderEmails(senderEmails) {
-    const chatlistssss = document.getElementById("chatlistssss");
+    const chatList = document.getElementById("chatList");
 
     // Clear existing sender emails in the chat list
-    chatlistsss.innerHTML = "";
+    chatList.innerHTML = "";
 
     senderEmails.forEach((senderEmail) => {
         const senderEmailElement = document.createElement("div");
@@ -659,7 +659,7 @@ function displaySenderEmails(senderEmails) {
             });
         });
 
-        chatlistsss.appendChild(senderEmailElement);
+        chatList.appendChild(senderEmailElement);
     });
 }
 // Add this function to display sent messages
@@ -693,75 +693,5 @@ async function fetchAndDisplaySentMessages() {
         console.error("Error fetching and displaying sent messages:", error);
     }
 }
-// ...
-
-// // Function to fetch sent messages based on the logged-in user's email
-// async function fetchSentMessages(loggedInUserEmail) {
-//     try {
-//         const response = await fetch(`https://skillworkcommunity.onrender.com/fetchSentMessages?senderEmail=${loggedInUserEmail}`);
-
-//         if (!response.ok) {
-//             throw new Error(`Error fetching sent messages: ${response.statusText}`);
-//         }
-
-//         const responseData = await response.json();
-
-//         // console.log("Raw Sent Messages Data:", responseData);
-
-//         if (Array.isArray(responseData.sentMessages)) {
-//             // console.log("Fetched Sent Messages:", responseData.sentMessages);
-//             return responseData.sentMessages;
-//         } else {
-//             throw new Error("Invalid data format received for sent messages.");
-//         }
-//     } catch (error) {
-//         console.error("Error fetching sent messages:", error);
-//         return [];
-//     }
-// }
-
-// ...
-
-// Modify the displayReceiverMessages function to fetch and display sent messages
-async function displayReceiverMessages(receiverMessages, loggedInUserEmail) {
-    const messagesContainer = document.getElementById("messageContainer");
-    messagesContainer.innerHTML = ""; // Clear existing messages
-
-    // Display received messages
-    receiverMessages.forEach((message, index) => {
-        const messageContainer = document.createElement("div");
-        messageContainer.classList.add("message");
-        messageContainer.id = `message_${index + 1}`;
-
-        const textElement = document.createElement("p");
-        textElement.textContent = `Text: ${message.text}`;
-
-        const timestampElement = document.createElement("p");
-        timestampElement.textContent = `Timestamp: ${message.timestamp}`;
-
-        if (message.senderEmail === loggedInUserEmail) {
-            // If the message is sent by the logged-in user, apply user-message style
-            messageContainer.classList.add("user-message");
-        } else {
-            // If the message is received, apply talent-message style
-            messageContainer.classList.add("talent-message");
-        }
-
-        messageContainer.appendChild(textElement);
-        messageContainer.appendChild(timestampElement);
-
-        messagesContainer.appendChild(messageContainer);
-    });
-
-    // // Fetch and display sent messages
-    // const sentMessages = await fetchSentMessages(loggedInUserEmail);
-    // displaySentMessages(sentMessages);
-}
-
-// ...
 
   </script>
-    
-</body>
-
-</html>
