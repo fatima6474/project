@@ -4,7 +4,7 @@ const db = require("../db");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 // const { pool } = require("./app")
-
+const nodemailer = require("nodemailer");
 
 
 
