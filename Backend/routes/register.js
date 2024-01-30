@@ -4,7 +4,7 @@ const db = require("../db");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 // const { pool } = require("./app")
-const user = await pool.query(queryText, values);
+// const user = await pool.query(queryText, values);
 const SibApiV3Sdk = require('sib-api-v3-sdk');
 
 const apiInstance = new SibApiV3Sdk({ apiKey: process.env.SENDINBLUE_API_KEY });
