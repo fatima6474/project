@@ -79,46 +79,40 @@ router.get("/roles/:roles", async (req, res, next) => {
 })
 
 
+router.post("/", async (req, res, next) => {
+  let hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+  let user; // Move the declaration here
 
-
-
-  router.post("/", async (req, res, next) =>{
-    let hashedPassword = await bcrypt.hash(req.body.password, saltRounds)
-    try {
-      const results = await pool.query("SELECT email FROM formusers WHERE email=$1", [req.body.email]);
-      if (results.rows.length > 0) {
-        res.json({ message: "Already Exists" });
-      } else {
-        const queryText = ("INSERT INTO formusers (name, email, password, roles) VALUES ($1, $2, $3, $4) RETURNING *")
-        const values = [req.body.name, req.body.email, hashedPassword, req.body.roles];
-        const user = await pool.query(queryText, values);
-        res.json({success: true, data: user.rows[0], message: "Success"});
-      }
-
-
-
-      const emailData = {
-        to: { email: user.email },
-        subject: 'Welcome to Skill Work Community!',
-        htmlContent: 'Hi there, thanks for signing up!...',
-        from: { email: 'welcome@skill-workcommunity.com.ng' }, // Replace with your verified sender address
-      };
-      
-      apiInstance.transactionalEmailsApi.sendTransacEmail(emailData)
-        .then(() => {
-          console.log('Welcome email sent to:', user.email);
-        })
-        .catch((error) => {
-          console.error('Error sending email:', error);
-        });
-      
-      
-      
-    } 
-    catch (err) {
-      return next(err)
+  try {
+    const results = await pool.query("SELECT email FROM formusers WHERE email=$1", [req.body.email]);
+    if (results.rows.length > 0) {
+      res.json({ message: "Already Exists" });
+    } else {
+      const queryText = "INSERT INTO formusers (name, email, password, roles) VALUES ($1, $2, $3, $4) RETURNING *";
+      const values = [req.body.name, req.body.email, hashedPassword, req.body.roles];
+      user = await pool.query(queryText, values);
+      res.json({ success: true, data: user.rows[0], message: "Success" });
     }
-  })
+
+    const emailData = {
+      to: { email: user.email }, // Use the user variable here
+      subject: 'Welcome to Skill Work Community!',
+      htmlContent: 'Hi there, thanks for signing up!...',
+      from: { email: 'welcome@skill-workcommunity.com.ng' },
+    };
+
+    apiInstance.transactionalEmailsApi.sendTransacEmail(emailData)
+      .then(() => {
+        console.log('Welcome email sent to:', user.email);
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+      });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 
 
 
