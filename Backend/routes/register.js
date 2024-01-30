@@ -77,6 +77,11 @@ router.post("/", async (req, res, next) => {
     
         Your journey to discovering and collaborating with local talents starts now. If you have any questions or need assistance, feel free to reach out. Our team is here to help.
     
+
+       Contact Support:
+        - Email:support@skillworkcommunity.com
+        - Phone: +234 8064743907
+
         Thank you for joining Skill Work Community. Let's build and grow together!
     
         Best regards,
