@@ -81,43 +81,39 @@ router.get("/roles/:roles", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   let hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
-  let user;
+  let user; // Move the declaration here
 
   try {
     const results = await pool.query("SELECT email FROM formusers WHERE email=$1", [req.body.email]);
     if (results.rows.length > 0) {
-      return res.status(409).json({ message: "Email already exists" }); // HTTP 409 Conflict status for duplicate email
+      res.json({ message: "Already Exists" });
     } else {
       const queryText = "INSERT INTO formusers (name, email, password, roles) VALUES ($1, $2, $3, $4) RETURNING *";
       const values = [req.body.name, req.body.email, hashedPassword, req.body.roles];
       user = await pool.query(queryText, values);
-      res.status(201).json({ success: true, data: user.rows[0], message: "User created successfully" });
-
-      // Move the email sending part inside the else block
-      const emailData = {
-        to: { email: user.rows[0].email },
-        subject: 'Welcome to Skill Work Community!',
-        htmlContent: 'Hi there, thanks for signing up!...',
-        from: { email: 'welcome@skill-workcommunity.com.ng' },
-      };
-
-      apiInstance.transactionalEmailsApi.sendTransacEmail(emailData)
-        .then(() => {
-          console.log('Email sent successfully to:', user.rows[0].email);
-        })
-        .catch((error) => {
-          console.error('Error sending email:', error);
-          console.log('Email not sent to:', user.rows[0].email);
-        });
+      res.json({ success: true, data: user.rows[0], message: "Success" });
     }
+
+   const emailData = {
+  to: { email: user.rows[0].email }, // Access the email property of the user object
+  subject: 'Welcome to Skill Work Community!',
+  htmlContent: 'Hi there, thanks for signing up!...',
+  from: { email: 'welcome@skill-workcommunity.com.ng' },
+};
+
+apiInstance.transactionalEmailsApi.sendTransacEmail(emailData)
+  .then(() => {
+    console.log('Welcome email sent to:', user.rows[0].email);
+  })
+  .catch((error) => {
+    console.error('Error sending email:', error);
+  });
+
   } catch (err) {
-    if (err.code === '23505') {
-      return res.status(409).json({ message: "Email already exists" }); // HTTP 409 Conflict status for duplicate email
-    } else {
-      return next(err);
-    }
+    return next(err);
   }
 });
+
 
 
 
