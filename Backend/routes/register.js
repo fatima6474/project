@@ -33,8 +33,8 @@ const pool = new Pool({
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'skillworkcommunity@gmail.com', // replace with your email
-    pass: 'fatima647439' // replace with your email password
+    user: 'fateemaah5@gmail.com', // replace with your email
+    pass: 'gccp ukbt tfat jzkh' // replace with your email password
   }
 });
 
