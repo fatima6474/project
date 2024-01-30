@@ -95,19 +95,20 @@ router.post("/", async (req, res, next) => {
     }
 
     const emailData = {
-      to: { email: user.email }, // Use the user variable here
+      to: { email: user.rows[0].email }, // Access the email property of the user object
       subject: 'Welcome to Skill Work Community!',
       htmlContent: 'Hi there, thanks for signing up!...',
       from: { email: 'welcome@skill-workcommunity.com.ng' },
     };
-
+    
     apiInstance.transactionalEmailsApi.sendTransacEmail(emailData)
       .then(() => {
-        console.log('Welcome email sent to:', user.email);
+        console.log('Welcome email sent to:', user.rows[0].email);
       })
       .catch((error) => {
         console.error('Error sending email:', error);
       });
+    
   } catch (err) {
     return next(err);
   }
