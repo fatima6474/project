@@ -4,6 +4,8 @@ const db = require("../db");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 // const { pool } = require("./app")
+const user = await pool.query(queryText, values);
+const SibApiV3Sdk = require('sib-api-v3-sdk');
 
 const apiInstance = new SibApiV3Sdk({ apiKey: process.env.SENDINBLUE_API_KEY });
 
@@ -31,25 +33,6 @@ const pool = new Pool({
 
 
 
-
-
-
-
-
-const emailData = {
-  to: { email: user.email },
-  subject: 'Welcome to Skill Work Community!',
-  htmlContent: 'Hi there, thanks for signing up!...',
-  from: { email: 'welcome@skill-workcommunity.com.ng' }, // Replace with your verified sender address
-};
-
-apiInstance.transactionalEmailsApi.sendTransacEmail(emailData)
-  .then(() => {
-    console.log('Welcome email sent to:', user.email);
-  })
-  .catch((error) => {
-    console.error('Error sending email:', error);
-  });
 
 
 
@@ -111,6 +94,24 @@ router.get("/roles/:roles", async (req, res, next) => {
       }
 
 
+
+      const emailData = {
+        to: { email: user.email },
+        subject: 'Welcome to Skill Work Community!',
+        htmlContent: 'Hi there, thanks for signing up!...',
+        from: { email: 'welcome@skill-workcommunity.com.ng' }, // Replace with your verified sender address
+      };
+      
+      apiInstance.transactionalEmailsApi.sendTransacEmail(emailData)
+        .then(() => {
+          console.log('Welcome email sent to:', user.email);
+        })
+        .catch((error) => {
+          console.error('Error sending email:', error);
+        });
+      
+      
+      
     } 
     catch (err) {
       return next(err)
