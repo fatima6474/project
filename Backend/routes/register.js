@@ -8,7 +8,8 @@ const saltRounds = 10;
 // const user = await pool.query(queryText, values);
 // const SibApiV3Sdk = require('sib-api-v3-sdk');
 
-const apiInstance = new SibApiV3Sdk({ apiKey: process.env.SENDINBLUE_API_KEY });
+// const apiInstance = new SibApiV3Sdk({ apiKey: process.env.SENDINBLUE_API_KEY });
+const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi({ apiKey: process.env.SENDINBLUE_API_KEY });
 
 const { Pool } = require("pg");
 
