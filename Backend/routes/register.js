@@ -58,13 +58,32 @@ router.post("/", async (req, res, next) => {
       const values = [req.body.name, req.body.email, hashedPassword, req.body.roles];
       const user = await pool.query(queryText, values);
 
-      // Send email to the user
+      // // Send email to the user
+      // const mailOptions = {
+      //   from: 'skillworkcommunity@gmail.com', // replace with your email
+      //   to: req.body.email,
+      //   subject: 'Welcome to skill work community',
+      //   text: `Hello ${req.body.name},\n\nThank you for signing up on Your App!`
+      // };
       const mailOptions = {
-        from: 'skillworkcommunity@gmail.com', // replace with your email
+        from: 'skillworkcommunity@gmail.com',
         to: req.body.email,
-        subject: 'Welcome to skill work community',
-        text: `Hello ${req.body.name},\n\nThank you for signing up on Your App!`
-      };
+        subject: 'Welcome to Skill Work Community',
+        text: `Dear ${req.body.name},
+    
+        Welcome to Skill Work Community! 🎉
+    
+        We're thrilled to have you as part of our community. Skill Work Community is all about connecting clients with local skills. Whether you're looking for talented professionals or offering your skills to others, you're in the right place.
+    
+        Your journey to discovering and collaborating with local talents starts now. If you have any questions or need assistance, feel free to reach out. Our team is here to help.
+    
+        Thank you for joining Skill Work Community. Let's build and grow together!
+    
+        Best regards,
+        The Skill Work Community Team
+        `
+    };
+    
 
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
