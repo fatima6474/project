@@ -717,8 +717,8 @@ h2{
     background-color: #0156d7;
     /* background-color: rgb(47, 44, 44); */
     /* background-color: transparent; */
-    /* position: fixed; */
-    position: sticky;
+    position: static;
+    
     z-index: 100;
     margin: 0px 2px;
     padding-left: 4%;
