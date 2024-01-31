@@ -34,8 +34,8 @@ const pool = new Pool({
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'skillworkcommunity@gmail.com', // replace with your email
-    pass: 'ktik lfhp mnxx hmqs' // replace with your email password
+    user: 'skillworkcommunity@gmail.com',
+    pass: 'ktik lfhp mnxx hmqs' 
   }
 });
 
@@ -76,12 +76,29 @@ router.post("/", async (req, res, next) => {
       expiresIn: 60 * 60,
     });
 
-    // Send email to the user
     const mailOptions = {
       from: 'skillworkcommunity@gmail.com',
       to: email,
-      subject: 'Login Successful - Skill Work Community',
-      text: `Dear ${username},\n\nYou have successfully logged in to Skill Work Community!`
+      subject: 'Welcome Back to Skill Work Community!',
+      text: `Dear ${username},
+
+      Welcome back to Skill Work Community! 🎉
+
+      We're thrilled to have you back and hope you're ready for another round of connecting with local talents and exploring new opportunities.
+
+      Your last login was a reminder of the vibrant community we have, and we're excited to continue supporting you in your journey. Whether you're searching for skilled professionals or offering your expertise to others, Skill Work Community is the perfect place to build connections.
+
+      As you explore the platform, remember that our team is here to assist you. If you have any questions or need help with anything, feel free to reach out. We're dedicated to making your experience enjoyable and rewarding.
+
+      Contact Support:
+      - Email: support@skillworkcommunity.com
+      - Phone: +234 8064743907
+
+      Thank you for being a valued member of Skill Work Community. Let's continue building and growing together!
+
+      Best regards,
+      The Skill Work Community Team
+      `
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
