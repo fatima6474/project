@@ -26,6 +26,22 @@ const pool = new Pool({
   },
   sslmode: 'require'
 });
+
+
+
+
+// Nodemailer configuration
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'skillworkcommunity@gmail.com', // replace with your email
+    pass: 'ktik lfhp mnxx hmqs' // replace with your email password
+  }
+});
+
+
+
+
 router.get("/", async function (req, res, next) {
     try {
         const results = await db.query("SELECT * FROM formusers")
@@ -40,51 +56,50 @@ router.get("/", async function (req, res, next) {
 
 router.post("/", async (req, res, next) => {
   try {
-      const foundUser = await pool.query("SELECT * FROM formusers WHERE email=$1", [req.body.email])
-      if (foundUser.rows.length == 0) {
-          return res.json({ message: "Invalid" });
-      }
-      const hashedPassword = await bcrypt.compare(
-          req.body.password,
-          foundUser.rows[0].password
-        );
-        if (hashedPassword === false) {
-          return res.json({ message: "Invalid" });
-        }
-        
-        const roles = foundUser.rows[0].roles
-        const username = foundUser.rows[0].name
-        console.log(username);
-        const email = foundUser.rows[0].email
-        const id = foundUser.rows[0].id
-        console.log(foundUser.rows);
-        console.log(username);
-        console.log(roles);
-        const token = jwt.sign({ username }, secret, {
-          expiresIn: 60 * 60,
-        });
+    const foundUser = await pool.query("SELECT * FROM formusers WHERE email=$1", [req.body.email]);
+    if (foundUser.rows.length === 0) {
+      return res.json({ message: "Invalid" });
+    }
 
-        return res.json({ token, message: "logged", username, roles, email, id});
+    const hashedPassword = await bcrypt.compare(req.body.password, foundUser.rows[0].password);
+    if (hashedPassword === false) {
+      return res.json({ message: "Invalid" });
+    }
 
-    // After successfully logging in
-    const user = {
-      username,
-      roles,
-      email,
-      id,
+    const roles = foundUser.rows[0].roles;
+    const username = foundUser.rows[0].name;
+    const email = foundUser.rows[0].email;
+    const id = foundUser.rows[0].id;
+
+    // Generate JWT token
+    const token = jwt.sign({ username }, secret, {
+      expiresIn: 60 * 60,
+    });
+
+    // Send email to the user
+    const mailOptions = {
+      from: 'skillworkcommunity@gmail.com',
+      to: email,
+      subject: 'Login Successful - Skill Work Community',
+      text: `Dear ${username},\n\nYou have successfully logged in to Skill Work Community!`
     };
 
-    // Respond with the user information
-    res.json({ token, message: "logged", ...user });
-      
-    console.log("Login successful:", { token, message: "logged", username, roles, email, id });
-    res.json({ token, message: "logged", username, roles, email, id });
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.error('Error sending email:', error);
+        res.json({ token, message: "logged", username, roles, email, id, emailStatus: "Email not sent" });
+      } else {
+        console.log('Email sent successfully:', info.response);
+        res.json({ token, message: "logged", username, roles, email, id, emailStatus: "Email sent successfully" });
+      }
+    });
   } catch (err) {
     console.error("Error during login:", err);
     return next(err);
   }
 });
-    module.exports= router;
+
+module.exports = router;
 
 // router.post("/", async (req, res, next) => {
 //     try {
