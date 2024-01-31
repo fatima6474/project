@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const { log } = require("node-wit");
 const secret = "jkjkjkkjkskjksjks"
 const nodeWit = require('node-wit');
-
+const nodemailer = require("nodemailer");
 
 const { Pool } = require("pg");
 
