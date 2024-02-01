@@ -30,7 +30,7 @@ body {
     /* position: absolute; */
     z-index: 1;
     width: 50vh;
-    height: 80vh;
+    height: 79vh;
     background-color: whitesmoke;
     /* backdrop-filter: blur(15px); */
     padding: 30px 40px;
@@ -42,11 +42,11 @@ h1 {
     text-align: center;
     font-weight: bold;
     color:#3a71d3;;
-    font-size: 18px;
+    font-size: 28px;
 
 }
 .input-tab {
-    margin-top: 30px;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
 }
