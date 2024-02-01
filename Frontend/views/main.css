@@ -551,6 +551,7 @@ img {
     #search-button img {
         width: 20px;
         height: 9px;
+        color: red;
         margin-bottom: 10px;
         background-color: white;
     }
