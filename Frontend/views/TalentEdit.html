@@ -168,7 +168,7 @@
                     class="logo"></a><p>Skill Work Community</p>
             <ul id="menuList">
                 <li><a href="image.html">About</a></li>
-                <li><a href="receive.html">Request</a></li>
+                <li><a href="receive.html">Message</a></li>
                 <li><a href="displayPage.html">proposals</a></li>
                 <li><a href="freelancer-form.html">FAQ</a></li>
                 <button id="LogoutBtn">Log out</button>
@@ -404,7 +404,7 @@ function displayFetchedJobs(jobs) {
         createdAtElement.textContent = `Created At: ${job.created_at}`;
 
         const sendMessageBtn = document.createElement("button");
-        sendMessageBtn.textContent = "Send proposal";
+        sendMessageBtn.textContent = "Send pr";
         sendMessageBtn.classList.add("sendMessageBtn");
 
         sendMessageBtn.addEventListener("click", function () {

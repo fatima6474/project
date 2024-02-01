@@ -246,7 +246,7 @@ margin-left: 8vh;
 
 .section2 div{
     width: 40vh;
-    height: 40vh;
+    height: 50vh;
     padding: 3vh;
     background-color: white;
     text-align: center;
@@ -701,26 +701,23 @@ h2{
 
 /* Mobile Styles */
 @media only screen and (max-width: 640px) {
-    .navbar {
-         padding: 2% 4%; 
-        width: 30%; 
-        font-size: 12px;
-        /* justify-content: space-evenly; */
-    }
+   
 
     
 .navbar{
     width: 100%;
     display: flex;
-    /* height: 10%; */
+    height: 10%;
     /* align-items: center; */
     background-color: #0156d7;
     /* background-color: rgb(47, 44, 44); */
     /* background-color: transparent; */
     position: static;
-    
+    /* margin-top: 20000; */
     z-index: 100;
-    margin: 0px 2px;
+    margin: 0px 2px
+    ;
+    
     padding-left: 4%;
     padding-right: 4%;
     top: 0;
@@ -728,12 +725,12 @@ h2{
 .navbar p{
     color: white;
     /* margin-left: 2vh; */
-    font-size: 12px;
+    font-size: 24px;
     /* margin-top: 45px; */
 }
 /* .textarea{margin-bottom0px;} */
     .leftside ul {
-        margin-top: 10px;
+        /* margin-top: 100px; */
         margin-left: 0;
         text-align: center;
     }
@@ -769,7 +766,7 @@ h2{
     .hero {
         flex-direction: column;
         /* gap: 80px; */
-        margin-top: 300px;
+        margin-top: 200px;
         /* margin-bottom: 3000px; */
         padding: 20px;
     }
