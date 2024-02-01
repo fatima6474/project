@@ -702,7 +702,11 @@ h2{
 /* Mobile Styles */
 @media only screen and (max-width: 640px) {
    
-
+    nav{
+        display: block;
+        justify-content: center;
+        margin-left: 0%;
+    }
     
 .navbar{
     width: 100%;
