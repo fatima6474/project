@@ -62,7 +62,7 @@
             savedMessages.forEach((message, index) => {
                 const messageDiv = document.createElement('div');
                 messageDiv.className = 'message';
-                messageDiv.innerHTML = `<p>Receiver Email: ${message.receiverEmail}</p><p>Message: ${message.messageText}</p>`;
+                messageDiv.innerHTML = `<p></p><p>Message: ${message.messageText}</p>`;
 
                 // Add click event to each message
                 messageDiv.addEventListener('click', () => {
