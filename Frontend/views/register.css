@@ -30,7 +30,7 @@ body {
     /* position: absolute; */
     z-index: 1;
     width: 50vh;
-    height: 79vh;
+    height: 81vh;
     background-color: whitesmoke;
     /* backdrop-filter: blur(15px); */
     padding: 30px 40px;
@@ -112,8 +112,9 @@ h1 {
 
 form a{
     color: #3a71d3;
-    margin-left: 10vh;
-    margin-top: 9vh;
+    margin-left: 51px;
+    /* margin-right: 60px; */
+    margin-top: 2vh;
     text-decoration: none;
     text-align: center;
 }
